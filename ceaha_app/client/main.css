@@ -2,3 +2,13 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+#formLogin{
+  border-color: black;
+  size: 50px;
+  
+}
+.badge{
+  border: 10px;
+  font: 200;
+  
+}

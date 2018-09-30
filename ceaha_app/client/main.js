@@ -9,44 +9,128 @@ Meteor.startup(function() {
       effect: '',
       position: 'bottom',
       timeout: 5000
-  })
+  })  
 
 })
 
-Template.novoParticipante.events({
-  'click #cadastrar'(event, instance){
-    event.preventDefault();
-    var participante = {
-      nome: $('#full-name').val(),
-      nascimento: $('#date-birth').val(),
-      nacionalidade: $('#nacionality').val(),
-      cidade: $('#city').val(),
-      uf: $('#uf').val(),
-      nome_pai: $('#father-name').val(),
-      rg: $('#mother-name').val(),
-      nome_mae: $('#rg').val(),
-      orgao_emissor: $('#orgao-emissor').val(),
-      cpf: $('#cpf').val(),
-      estado_civil: $('#inputEstadoCivil').val(),
-      cep: $('#cep').val(),
-      logradouro: $('#rua').val(),
-      numero: $('#numero').val(),
-      bairro: $('#bairro').val(),
-      complemento: $('#complemento').val(),
-      uf_endereco: $('#uf-endereco').val()
-      
+    
 
+
+
+
+Template.navbar.events({
+  'click #botaoSair'(event, instance){
+    event.preventDefault();
+    Meteor.logout();
+  },
+
+  'click #botaoLogin'(event, instance){
+    event.preventDefault();
+    $('.navbar-brand').text('Por favor fazer login com seu usuário e senha');
+    $('#paginaNovo').hide();  
+    $('#paginaAcesso').show();
+    
+    
+    
+  },
+
+  'click #novoParticipante'(event, instance){
+    $('.navbar-brand').text('Preencha seus dados abaixo');
+    $('#paginaNovo').show();  
+    $('#paginaAcesso').hide();
+   
+  },
+
+  'click #pesquisar'(event, instance){
+    console.log("to aqui")
+  }
+
+})
+
+
+
+Template.navbar.helpers({
+  fullName(){
+    return Meteor.user().profile.name;
+  },
+
+  statusPage(){
+      var text = $('.navbar-brand').val();
+      if (text == 'Preencha seus dados abaixo'){
+        $('#paginaNovo').show();  
+        $('#paginaAcesso').hide();
+        console.log('aqui no helper')
+      } else if(text == 'Por favor fazer login com seu usuário e senha') {
+          $('#paginaNovo').hide();  
+          $('#paginaAcesso').show();
+      } else if (text == 'Bem vindo ao banco de colaboradores CEAHA'){
+        $('#paginaNovo').hide();  
+        $('#paginaAcesso').hide();
+      }
+  }
+})
+
+Template.acesso.events({
+
+  'click #botaoLogin'(event, instance) {
+      event.preventDefault();
+
+      var email = $('#login #campoEmail').val();
+      var senha = $('#login #campoSenha').val();
+
+      Meteor.loginWithPassword(email, senha, function (err) {
+          if (err) {
+              sAlert.error(err.reason)
+          } else {
+              sAlert.success('Olá, você foi autenticado.')
+          }
+      })
+
+  },
+
+  'click #botaoCadastrar'(event, instance) {
+      event.preventDefault();
+
+      var nome = $('#cadastro #campoNome').val();
+      var email = $('#cadastro #campoEmail').val();
+      var senha = $('#cadastro #campoSenha').val();
+
+      var user = {
+          email: email,
+          password: senha,
+          profile: { name: nome }
+      }
+
+      Accounts.createUser(user, function (err) {
+          if (err) {
+              if (err.reason = 'Email already exists.') {
+                  sAlert.error('Você já está cadastrado.');
+              } else {
+                  sAlert.error(err.reason);
+              }
+          } else {
+              console.log('tudo certo');
+          }
+      })
+
+
+  }
+
+})
+
+Template.novoParticipante.helpers({
+    
+    aposentado(){
+      var aposentado = $('select[name=aposentadoria]').val()
+      console.log(aposentado)
+      if(aposentado != 0){
+        $('#enderecoTrabalho').hide();
+        return true
+      } else{
+        return false
+      }
     }
 
-    Meteor.call('inserirParticipante', participante, function(err, res){
-      if (err) {
-          sAlert.error(err.reason)
-          return false;
-      } else {
-          sAlert.success('Participante cadastrado com sucesso.')
-      }
-  })     
-  }
 })
 
 
