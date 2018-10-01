@@ -14,14 +14,19 @@ Meteor.startup(function() {
 })
 
     
-
-
-
+Router.route('/', function () {
+    this.render('novoParticipante');
+});
+Router.route('/test', function () {
+    this.render('acesso');
+});
+  
 
 Template.navbar.events({
   'click #botaoSair'(event, instance){
     event.preventDefault();
     Meteor.logout();
+    window.location.href('/')
   },
 
   'click #botaoLogin'(event, instance){
@@ -29,9 +34,7 @@ Template.navbar.events({
     $('.navbar-brand').text('Por favor fazer login com seu usuário e senha');
     $('#paginaNovo').hide();  
     $('#paginaAcesso').show();
-    
-    
-    
+    window.location.href = ('/test')
   },
 
   'click #novoParticipante'(event, instance){
@@ -52,22 +55,8 @@ Template.navbar.events({
 Template.navbar.helpers({
   fullName(){
     return Meteor.user().profile.name;
-  },
-
-  statusPage(){
-      var text = $('.navbar-brand').val();
-      if (text == 'Preencha seus dados abaixo'){
-        $('#paginaNovo').show();  
-        $('#paginaAcesso').hide();
-        console.log('aqui no helper')
-      } else if(text == 'Por favor fazer login com seu usuário e senha') {
-          $('#paginaNovo').hide();  
-          $('#paginaAcesso').show();
-      } else if (text == 'Bem vindo ao banco de colaboradores CEAHA'){
-        $('#paginaNovo').hide();  
-        $('#paginaAcesso').hide();
-      }
   }
+  
 })
 
 Template.acesso.events({
@@ -82,7 +71,10 @@ Template.acesso.events({
           if (err) {
               sAlert.error(err.reason)
           } else {
+              console.log('to aqui');
+              window.location.href = ('/')
               sAlert.success('Olá, você foi autenticado.')
+
           }
       })
 
@@ -120,21 +112,65 @@ Template.acesso.events({
 
 Template.novoParticipante.helpers({
     
-    aposentado(){
-      var aposentado = $('select[name=aposentadoria]').val()
-      console.log(aposentado)
-      if(aposentado != 0){
-        $('#enderecoTrabalho').hide();
-        return true
-      } else{
-        return false
-      }
-    }
+    // aposentado(){
+    //   var aposentado = $('select[name=aposentadoria]').val()
+    //   console.log(aposentado)
+    //   if(aposentado != 0){
+    //     $('#enderecoTrabalho').hide();
+    //   }
+    // },
 
+    // escola(){
+    //     var escola = $('#escolaridade').val();
+    //     if (escola == ''){
+    //         // $('#cursoEscolaridade').hide();
+    //         // $('#instituiçãoEscolaridade').hide();
+    //         return console.log('aqui dentro')
+    //     }
+    
+    // }
+    
 })
 
 
 Template.novoParticipante.events({
+
+    'click #adicionaAtividade'(event, instance){
+
+        var element = $('.lista-atividades').html();
+        $(element).appendTo('.lista-atividades')
+    },
+  
+  'click #transferencia'(event, instance){
+    var transferencia = $('#transferencia').val();  
+    if (transferencia != 2) {
+        $('.dados-transferencia').hide();
+    } else {
+        $('.dados-transferencia').show();
+    }
+  },
+
+  'click #aposentadoria'(event, instance){
+    var aposentado = $('#aposentadoria').val();
+    console.log(aposentado)
+    if(aposentado != 1){
+        $('#enderecoTrabalho').hide();
+    } else {
+        $('#enderecoTrabalho').show();
+    }
+  },
+
+  'click #escolaridade'(event, instance){
+    var escolaridade = $('#escolaridade').val();
+    if (escolaridade < 4){
+        $('#cursoEscolaridade').hide();
+        $('#instituiçãoEscolaridade').hide();
+    } else {
+        $('#cursoEscolaridade').show();
+        $('#instituiçãoEscolaridade').show();
+    }
+  },
+
   'click #cadastrar'(event, instance){
     event.preventDefault();
     var participante = {

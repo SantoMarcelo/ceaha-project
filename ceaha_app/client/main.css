@@ -12,3 +12,11 @@ body {
   font: 200;
   
 }
+
+input.estudo-obras{
+  align-self: center;
+}
+
+.fa-plus{
+  size: 4px;
+}
