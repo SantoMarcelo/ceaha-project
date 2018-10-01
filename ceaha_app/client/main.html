@@ -467,15 +467,16 @@
             </div>
           </div>
           <div>
-              <h6 for="estudosDoutrina">Estudos da Doutrina Espírita que você desenvolveu  em grupo no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
+            <h6 for="estudosDoutrina">Estudos da Doutrina Espírita que você desenvolveu em grupo no (s) CENTRO(s)
+              ESPÍRITA(s) ANTERIOR(es)</h6>
           </div>
-          
+
           <div class="form-row">
             <div class="form-group">
-                <label  for="tomosESede">Tomos do ESDE - Quais?</label>
+              <label for="tomosESede">Tomos do ESDE - Quais?</label>
             </div>
             <div class="form-group col-sm-8 estudo-obras">
-                <input type="text" class="form-control" id="tomosESede">
+              <input type="text" class="form-control" id="tomosESede">
             </div>
           </div>
           <div class="form-row">
@@ -487,62 +488,75 @@
             </div>
           </div>
           <div class="form-row">
-              <div class="form-group">
-                  <label for="obrasBasicas">Obras Básicas - Quais?</label>
-              </div>
-              <div class="form-group col-sm-8 estudo-obras">
-                  <input type="text" class="form-control" id="obrasBasicas">
-              </div>
+            <div class="form-group">
+              <label for="obrasBasicas">Obras Básicas - Quais?</label>
             </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="outrasObras">Outras obras - Quais?</label>
-                </div>
-                <div class="form-group col-sm-8 estudo-obras">
-                    <input type="text" class="form-control" id="outrasObras">
-                </div>
+            <div class="form-group col-sm-8 estudo-obras">
+              <input type="text" class="form-control" id="obrasBasicas">
             </div>
-            <div class="form-row">
-              <div>
-                  <h6>Atividades voluntárias que você desenvolveu  no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
-              </div>
-              <div>
-                  <i class="fa fa-plus" id="adicionaAtividade"></i>
-              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="outrasObras">Outras obras - Quais?</label>
             </div>
-            <div class="container lista-atividades">
+            <div class="form-group col-sm-8 estudo-obras">
+              <input type="text" class="form-control" id="outrasObras">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-8">
+              <h6>Atividades voluntárias que você desenvolveu no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
+            </div>
+            <div>
+              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade"><i class="fa fa-plus" ></i></button> 
+            </div>
+          </div>
+          <div class="container-fluid lista-atividades">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Atividade</th>
+                      <th scope="col">Quanto Tempo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="col-sm-6">
+                          <input type="text" class="" id="atividadeVoluntaria">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="col-sm-4">
+                          <input type="text" class="" id="tempoAtividadeVoluntaria">
+                        </div>
+                      </td>
+                      <td><button class="btn btn-sm btn-outline-info" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
 
-              <div class="table">
-                <thead>
-                  <th>Atividade</th>
-                  <th>Quanto tempo</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <input type="text" class="form-control col-lg-4" id="atividadeVoluntaria">
-                    </td>
-                    <td>
-                      <i class="fa fa-trash"></i>
-                    </td> 
-                  </tr>
-                </tbody>
-              </div>
-                <!-- <div class="form-row">
-                    <div class="form-group col-sm-6">
-                      <label for="atividadeVoluntaria">Atividade</label>
-                      
-                    </div>
-                    <div class="form-group col-sm-2">
-                      <label for="tempoAtividadeVoluntaria">Quanto Tempo</label>
-                      <input type="text" class="form-control" id="tempoAtividadeVoluntaria">
-                    </div>
-                    <div class="form-group">
-                            
-                    </div>
-                </div> -->
-            </div>
             
+            
+            <!-- <div class="form-row">
+              <div class="form-group col-sm-6">
+                <label for="atividadeVoluntaria">Atividade</label>
+                <input type="text" class="form-control" id="atividadeVoluntaria">
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="tempoAtividadeVoluntaria">Quanto Tempo</label>
+                <input type="text" class="form-control " id="tempoAtividadeVoluntaria">
+              </div>
+              <div class="form-group">
+                  <i class="fa fa-trash form-control-sm" id="delteAtividadeVoluntaria"></i>
+              </div>
+            </div> -->
+          
+            
+            
+          
+
         </form>
       </div>
     </fieldset>
