@@ -23,7 +23,7 @@
       </div>
       {{else}}
       <div>
-        <a class="navbar-brand" href="#">Bem vindo ao banco de colaboradores CEAHA</a>
+        <a class="navbar-brand" href="#">Bem vindo ao admin do banco de colaboradores CEAHA</a>
         <button id="botaoLogin" class="btn btn-sm btn-outline-info">Logar</button>
         <button id="novoParticipante" class="btn btn-sm btn-outline-info">Novo Participante</button>
       </div>
@@ -508,20 +508,20 @@
               <h6>Atividades voluntárias que você desenvolveu no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
             </div>
             <div>
-              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade"><i class="fa fa-plus" ></i></button> 
+              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus" ></i></button> 
             </div>
           </div>
           <div class="container-fluid lista-atividades">
               <table class="table">
                   <thead>
-                    <tr>
+                    <tr id="tableHeader">
                       <th scope="col">Atividade</th>
                       <th scope="col">Quanto Tempo</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
+                    <tr class="table-row" id="tableRow">
+                      <td >
                         <div class="col-sm-6">
                           <input type="text" class="" id="atividadeVoluntaria">
                         </div>
@@ -531,10 +531,84 @@
                           <input type="text" class="" id="tempoAtividadeVoluntaria">
                         </div>
                       </td>
-                      <td><button class="btn btn-sm btn-outline-info" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button></td>
+                      <td><button type="button" class="btn btn-sm btn-outline-info" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button></td>
                     </tr>
                   </tbody>
                 </table>
+          </div>
+
+          <div class="container" id="experienciasPraticas">
+            <div class="form-group">
+              <h6>Você tem experiência em alguma das práticas abaixo?</h6>
+            </div>
+            <table class="table table-hover experiencia-praticas">
+                <thead>
+                  <tr>
+                    <th scope="col" width="50">Selecione</th>
+                    <th scope="col" width="100">Atividade</th>
+                    <th scope="col" width="100">Tempo de Atividade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumSensitivo" id="mediumSensitivo"></th>
+                    <td>Méduim Sensitivo</td>
+                    <td><input class="input-time" type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico" id="mediumPsicofonico"></th>
+                    <td>Médium Psicofônico</td>
+                    <td><input class="input-time" type="text" name="mediumPsicofonico" id="mediumPsicofonico" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="MediumPsicografo" id="MediumPsicografo"></th>
+                    <td>Médium Psicógrafo</td>
+                    <td><input class="input-time" type="text" name="MediumPsicografoTempo" id="MediumPsicografoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo"></th>
+                    <td>Médium Pictógrafo</td>
+                    <td><input class="input-time" type="text" name="mediumPictografoTempo" id="mediumPictografoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumVidente" id="mediumVidente"></th>
+                    <td>Médium Vidente</td>
+                    <td><input class="input-time" type="text" name="mediumVidenteTempo" id="mediumVidenteTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumAudiente" id="mediumAudiente"></th>
+                    <td>Médium Audiente</td>
+                    <td><input class="input-time" type="text" name="mediumAudienteTempo" id="mediumAudienteTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumDesdobramento" id="mediumDesdobramento"></th>
+                    <td>Médio de Desdobramento</td>
+                    <td><input class="input-time" type="text" name="mediumDesdobramentoTempo" id="mediumDesdobramentoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="dirigenteGrupoMediunico" id="dirigenteGrupoMediunico"></th>
+                    <td>Dirigente de Grupo Mediúnico</td>
+                    <td><input class="input-time" type="text" name="dirigenteGrupoMediunicoTempo" id="dirigenteGrupoMediunicoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"> <input class="checkbox-experienca-pratica" type="checkbox" name="dialogador" id="dialogador"></th>
+                    <td>Dialogador</td>
+                    <td><input class="input-time" type="text" name="dialogadorTempo" id="dialogadorTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">  <input class="checkbox-experienca-pratica" type="checkbox" name="susutentacao" id="susutentacao"></th>
+                    <td>Sustentação</td>
+                    <td> <input class="input-time" type="text" name="susutentacaoTempo" id="susutentacaoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="outros" id="outros"></th>
+                    <td>Outros</td>
+                    <td> <input class="input-time" type="text" name="outrosTempo" id="outrosTempo" placeholder=""></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            
           </div>
 
             

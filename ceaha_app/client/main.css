@@ -25,3 +25,9 @@ input.estudo-obras{
   margin-right: 50px;
 
 }
+
+  
+input.checkbox-experienca-pratica{
+  position: relative;
+  left: 30px;
+}

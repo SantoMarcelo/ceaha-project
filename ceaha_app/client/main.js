@@ -135,11 +135,27 @@ Template.novoParticipante.helpers({
 
 Template.novoParticipante.events({
 
-    'click #adicionaAtividade'(event, instance){
+      'click #adicionaAtividade'(event, instance) {
+        event.preventDefault();
 
-        var element = $('.lista-atividades').html();
-        $(element).appendTo('.lista-atividades')
+        var contador = Template.instance().contador.get();
+
+        instance.contador.set(contador + 1);
+        console.log(contador)
+
     },
+
+    // 'click #adicionaAtividade'(event, instance){
+
+    //     //var element = $('.lista-atividades table ').html();
+    //     var element2 =  $('.lista-atividades tbody').html();
+    //     if (element2 == null) {
+    //         var element2 =  $('.lista-atividades tbody').html();
+    //     }
+    //     console.log(element2);
+    //     //console.log(element);
+    //     $(element2).appendTo('.lista-atividades tbody');
+    // },
   
   'click #transferencia'(event, instance){
     var transferencia = $('#transferencia').val();  
