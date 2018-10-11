@@ -7,9 +7,11 @@
   {{> navbar}}
 
   <div id="containerPrincipal" class="container">
-
+    {{> buscaParticipante}}
   </div>
 </body>
+
+
 
 <template name="navbar">
   <div class="container">
@@ -85,6 +87,12 @@
 
 <template name="novoParticipante">
   <div class="container">
+    <div>
+      <h1>{{pegaNome}}</h1>
+      <h2>{{pegaContador}}</h2>
+      <button id="botaoContador">Conta + 1</button>
+    </div>
+    
     <fieldset>
       <legend>Dados Pessoais</legend>
       <section>
@@ -289,42 +297,42 @@
               <form>
                 <div class="form-row">
                   <div class="form-group col-sm-8">
-                    <label for="inputEmpresa">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputEmpresa">
+                    <label for="inputLocalTrabalho">Empresa</label>
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho">
                   </div>
                   <div class="form-group col-sm-4">
-                    <label for="inputEmpresa">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputEmpresa">
+                    <label for="telComercial">Telefone Comercial</label>
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
-                    <label for="cep">CEP</label>
-                    <input id="cep" name="cep" type="text" placeholder="" class="form-control input-md">
+                    <label for="cepComercial">CEP</label>
+                    <input id="cepComercial" name="cep" type="text" placeholder="" class="form-control input-md">
                   </div>
                   <div class="col-md-6 form-group">
-                    <label for="rua">Rua</label>
-                    <input id="rua" name="rua" type="text" placeholder="" class="form-control input-md">
+                    <label for="logradouroComercial">Rua</label>
+                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="" class="form-control input-md">
                   </div>
                   <div class="col-md-2  form-group">
-                    <label for="numero">Nº</label>
-                    <input id="numero" name="numero" type="text" placeholder="" class="form-control input-md">
+                    <label for="numeroComercial">Nº</label>
+                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="" class="form-control input-md">
                   </div>
                   <div class="col-md-6 form-group">
-                    <label for="bairro">Bairro</label>
-                    <input id="bairro" name="bairro" type="text" placeholder="" class="form-control input-md">
+                    <label for="bairroComercial">Bairro</label>
+                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="" class="form-control input-md">
                   </div>
                   <div class="col-md-4 form-group">
-                    <label for="complemento">Complemento</label>
-                    <input id="complemento" name="complemento" type="text" placeholder="" class="form-control input-md">
+                    <label for="complementoComercial">Complemento</label>
+                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="" class="form-control input-md">
                   </div>
                   <div class="col-md-6 form-group">
-                    <label for="cidade">Cidade</label>
-                    <input id="cidade" name="cidade" type="text" placeholder="" class="form-control input-md">
+                    <label for="cidadeComercial">Cidade</label>
+                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="" class="form-control input-md">
                   </div>
                   <div class="col-md-6 form-group">
-                    <label for="uf-endereco">UF</label>
-                    <select class="form-control" name="uf" id="uf-endereco">
+                    <label for="ufComercial">UF</label>
+                    <select class="form-control" name="uf" id="ufComercial">
                       <option value="">Selecione</option>
                       <option value="AC">AC</option>
                       <option value="AL">AL</option>
@@ -389,13 +397,13 @@
                   <option value="14">Outros</option>
                 </select>
               </div>
-              <div class="form-group col-sm-4" id="cursoEscolaridade" style="display:none">
+              <div class="form-group col-sm-4"  style="display:none">
                 <label for="cursoEscolaridade">Curso</label>
                 <input class="form-control" type="text" id="inputCursoEscolaridade" placeholder="curso">
               </div>
-              <div class="form-group col-sm-4" id="instituiçãoEscolaridade" style="display:none">
-                <label for="instituiçãoEscolaridade">Instituição</label>
-                <input class="form-control" type="text" id="inputInstituiçãoEscolaridade" placeholder="instituição">
+              <div class="form-group col-sm-4"  style="display:none">
+                <label for="instituicaoEscolaridade">Instituição</label>
+                <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição">
               </div>
             </div>
             <div class="form-group ">
@@ -558,12 +566,12 @@
                   <tr>
                     <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico" id="mediumPsicofonico"></th>
                     <td>Médium Psicofônico</td>
-                    <td><input class="input-time" type="text" name="mediumPsicofonico" id="mediumPsicofonico" placeholder=""></td>
+                    <td><input class="input-time" type="text" name="mediumPsicofonicoTempo" id="mediumPsicofonicoTempo" placeholder=""></td>
                   </tr>
                   <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="MediumPsicografo" id="MediumPsicografo"></th>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicografo" id="mediumPsicografo"></th>
                     <td>Médium Psicógrafo</td>
-                    <td><input class="input-time" type="text" name="MediumPsicografoTempo" id="MediumPsicografoTempo" placeholder=""></td>
+                    <td><input class="input-time" type="text" name="mediumPsicografo" id="mediumPsicografo" placeholder=""></td>
                   </tr>
                   <tr>
                     <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo"></th>
@@ -649,5 +657,21 @@
 </template>
 
 <template name="buscaParticipante">
+  <form id="busca" class="form-inline mb-3">
+    <h6>Buscar Participante:</h6>
+    <div class="form-group ml-3 mx-sm-3">
+      <input type="text" id="buscaNome" name="buscaNome" class="form-control" placeholder="nome">
+    </div>
+    <button id="botaoBuscar" class="btn btn-success"><i class="fa fa-search"></i></button>
+  </form>
+</template>
 
+<template name="preenchimentoInterno">
+  <div class="container">
+    <div class="form">
+      <div class="form-group">
+
+      </div>
+    </div>
+  </div>
 </template>

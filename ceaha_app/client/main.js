@@ -110,6 +110,8 @@ Template.acesso.events({
 
 })
 
+
+
 Template.novoParticipante.helpers({
     
     // aposentado(){
@@ -134,6 +136,15 @@ Template.novoParticipante.helpers({
 
 
 Template.novoParticipante.events({
+
+    'click #botaoContador'(event, instance) {
+        event.preventDefault();
+
+        var contador = Template.instance().contador.get();
+
+        instance.contador.set(contador + 1);
+
+    },
 
       'click #adicionaAtividade'(event, instance) {
         event.preventDefault();
@@ -206,9 +217,52 @@ Template.novoParticipante.events({
       numero: $('#numero').val(),
       bairro: $('#bairro').val(),
       complemento: $('#complemento').val(),
-      uf_endereco: $('#uf-endereco').val()
-      
-
+      uf_endereco: $('#uf-endereco').val(),
+      profissão: $('#inputProfissao').val(),
+      aposentado: $('#aposentadoria').val(),
+      local_trabalho: $('#inputLocalTrabalho').val(),
+      tel_comercial: $('#telComercial').val(),
+      cep_comercial: $('#cepComercial').val(),
+      logradouro_comercial: $('#logradouroComercial').val(),
+      numero_comercial: $('#numeroComercial').val(),
+      numero_comercial: $('#bairroComercial').val(),
+      complemento_comercial: $('#complementoComercial').val(),
+      cidade_comercial: $('#cidadeComercial').val(),
+      uf_comercial: $('#ufComercial').val(),
+      escolaridade: $('#escolaridade').val(),
+      curso_escolaridade: $('#cursoEscolaridade').val(),
+      instituicao_escolaridade: $('#instituicaoEscolaridade').val(),
+      descricao_atividades: $('#descricaoAtividades').val(),
+      transferencia: $('#transferencia').val(),
+      nomeCentro_espirita: $('#nomeCentroEspirita').val(),
+      cidade_centro_espirita: $('#cidadeCentroEspirita').val(),
+      tempo_centro_espirita: $('#tempoCentroEspirita').val(),
+      tomos_esede: $('#tomosESede').val(),
+      tomos_eade: $('#tomosEade').val(),
+      obras_basicas: $('#obrasBasicas').val(),
+      outras_obras: $('#outrasObras').val(),
+      atividade_voluntaria: $('#atividadeVoluntaria').val(),
+      tempo_atividade_voluntaria: $('#tempoAtividadeVoluntaria').val(),
+      medium_sensitivo: $('#mediumSensitivo').val(),
+      medium_sensitivo_tempo: $('#mediumSensitivoTempo').val(),
+      medium_psicofonico: $('#mediumPsicofonico').val(),
+      medium_psicofonico_tempo: $('#mediumPsicofonicoTempo').val(),
+      medium_psicografo: $('#mediumPsicografo').val(),
+      medium_pictografo: $('#mediumPictografo').val(),
+      medium_vidente: $('#mediumVidente').val(),
+      medium_idente_tempo: $('#mediumVidenteTempo').val(),
+      medium_audiente: $('#medium_audiente').val(),
+      medium_audiente_tempo: $('#mediumAudienteTempo').val(),
+      medium_desdobramento: $('#mediumDesdobramento').val(),
+      medium_desdobramento_tempo: $('#mediumDesdobramentoTempo').val(),
+      dirigente_grupo_mediunico: $('#dirigenteGrupoMediunico').val(),
+      dirigente_grupo_mediunico_tempo: $('#dirigenteGrupoMediunicoTempo').val(),
+      dialogador: $('#dialogador').val(),
+      dialogador_tempo: $('#dialogadorTempo').val(),
+      susutentacao: $('#susutentacao').val(),
+      susutentacao_tempo: $('#susutentacaoTempo').val(),
+      outros: $('#outros').val(),
+      outros_tempo: $('#outrosTempo').val() 
     }
 
     Meteor.call('inserirParticipante', participante, function(err, res){
@@ -222,5 +276,22 @@ Template.novoParticipante.events({
   }
 })
 
+Template.buscaParticipante.events({
+    'click #buscaNome'(event, instance) {
+        event.preventDefault();
+
+        var nome = $('#buscaNome').val();
+
+        var query = { dono: Meteor.user()._id };
+
+        if (celular != '') {
+            query.celular = celular;
+        }
+
+        var resultado = Contato.find(query);
+
+        instance.contatos.set(resultado);
+    },
+})
 
 
