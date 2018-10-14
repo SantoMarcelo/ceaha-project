@@ -1,7 +1,12 @@
 import { Template } from 'meteor/templating';
+import { Mongo } from 'meteor/mongo';
+import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
+
+
+const Participantes = new Mongo.Collection('participantes');
 
 Meteor.startup(function() {
 
@@ -17,8 +22,15 @@ Meteor.startup(function() {
 Router.route('/', function () {
     this.render('novoParticipante');
 });
-Router.route('/test', function () {
+Router.route('/novoParticipante', function () {
+    this.render('novoParticipante');
+});
+
+Router.route('/login', function () {
     this.render('acesso');
+});
+Router.route('/home', function () {
+    this.render('listaParticipante');
 });
   
 
@@ -26,7 +38,7 @@ Template.navbar.events({
   'click #botaoSair'(event, instance){
     event.preventDefault();
     Meteor.logout();
-    window.location.href('/')
+    window.location.href = ('/');
   },
 
   'click #botaoLogin'(event, instance){
@@ -34,18 +46,16 @@ Template.navbar.events({
     $('.navbar-brand').text('Por favor fazer login com seu usuário e senha');
     $('#paginaNovo').hide();  
     $('#paginaAcesso').show();
-    window.location.href = ('/test')
+    window.location.href = ('/login');
   },
 
   'click #novoParticipante'(event, instance){
+    window.location.href = ('/novoParticipante');
     $('.navbar-brand').text('Preencha seus dados abaixo');
-    $('#paginaNovo').show();  
-    $('#paginaAcesso').hide();
    
   },
-
-  'click #pesquisar'(event, instance){
-    console.log("to aqui")
+  'click #home'(event, instance) {
+    window.location.href = ('/home');
   }
 
 })
@@ -64,15 +74,15 @@ Template.acesso.events({
   'click #botaoLogin'(event, instance) {
       event.preventDefault();
 
-      var email = $('#login #campoEmail').val();
-      var senha = $('#login #campoSenha').val();
+      var email = $('#login #loginEmail').val();
+      var senha = $('#login #loginSenha').val();
 
       Meteor.loginWithPassword(email, senha, function (err) {
           if (err) {
               sAlert.error(err.reason)
           } else {
               console.log('to aqui');
-              window.location.href = ('/')
+              window.location.href = ('/home')
               sAlert.success('Olá, você foi autenticado.')
 
           }
@@ -83,9 +93,9 @@ Template.acesso.events({
   'click #botaoCadastrar'(event, instance) {
       event.preventDefault();
 
-      var nome = $('#cadastro #campoNome').val();
-      var email = $('#cadastro #campoEmail').val();
-      var senha = $('#cadastro #campoSenha').val();
+      var nome = $('#cadastro #cadastroNome').val();
+      var email = $('#cadastro #cadastroEmail').val();
+      var senha = $('#cadastro #cadastroSenha').val();
 
       var user = {
           email: email,
@@ -106,7 +116,9 @@ Template.acesso.events({
       })
 
 
-  }
+  },
+
+  
 
 })
 
@@ -188,15 +200,15 @@ Template.novoParticipante.events({
   },
 
   'click #escolaridade'(event, instance){
-    var escolaridade = $('#escolaridade').val();
-    if (escolaridade < 4){
-        $('#cursoEscolaridade').hide();
-        $('#instituiçãoEscolaridade').hide();
-    } else {
-        $('#cursoEscolaridade').show();
-        $('#instituiçãoEscolaridade').show();
-    }
-  },
+        var escolaridade = $('#escolaridade').val();
+        if (escolaridade < 4){
+            $('#cursoEscolaridade').hide();
+            $('#instituiçãoEscolaridade').hide();
+        } else {
+            $('#cursoEscolaridade').show();
+            $('#instituiçãoEscolaridade').show();
+        }
+    },
 
   'click #cadastrar'(event, instance){
     event.preventDefault();
@@ -276,22 +288,39 @@ Template.novoParticipante.events({
   }
 })
 
-Template.buscaParticipante.events({
-    'click #buscaNome'(event, instance) {
-        event.preventDefault();
+Template.listaParticipante.onCreated(function () {
+    this.participante = new ReactiveVar(Participantes.find());
+    console.log(this.participante);
+})
 
-        var nome = $('#buscaNome').val();
-
-        var query = { dono: Meteor.user()._id };
-
-        if (celular != '') {
-            query.celular = celular;
-        }
-
-        var resultado = Contato.find(query);
-
-        instance.contatos.set(resultado);
+Template.listaParticipante.helpers({
+    'minhaLista': function () {
+       
+        return Template.instance().participante.get();
     },
+})
+
+Template.listaParticipante.events({
+    'click #botaoBuscar'(event, instance) {
+        event.preventDefault();
+        var nome = $('#buscaNome').val();
+        var query ={
+            'nome': nome
+        }
+        
+        if (nome != '') {
+            var query ={
+                'nome': nome
+            }
+        }
+               
+        var resultado = Participantes.find(query);
+        console.log("aqui no resultado")
+        console.log(resultado)
+       
+        instance.participante.set(resultado);
+    },
+    
 })
 
 

@@ -6,9 +6,8 @@
   {{> sAlert}}
   {{> navbar}}
 
-  <div id="containerPrincipal" class="container">
-    {{> buscaParticipante}}
-  </div>
+
+  
 </body>
 
 
@@ -20,14 +19,17 @@
       {{#if currentUser}}
       <div>
         <a class="navbar-brand" href="#">Bem vindo ao admin do banco de colaboradores CEAHA</a>
+       
         <span class="navbar-text mr-2">Olá, {{fullName}}</span>
+        <button id="home" class="btn btn-sm btn-outline-warning">Home</button>
+        <button id="novoParticipante" class="btn btn-sm btn-outline-info">Novo Participante</button>
         <button id="botaoSair" class="btn btn-sm btn-outline-info">Sair</button>
       </div>
       {{else}}
       <div>
         <a class="navbar-brand" href="#">Bem vindo ao admin do banco de colaboradores CEAHA</a>
         <button id="botaoLogin" class="btn btn-sm btn-outline-info">Logar</button>
-        <button id="novoParticipante" class="btn btn-sm btn-outline-info">Novo Participante</button>
+        
       </div>
       {{/if}}
     </nav>
@@ -45,13 +47,13 @@
         <form id="login" class="form-center">
           <small>Entre com seu dados de acesso.</small>
           <div class="form-group">
-            <input type="text" id="campoEmail" name="campoEmail" class="form-control">
+            <input type="text" id="loginEmail" name="loginEmail" class="form-control">
           </div>
           <div class="form-group">
-            <input type="password" id="campoSenha" name="campoSenha" class="form-control">
+            <input type="password" id="loginSenha" name="loginSenha" class="form-control">
           </div>
 
-          <button id="botaoLogin" class="btn btn-success btn-block">Entrar</button>
+          <button type="button" id="botaoLogin" class="btn btn-success btn-block">Entrar</button>
         </form>
       </div>
 
@@ -60,15 +62,15 @@
           <small>Faça seu cadastro.</small>
 
           <div class="form-group">
-            <input type="text" id="campoNome" name="campoNome" class="form-control">
+            <input type="text" id="cadastroNome" name="cadastroNome" class="form-control">
           </div>
 
           <div class="form-group">
-            <input type="text" id="campoEmail" name="campoEmail" class="form-control">
+            <input type="text" id="cadastroEmail" name="cadastroEmail" class="form-control">
           </div>
 
           <div class="form-group">
-            <input type="password" id="campoSenha" name="campoSenha" class="form-control">
+            <input type="password" id="cadastroSenha" name="cadastroSenha" class="form-control">
           </div>
 
           <button id="botaoCadastrar" class="btn btn-info btn-block">Entrar</button>
@@ -87,12 +89,6 @@
 
 <template name="novoParticipante">
   <div class="container">
-    <div>
-      <h1>{{pegaNome}}</h1>
-      <h2>{{pegaContador}}</h2>
-      <button id="botaoContador">Conta + 1</button>
-    </div>
-    
     <fieldset>
       <legend>Dados Pessoais</legend>
       <section>
@@ -657,13 +653,64 @@
 </template>
 
 <template name="buscaParticipante">
-  <form id="busca" class="form-inline mb-3">
-    <h6>Buscar Participante:</h6>
-    <div class="form-group ml-3 mx-sm-3">
-      <input type="text" id="buscaNome" name="buscaNome" class="form-control" placeholder="nome">
-    </div>
-    <button id="botaoBuscar" class="btn btn-success"><i class="fa fa-search"></i></button>
-  </form>
+  <div class="container busca-participante">
+      <form id="busca" class="form-inline mb-3" style="padding-top: 10px">
+          <h6>Buscar Participante:</h6>
+          <div class="form-group ml-3 mx-sm-3">
+            <input type="text" id="buscaNome" name="buscaNome" class="form-control" placeholder="nome">
+          </div>
+          <button type="button" id="botaoBuscar" class="btn btn-success"><i class="fa fa-search"></i></button>
+        </form>
+  </div>
+  
+</template>
+
+<template name="listaParticipante">
+    
+  <div class="container">
+      <section id="meusContatos">
+          <div class="container busca-participante">
+              <form id="busca" class="form-inline mb-3" style="padding-top: 10px">
+                  <h6>Buscar Participante:</h6>
+                  <div class="form-group ml-3 mx-sm-3">
+                    <input type="text" id="buscaNome" name="buscaNome" class="form-control" placeholder="nome">
+                  </div>
+                  <button type="button" id="botaoBuscar" class="btn btn-success"><i class="fa fa-search"></i></button>
+                </form>
+          </div>
+            
+          {{#if minhaLista.count}}
+          <table class="table">
+            <thead>
+              <th>Nome</th>
+              <th>Cidade</th>
+              <th>UF</th>
+              <th>Data Nascimento</th>
+              <th></th>
+            </thead>
+            <tbody>
+              {{#each minhaLista}}
+              <tr>
+                <td>{{nome}}</td>
+                <td>{{cidade}}</td>
+                <td>{{uf}}</td>
+                <td>{{nascimento}}</td> 
+                <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></button></td>
+                <td class="td-acoes"><button id="deletarContato" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          {{else}}
+          <div class="alert alert-warning" role="alert">
+            <i class="fa fa-exclamation-triangle"></i>
+            <p>Nenhum participante encontrato.</p>
+          </div>
+          {{/if}}
+      
+        </section>
+  </div>
+
 </template>
 
 <template name="preenchimentoInterno">
