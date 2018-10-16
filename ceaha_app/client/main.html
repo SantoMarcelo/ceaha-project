@@ -77,15 +77,8 @@
         </form>
       </div>
     </div>
-
-
-
-
-
   </div>
-
 </template>
-
 
 <template name="novoParticipante">
   <div class="container">
@@ -652,6 +645,7 @@
 
 </template>
 
+
 <template name="buscaParticipante">
   <div class="container busca-participante">
       <form id="busca" class="form-inline mb-3" style="padding-top: 10px">
@@ -679,7 +673,7 @@
                 </form>
           </div>
             
-          {{#if minhaLista.count}}
+          {{#if listaParticipantes.count}}
           <table class="table">
             <thead>
               <th>Nome</th>
@@ -689,7 +683,7 @@
               <th></th>
             </thead>
             <tbody>
-              {{#each minhaLista}}
+              {{#each listaParticipantes}}
               <tr>
                 <td>{{nome}}</td>
                 <td>{{cidade}}</td>
@@ -709,6 +703,564 @@
           {{/if}}
       
         </section>
+  </div>
+
+</template>
+
+<template name="editarParticipante">
+  <div class="container">
+    {{#if listaParticipantes.count}}
+    <fieldset>
+      <legend>Dados Pessoais</legend>
+      <section>
+        <div class="container dados-pessoais">
+          <form class="form-control">
+            <div class="form-row">
+              <div class="form-group col-md-6 ">
+                <label for="full-name">Nome Completo</label>
+                <input type="text" class="form-control" id="full-name" placeholder="nome completo" value="Marcelo Fixo" required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="date-birth">Data de Nascimento</label>
+                <input type="text" class="form-control" id="date-birth" placeholder="dd/mm/aaaa">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col col-md-4 form-group first ">
+                <label for="nacionality">Nacionalidade</label>
+                <select class="form-control" name="nacionality" id="nacionality">
+                  <option value="">Selecione</option>
+                  <option value="África do Sul">África do Sul</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Brasil">Brasil</option>
+                  <option value="EUA">EUA</option>
+                  <option value="Equador">Equador</option>
+                  <option value="Espanha">Espanha</option>
+                  <option value="França">França</option>
+                  <option value="Grécia">Grécia</option>
+                  <option value="Inglaterra">Inglaterra</option>
+                  <option value="Itália">Itália</option>
+                  <option value="Jamaica">Jamaica</option>
+                  <option value="Japão">Japão</option>
+                  <option value="Portugal">Portugal</option>
+                </select>
+              </div>
+              <div class="col col-md-4 second">
+                <label for="city">Cidade</label>
+                <input class="form-control" type="text" id="city" placeholder="cidade">
+              </div>
+              <div class="col col-md-4 first ">
+                <label for="uf">UF</label>
+                <select class="form-control" name="uf" id="uf">
+                  <option value="">Selecione</option>
+                  <option value="AC">AC</option>
+                  <option value="AL">AL</option>
+                  <option value="AM">AM</option>
+                  <option value="AP">AP</option>
+                  <option value="BA">BA</option>
+                  <option value="CE">CE</option>
+                  <option value="DF">DF</option>
+                  <option value="ES">ES</option>
+                  <option value="GO">GO</option>
+                  <option value="MA">MA</option>
+                  <option value="MG">MG</option>
+                  <option value="MS">MS</option>
+                  <option value="MT">MT</option>
+                  <option value="PA">PA</option>
+                  <option value="PB">PB</option>
+                  <option value="PE">PE</option>
+                  <option value="PI">PI</option>
+                  <option value="PR">PR</option>
+                  <option value="RJ">RJ</option>
+                  <option value="RN">RN</option>
+                  <option value="RS">RS</option>
+                  <option value="RO">RO</option>
+                  <option value="RR">RR</option>
+                  <option value="SC">SC</option>
+                  <option value="SE">SE</option>
+                  <option value="SP">SP</option>
+                  <option value="TO">TO</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 form-group">
+                <label for="father-name">Nome do Pai Completo</label>
+                <input type="text" class="form-control" id="father-name" placeholder="nome do pai">
+              </div>
+              <div class="col-md-6  form-group">
+                <label for="mother-name">Nome da Mãe Completo</label>
+                <input type="text" class="form-control" id="mother-name" placeholder="nome da mae">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="rg">RG</label>
+                <input type="text" class="form-control" id="rg" placeholder="RG">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="emissor">Orgão Emissor</label>
+                <input type="text" class="form-control" id="orgao-emissor" placeholder="Orgão Emissor">
+              </div>
+              <div class="col-md-4 form-group ">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" placeholder="999.999.999-99">
+              </div>
+              <div class="col-md-4 form-group ">
+                <label for="inputEstadoCivil">Estado Civil</label>
+                <select name="estado_civil" class="form-control" id="inputEstadoCivil">
+                  <option value="0">Solteiro</option>
+                  <option value="1">Casado</option>
+                  <option value="2">Separado</option>
+                  <option value="3">Divorciado</option>
+                  <option value="4">Viúvo</option>
+                  <option value="5">Amasiado</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </fieldset>
+    <fieldset>
+      <legend>Endereço Residencial</legend>
+      <section>
+        <div class="container endereco">
+          <form class="form-control">
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="cep">CEP</label>
+                <input id="cep" name="cep" type="text" placeholder="" class="form-control input-md">
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="rua">Rua</label>
+                <input id="rua" name="rua" type="text" placeholder="" class="form-control input-md">
+              </div>
+              <div class="col-md-2  form-group">
+                <label for="numero">Nº</label>
+                <input id="numero" name="numero" type="text" placeholder="" class="form-control input-md">
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="bairro">Bairro</label>
+                <input id="bairro" name="bairro" type="text" placeholder="" class="form-control input-md">
+              </div>
+              <div class="col-md-4 form-group">
+                <label for="complemento">Complemento</label>
+                <input id="complemento" name="complemento" type="text" placeholder="" class="form-control input-md">
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="cidade">Cidade</label>
+                <input id="cidade" name="cidade" type="text" placeholder="" class="form-control input-md">
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="uf-endereco">UF</label>
+                <select class="form-control" name="uf" id="uf-endereco">
+                  <option value="">Selecione</option>
+                  <option value="AC">AC</option>
+                  <option value="AL">AL</option>
+                  <option value="AM">AM</option>
+                  <option value="AP">AP</option>
+                  <option value="BA">BA</option>
+                  <option value="CE">CE</option>
+                  <option value="DF">DF</option>
+                  <option value="ES">ES</option>
+                  <option value="GO">GO</option>
+                  <option value="MA">MA</option>
+                  <option value="MG">MG</option>
+                  <option value="MS">MS</option>
+                  <option value="MT">MT</option>
+                  <option value="PA">PA</option>
+                  <option value="PB">PB</option>
+                  <option value="PE">PE</option>
+                  <option value="PI">PI</option>
+                  <option value="PR">PR</option>
+                  <option value="RJ">RJ</option>
+                  <option value="RN">RN</option>
+                  <option value="RS">RS</option>
+                  <option value="RO">RO</option>
+                  <option value="RR">RR</option>
+                  <option value="SC">SC</option>
+                  <option value="SE">SE</option>
+                  <option value="SP">SP</option>
+                  <option value="TO">TO</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </fieldset>
+    <fieldset>
+      <legend>Dados Profissionais</legend>
+      <section>
+        <div class="container dados-profissionais">
+          <form class="form-control">
+            <div class="form-group">
+              <label for="inputProfissao">Profissão</label>
+              <input type="text" class="form-control" id="inputProfissao">
+            </div>
+            <div class="form-row" name="aposentadoriaChecbox" id="aposentadoriaChecbox">
+              <div class="form-group col-md-8">
+                <label for="aposentadoria">Aposentado?</label>
+                <select name="aposentadoria" id="aposentadoria">
+                  <option value="" selected>Selecione</option>
+                  <option value="1">Não</option>
+                  <option value="2">Sim</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="container endereco" id="enderecoTrabalho" style="display:none">
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-sm-8">
+                    <label for="inputLocalTrabalho">Empresa</label>
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho">
+                  </div>
+                  <div class="form-group col-sm-4">
+                    <label for="telComercial">Telefone Comercial</label>
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="cepComercial">CEP</label>
+                    <input id="cepComercial" name="cep" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for="logradouroComercial">Rua</label>
+                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                  <div class="col-md-2  form-group">
+                    <label for="numeroComercial">Nº</label>
+                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for="bairroComercial">Bairro</label>
+                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <label for="complementoComercial">Complemento</label>
+                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for="cidadeComercial">Cidade</label>
+                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="" class="form-control input-md">
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label for="ufComercial">UF</label>
+                    <select class="form-control" name="uf" id="ufComercial">
+                      <option value="">Selecione</option>
+                      <option value="AC">AC</option>
+                      <option value="AL">AL</option>
+                      <option value="AM">AM</option>
+                      <option value="AP">AP</option>
+                      <option value="BA">BA</option>
+                      <option value="CE">CE</option>
+                      <option value="DF">DF</option>
+                      <option value="ES">ES</option>
+                      <option value="GO">GO</option>
+                      <option value="MA">MA</option>
+                      <option value="MG">MG</option>
+                      <option value="MS">MS</option>
+                      <option value="MT">MT</option>
+                      <option value="PA">PA</option>
+                      <option value="PB">PB</option>
+                      <option value="PE">PE</option>
+                      <option value="PI">PI</option>
+                      <option value="PR">PR</option>
+                      <option value="RJ">RJ</option>
+                      <option value="RN">RN</option>
+                      <option value="RS">RS</option>
+                      <option value="RO">RO</option>
+                      <option value="RR">RR</option>
+                      <option value="SC">SC</option>
+                      <option value="SE">SE</option>
+                      <option value="SP">SP</option>
+                      <option value="TO">TO</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </form>
+        </div>
+      </section>
+    </fieldset>
+    <fieldset>
+      <legend>Escolaridade</legend>
+      <section>
+        <div class="container escolaridade ">
+          <form class="form-control">
+            <div class="form-row">
+              <div class="form-group col-sm-4">
+                <label for="escolaridade">Grau de Instrução</label>
+                <select class="form-control" name="escolaridade" id="escolaridade">
+                  <option value="" selected>Selecione</option>
+                  <option value="0">Fundamental - Incompleto</option>
+                  <option value="1">Fundamental - Completo</option>
+                  <option value="2">Médio - Incompleto</option>
+                  <option value="3">Médio - Completo</option>
+                  <option value="4">Superior - Incompleto</option>
+                  <option value="5">Superior - Completo</option>
+                  <option value="6">Pós-graduação - Incompleto</option>
+                  <option value="7">Pós-graduação - Completo</option>
+                  <option value="8">Pós-graduação Mestrado - Incompleto</option>
+                  <option value="9">Pós-graduação Mestrado - Completo</option>
+                  <option value="10">Pós-graduação Doutorado - Incompleto</option>
+                  <option value="11">Pós-graduação Doutorado - Completo</option>
+                  <option value="12">Pós Doutorado - Incompleto</option>
+                  <option value="13">Pós Doutorado - Completo</option>
+                  <option value="14">Outros</option>
+                </select>
+              </div>
+              <div class="form-group col-sm-4"  style="display:none">
+                <label for="cursoEscolaridade">Curso</label>
+                <input class="form-control" type="text" id="inputCursoEscolaridade" placeholder="curso">
+              </div>
+              <div class="form-group col-sm-4"  style="display:none">
+                <label for="instituicaoEscolaridade">Instituição</label>
+                <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição">
+              </div>
+            </div>
+            <div class="form-group ">
+              <label for="descricaoAtividades">Outras habilidades que você desempenha, as quais poderiam ser
+                desenvolvidas como voluntário(a) na casa</label>
+              <textarea class="form-control" name="descricaoAtividades" id="descricaoAtividades" cols="60" rows="5"></textarea>
+            </div>
+          </form>
+        </div>
+      </section>
+    </fieldset>
+    <fieldset>
+      <legend>Transferência</legend>
+      <div class="container transferencia">
+        <form class="form-control">
+          <div class="form-group">
+            <label for="transferencia">Você vem transferido de algum outro Centro Espírita?</label>
+            <select name="transferencia" id="transferencia">
+              <option value="" selected>Selecione</option>
+              <option value="1">Não</option>
+              <option value="2">Sim</option>
+            </select>
+          </div>
+          <div class="form-row dados-transferencia" style="display:none">
+            <div class="form-group col-md-4">
+              <label for="nomeCentroEspirita">Nome do Centro Espírita</label>
+              <input type="text" class="form-control" id="nomeCentroEspirita">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="cidadeCentroEspirita">Cidade</label>
+              <input type="text" class="form-control" id="cidadeCentroEspirita">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="cidadeCentroEspirita">UF</label>
+              <select class="form-control" name="uf" id="cidadeCentroEspirita">
+                <option value="">Selecione</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AM">AM</option>
+                <option value="AP">AP</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MG">MG</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="PR">PR</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SE">SE</option>
+                <option value="SP">SP</option>
+                <option value="TO">TO</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="tempoCentroEspirita">Tempo que frequentou esse Centro Espírita</label>
+              <input type="text" class="form-control" id="tempoCentroEspirita">
+            </div>
+          </div>
+          <div>
+            <h6 for="estudosDoutrina">Estudos da Doutrina Espírita que você desenvolveu em grupo no (s) CENTRO(s)
+              ESPÍRITA(s) ANTERIOR(es)</h6>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tomosESede">Tomos do ESDE - Quais?</label>
+            </div>
+            <div class="form-group col-sm-8 estudo-obras">
+              <input type="text" class="form-control" id="tomosESede">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tomosEade">Tomos do EADE - Quais?</label>
+            </div>
+            <div class="form-group col-sm-8 estudo-obras">
+              <input type="text" class="form-control" id="tomosEade">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="obrasBasicas">Obras Básicas - Quais?</label>
+            </div>
+            <div class="form-group col-sm-8 estudo-obras">
+              <input type="text" class="form-control" id="obrasBasicas">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="outrasObras">Outras obras - Quais?</label>
+            </div>
+            <div class="form-group col-sm-8 estudo-obras">
+              <input type="text" class="form-control" id="outrasObras">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-8">
+              <h6>Atividades voluntárias que você desenvolveu no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
+            </div>
+            <div>
+              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus" ></i></button> 
+            </div>
+          </div>
+          <div class="container-fluid lista-atividades">
+              <table class="table">
+                  <thead>
+                    <tr id="tableHeader">
+                      <th scope="col">Atividade</th>
+                      <th scope="col">Quanto Tempo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-row" id="tableRow">
+                      <td >
+                        <div class="col-sm-6">
+                          <input type="text" class="" id="atividadeVoluntaria">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="col-sm-4">
+                          <input type="text" class="" id="tempoAtividadeVoluntaria">
+                        </div>
+                      </td>
+                      <td><button type="button" class="btn btn-sm btn-outline-info" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+
+          <div class="container" id="experienciasPraticas">
+            <div class="form-group">
+              <h6>Você tem experiência em alguma das práticas abaixo?</h6>
+            </div>
+            <table class="table table-hover experiencia-praticas">
+                <thead>
+                  <tr>
+                    <th scope="col" width="50">Selecione</th>
+                    <th scope="col" width="100">Atividade</th>
+                    <th scope="col" width="100">Tempo de Atividade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumSensitivo" id="mediumSensitivo"></th>
+                    <td>Méduim Sensitivo</td>
+                    <td><input class="input-time" type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico" id="mediumPsicofonico"></th>
+                    <td>Médium Psicofônico</td>
+                    <td><input class="input-time" type="text" name="mediumPsicofonicoTempo" id="mediumPsicofonicoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicografo" id="mediumPsicografo"></th>
+                    <td>Médium Psicógrafo</td>
+                    <td><input class="input-time" type="text" name="mediumPsicografo" id="mediumPsicografo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo"></th>
+                    <td>Médium Pictógrafo</td>
+                    <td><input class="input-time" type="text" name="mediumPictografoTempo" id="mediumPictografoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumVidente" id="mediumVidente"></th>
+                    <td>Médium Vidente</td>
+                    <td><input class="input-time" type="text" name="mediumVidenteTempo" id="mediumVidenteTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumAudiente" id="mediumAudiente"></th>
+                    <td>Médium Audiente</td>
+                    <td><input class="input-time" type="text" name="mediumAudienteTempo" id="mediumAudienteTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumDesdobramento" id="mediumDesdobramento"></th>
+                    <td>Médio de Desdobramento</td>
+                    <td><input class="input-time" type="text" name="mediumDesdobramentoTempo" id="mediumDesdobramentoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="dirigenteGrupoMediunico" id="dirigenteGrupoMediunico"></th>
+                    <td>Dirigente de Grupo Mediúnico</td>
+                    <td><input class="input-time" type="text" name="dirigenteGrupoMediunicoTempo" id="dirigenteGrupoMediunicoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"> <input class="checkbox-experienca-pratica" type="checkbox" name="dialogador" id="dialogador"></th>
+                    <td>Dialogador</td>
+                    <td><input class="input-time" type="text" name="dialogadorTempo" id="dialogadorTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">  <input class="checkbox-experienca-pratica" type="checkbox" name="susutentacao" id="susutentacao"></th>
+                    <td>Sustentação</td>
+                    <td> <input class="input-time" type="text" name="susutentacaoTempo" id="susutentacaoTempo" placeholder=""></td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="outros" id="outros"></th>
+                    <td>Outros</td>
+                    <td> <input class="input-time" type="text" name="outrosTempo" id="outrosTempo" placeholder=""></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            
+          </div>
+
+            
+            
+            <!-- <div class="form-row">
+              <div class="form-group col-sm-6">
+                <label for="atividadeVoluntaria">Atividade</label>
+                <input type="text" class="form-control" id="atividadeVoluntaria">
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="tempoAtividadeVoluntaria">Quanto Tempo</label>
+                <input type="text" class="form-control " id="tempoAtividadeVoluntaria">
+              </div>
+              <div class="form-group">
+                  <i class="fa fa-trash form-control-sm" id="delteAtividadeVoluntaria"></i>
+              </div>
+            </div> -->
+          
+            
+            
+          
+
+        </form>
+      </div>
+    </fieldset>
+    {{/if}}
+    
   </div>
 
 </template>

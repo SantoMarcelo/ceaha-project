@@ -32,6 +32,9 @@ Router.route('/login', function () {
 Router.route('/home', function () {
     this.render('listaParticipante');
 });
+Router.route('/editarParticipante', function () {
+    this.render('editarParticipante');
+});
   
 
 Template.navbar.events({
@@ -59,8 +62,6 @@ Template.navbar.events({
   }
 
 })
-
-
 
 Template.navbar.helpers({
   fullName(){
@@ -122,8 +123,6 @@ Template.acesso.events({
 
 })
 
-
-
 Template.novoParticipante.helpers({
     
     // aposentado(){
@@ -145,7 +144,6 @@ Template.novoParticipante.helpers({
     // }
     
 })
-
 
 Template.novoParticipante.events({
 
@@ -294,7 +292,7 @@ Template.listaParticipante.onCreated(function () {
 })
 
 Template.listaParticipante.helpers({
-    'minhaLista': function () {
+    'listaParticipantes': function () {
        
         return Template.instance().participante.get();
     },
@@ -320,7 +318,28 @@ Template.listaParticipante.events({
        
         instance.participante.set(resultado);
     },
+    'click #editarContato'(event, instance){
+        event.preventDefault();
+        
+        console.log(this._id)
+        window.location.href = ('/editarParticipante');
+        instance.participante.set(participante);
+        
+        console.log(participante)
+        
+    }
     
+})
+Template.editarParticipante.onCreated(function(){
+    this.participante = new ReactiveVar(Participantes.find(this._id));
+    console.log(this.participante)
+    
+})
+
+Template.editarParticipante.helpers({
+    'listaParticipantes': function () {
+       return Template.instance().participante.get();
+    },
 })
 
 
