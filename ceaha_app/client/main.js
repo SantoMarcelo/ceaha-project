@@ -5,6 +5,8 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
+var id
+
 
 const Participantes = new Mongo.Collection('participantes');
 
@@ -32,8 +34,12 @@ Router.route('/login', function () {
 Router.route('/home', function () {
     this.render('listaParticipante');
 });
-Router.route('/editarParticipante', function () {
-    this.render('editarParticipante');
+Router.route('/editarParticipante/:_id',{
+    name: 'edit',
+    template: 'editarParticipante',
+    data:function(){
+        return Participantes.findOne({_id:this.params._id});
+    }
 });
   
 
@@ -217,33 +223,40 @@ Template.novoParticipante.events({
       cidade: $('#city').val(),
       uf: $('#uf').val(),
       nome_pai: $('#father-name').val(),
-      rg: $('#mother-name').val(),
-      nome_mae: $('#rg').val(),
+      rg: $('#rg').val(),
+      nome_mae: $('#mother-name').val(),
       orgao_emissor: $('#orgao-emissor').val(),
       cpf: $('#cpf').val(),
-      estado_civil: $('#inputEstadoCivil').val(),
-      cep: $('#cep').val(),
-      logradouro: $('#rua').val(),
-      numero: $('#numero').val(),
-      bairro: $('#bairro').val(),
-      complemento: $('#complemento').val(),
-      uf_endereco: $('#uf-endereco').val(),
-      profissão: $('#inputProfissao').val(),
-      aposentado: $('#aposentadoria').val(),
-      local_trabalho: $('#inputLocalTrabalho').val(),
-      tel_comercial: $('#telComercial').val(),
-      cep_comercial: $('#cepComercial').val(),
-      logradouro_comercial: $('#logradouroComercial').val(),
-      numero_comercial: $('#numeroComercial').val(),
-      numero_comercial: $('#bairroComercial').val(),
-      complemento_comercial: $('#complementoComercial').val(),
-      cidade_comercial: $('#cidadeComercial').val(),
-      uf_comercial: $('#ufComercial').val(),
-      escolaridade: $('#escolaridade').val(),
+      estado_civil:  $('#inputEstadoCivil').val(),
+      endereco : {
+        cep: $('#cep').val(),
+        logradouro: $('#rua').val(),
+        numero: $('#numero').val(),
+        bairro: $('#bairro').val(),
+        cidade: $('#cidade').val(),
+        complemento: $('#complemento').val(),
+        uf_endereco: $('#uf-endereco').val()
+        },
+      profissao : {
+          atividade:$('#inputProfissao').val(),
+          aposentado: $('#aposentadoria option:selected').text(),
+          local_trabalho: $('#inputLocalTrabalho').val(),
+          tel: $('#telComercial').val(),
+      } ,
+      endereco_comercial :{
+        cep: $('#cepComercial').val(),
+        logradourol: $('#logradouroComercial').val(),
+        numero: $('#numeroComercial').val(),
+        bairro: $('#bairroComercial').val(),
+        complemento: $('#complementoComercial').val(),
+        cidade: $('#cidadeComercial').val(),    
+        uf: $('#ufComercial').val()
+      },
+      escolaridade: $('#escolaridade option:selected').text(),
       curso_escolaridade: $('#cursoEscolaridade').val(),
       instituicao_escolaridade: $('#instituicaoEscolaridade').val(),
       descricao_atividades: $('#descricaoAtividades').val(),
-      transferencia: $('#transferencia').val(),
+      transferencia: $('#transferencia option:selected').text(),
       nomeCentro_espirita: $('#nomeCentroEspirita').val(),
       cidade_centro_espirita: $('#cidadeCentroEspirita').val(),
       tempo_centro_espirita: $('#tempoCentroEspirita').val(),
@@ -253,26 +266,28 @@ Template.novoParticipante.events({
       outras_obras: $('#outrasObras').val(),
       atividade_voluntaria: $('#atividadeVoluntaria').val(),
       tempo_atividade_voluntaria: $('#tempoAtividadeVoluntaria').val(),
-      medium_sensitivo: $('#mediumSensitivo').val(),
-      medium_sensitivo_tempo: $('#mediumSensitivoTempo').val(),
-      medium_psicofonico: $('#mediumPsicofonico').val(),
-      medium_psicofonico_tempo: $('#mediumPsicofonicoTempo').val(),
-      medium_psicografo: $('#mediumPsicografo').val(),
-      medium_pictografo: $('#mediumPictografo').val(),
-      medium_vidente: $('#mediumVidente').val(),
-      medium_idente_tempo: $('#mediumVidenteTempo').val(),
-      medium_audiente: $('#medium_audiente').val(),
-      medium_audiente_tempo: $('#mediumAudienteTempo').val(),
-      medium_desdobramento: $('#mediumDesdobramento').val(),
-      medium_desdobramento_tempo: $('#mediumDesdobramentoTempo').val(),
-      dirigente_grupo_mediunico: $('#dirigenteGrupoMediunico').val(),
-      dirigente_grupo_mediunico_tempo: $('#dirigenteGrupoMediunicoTempo').val(),
-      dialogador: $('#dialogador').val(),
-      dialogador_tempo: $('#dialogadorTempo').val(),
-      susutentacao: $('#susutentacao').val(),
-      susutentacao_tempo: $('#susutentacaoTempo').val(),
-      outros: $('#outros').val(),
-      outros_tempo: $('#outrosTempo').val() 
+      experiencia : {
+        medium_sensitivo: $('#mediumSensitivo').val(),
+        medium_sensitivo_tempo: $('#mediumSensitivoTempo').val(),
+        medium_psicofonico: $('#mediumPsicofonico').val(),
+        medium_psicofonico_tempo: $('#mediumPsicofonicoTempo').val(),
+        medium_psicografo: $('#mediumPsicografo').val(),
+        medium_pictografo: $('#mediumPictografo').val(),
+        medium_vidente: $('#mediumVidente').val(),
+        medium_idente_tempo: $('#mediumVidenteTempo').val(),
+        medium_audiente: $('#medium_audiente').val(),
+        medium_audiente_tempo: $('#mediumAudienteTempo').val(),
+        medium_desdobramento: $('#mediumDesdobramento').val(),
+        medium_desdobramento_tempo: $('#mediumDesdobramentoTempo').val(),
+        dirigente_grupo_mediunico: $('#dirigenteGrupoMediunico').val(),
+        dirigente_grupo_mediunico_tempo: $('#dirigenteGrupoMediunicoTempo').val(),
+        dialogador: $('#dialogador').val(),
+        dialogador_tempo: $('#dialogadorTempo').val(),
+        susutentacao: $('#susutentacao').val(),
+        susutentacao_tempo: $('#susutentacaoTempo').val(),
+        outros: $('#outros').val(),
+        outros_tempo: $('#outrosTempo').val() 
+      }
     }
 
     Meteor.call('inserirParticipante', participante, function(err, res){
@@ -321,25 +336,25 @@ Template.listaParticipante.events({
     'click #editarContato'(event, instance){
         event.preventDefault();
         
-        console.log(this._id)
-        window.location.href = ('/editarParticipante');
-        instance.participante.set(participante);
-        
-        console.log(participante)
+        window.location.href = ('/editarParticipante/'+ this._id);
         
     }
     
 })
-Template.editarParticipante.onCreated(function(){
-    this.participante = new ReactiveVar(Participantes.find(this._id));
-    console.log(this.participante)
+Template.editarParticipante.onRendered(function(){
+    // console.log(id)
+    // console.log(this._id)
+    // participante = new ReactiveVar(Participantes.find(this._id));
+    // participante = Participantes.findOne(id)
+    
+    // console.log(participante)
     
 })
 
 Template.editarParticipante.helpers({
-    'listaParticipantes': function () {
-       return Template.instance().participante.get();
-    },
+    // 'listaParticipantes': function () {
+    //    return Template.instance().participante.get();
+    // },
 })
 
 
