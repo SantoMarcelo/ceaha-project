@@ -37,9 +37,10 @@ Router.route('/home', function () {
 Router.route('/editarParticipante/:_id',{
     name: 'edit',
     template: 'editarParticipante',
-    data:function(){
-        return Participantes.findOne({_id:this.params._id});
-    }
+    data: function () {
+        return Participantes.findOne({ _id: this.params._id });
+    },
+    
 });
   
 
@@ -130,6 +131,8 @@ Template.acesso.events({
 })
 
 Template.novoParticipante.helpers({
+    
+    
     
     // aposentado(){
     //   var aposentado = $('select[name=aposentadoria]').val()
@@ -290,14 +293,33 @@ Template.novoParticipante.events({
       }
     }
 
-    Meteor.call('inserirParticipante', participante, function(err, res){
-      if (err) {
-          sAlert.error(err.reason)
-          return false;
-      } else {
-          sAlert.success('Participante cadastrado com sucesso.')
-      }
-  })     
+    if(this._id){
+        Meteor.call('updateParticipante', this._id, participante, function(err, res){
+            if (err) {
+                sAlert.error(err.reason)
+                return false;
+            } else {
+                sAlert.success('Participante alterado com sucesso.')
+            }
+          })
+    }else{
+        Meteor.call('inserirParticipante', participante, function(err, res){
+            if (err) {
+                sAlert.error(err.reason)
+                return false;
+            } else {
+                sAlert.success('Participante cadastrado com sucesso.')
+            }
+          })
+    }
+    // Meteor.call('inserirParticipante', participante, function(err, res){
+    //   if (err) {
+    //       sAlert.error(err.reason)
+    //       return false;
+    //   } else {
+    //       sAlert.success('Participante cadastrado com sucesso.')
+    //   }
+    // })     
   }
 })
 
@@ -341,14 +363,115 @@ Template.listaParticipante.events({
     }
     
 })
-Template.editarParticipante.onRendered(function(){
-    // console.log(id)
-    // console.log(this._id)
-    // participante = new ReactiveVar(Participantes.find(this._id));
-    // participante = Participantes.findOne(id)
-    
-    // console.log(participante)
-    
+
+Template.editarParticipante.events({
+
+   
+  'click #salvar'(event, instance){
+    event.preventDefault();
+    var participante = {
+      nome: $('#full-name').val(),
+      nascimento: $('#date-birth').val(),
+      nacionalidade: $('#nacionality').val(),
+      cidade: $('#cidadeNascimento').val(),
+      uf: $('#uf').val(),
+      nome_pai: $('#father-name').val(),
+      rg: $('#rg').val(),
+      nome_mae: $('#mother-name').val(),
+      orgao_emissor: $('#orgao-emissor').val(),
+      cpf: $('#cpf').val(),
+      estado_civil:  $('#inputEstadoCivil').val(),
+      endereco : {
+        cep: $('#cep').val(),
+        logradouro: $('#rua').val(),
+        numero: $('#numero').val(),
+        bairro: $('#bairro').val(),
+        cidade: $('#cidade').val(),
+        complemento: $('#complemento').val(),
+        uf_endereco: $('#uf-endereco').val()
+        },
+      profissao : {
+          atividade:$('#inputProfissao').val(),
+          aposentado: $('#aposentadoria option:selected').text(),
+          local_trabalho: $('#inputLocalTrabalho').val(),
+          tel: $('#telComercial').val(),
+      } ,
+      endereco_comercial :{
+        cep: $('#cepComercial').val(),
+        logradourol: $('#logradouroComercial').val(),
+        numero: $('#numeroComercial').val(),
+        bairro: $('#bairroComercial').val(),
+        complemento: $('#complementoComercial').val(),
+        cidade: $('#cidadeComercial').val(),    
+        uf: $('#ufComercial').val()
+      },
+      escolaridade: $('#escolaridade option:selected').text(),
+      curso_escolaridade: $('#cursoEscolaridade').val(),
+      instituicao_escolaridade: $('#instituicaoEscolaridade').val(),
+      descricao_atividades: $('#descricaoAtividades').val(),
+      transferencia: $('#transferencia option:selected').text(),
+      nomeCentro_espirita: $('#nomeCentroEspirita').val(),
+      cidade_centro_espirita: $('#cidadeCentroEspirita').val(),
+      tempo_centro_espirita: $('#tempoCentroEspirita').val(),
+      tomos_esede: $('#tomosESede').val(),
+      tomos_eade: $('#tomosEade').val(),
+      obras_basicas: $('#obrasBasicas').val(),
+      outras_obras: $('#outrasObras').val(),
+      atividade_voluntaria: $('#atividadeVoluntaria').val(),
+      tempo_atividade_voluntaria: $('#tempoAtividadeVoluntaria').val(),
+      experiencia : {
+        medium_sensitivo: $('#mediumSensitivo').val(),
+        medium_sensitivo_tempo: $('#mediumSensitivoTempo').val(),
+        medium_psicofonico: $('#mediumPsicofonico').val(),
+        medium_psicofonico_tempo: $('#mediumPsicofonicoTempo').val(),
+        medium_psicografo: $('#mediumPsicografo').val(),
+        medium_pictografo: $('#mediumPictografo').val(),
+        medium_vidente: $('#mediumVidente').val(),
+        medium_idente_tempo: $('#mediumVidenteTempo').val(),
+        medium_audiente: $('#medium_audiente').val(),
+        medium_audiente_tempo: $('#mediumAudienteTempo').val(),
+        medium_desdobramento: $('#mediumDesdobramento').val(),
+        medium_desdobramento_tempo: $('#mediumDesdobramentoTempo').val(),
+        dirigente_grupo_mediunico: $('#dirigenteGrupoMediunico').val(),
+        dirigente_grupo_mediunico_tempo: $('#dirigenteGrupoMediunicoTempo').val(),
+        dialogador: $('#dialogador').val(),
+        dialogador_tempo: $('#dialogadorTempo').val(),
+        susutentacao: $('#susutentacao').val(),
+        susutentacao_tempo: $('#susutentacaoTempo').val(),
+        outros: $('#outros').val(),
+        outros_tempo: $('#outrosTempo').val() 
+      }
+    }
+
+    if(this._id){
+        Meteor.call('updateParticipante', this._id, participante, function(err, res){
+            if (err) {
+                sAlert.error(err.reason)
+                return false;
+            } else {
+                sAlert.success('Participante alterado com sucesso.')
+            }
+          })
+    }else{
+        Meteor.call('inserirParticipante', participante, function(err, res){
+            if (err) {
+                sAlert.error(err.reason)
+                return false;
+            } else {
+                sAlert.success('Participante cadastrado com sucesso.')
+            }
+          })
+    }
+    window.location.href = ('/home');
+    // Meteor.call('inserirParticipante', participante, function(err, res){
+    //   if (err) {
+    //       sAlert.error(err.reason)
+    //       return false;
+    //   } else {
+    //       sAlert.success('Participante cadastrado com sucesso.')
+    //   }
+    // })     
+  }
 })
 
 Template.editarParticipante.helpers({

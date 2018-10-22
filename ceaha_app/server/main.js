@@ -15,6 +15,9 @@ Meteor.startup(() => {
     },
     'buscaParticipante'(nome){
       Participantes.findOne({nome: nome})
+    },
+    'updateParticipante'(id, participante){
+      Participantes.update({_id:id},{$set:participante});
     }
   });
 });
