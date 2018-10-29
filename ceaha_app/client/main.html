@@ -83,7 +83,7 @@
 
 <template name="novoParticipante">
   <div class="container">
-    <fieldset>
+    <fieldset name="dados-pessoais">
       <legend>Dados Pessoais</legend>
       <section>
         <div class="container dados-pessoais">
@@ -196,7 +196,7 @@
         </div>
       </section>
     </fieldset>
-    <fieldset>
+    <fieldset name="endereco-residencial">
       <legend>Endereço Residencial</legend>
       <section>
         <div class="container endereco">
@@ -264,7 +264,7 @@
         </div>
       </section>
     </fieldset>
-    <fieldset>
+    <fieldset name="dados-profissionais">
       <legend>Dados Profissionais</legend>
       <section>
         <div class="container dados-profissionais">
@@ -361,7 +361,7 @@
         </div>
       </section>
     </fieldset>
-    <fieldset>
+    <fieldset name="escolaridade">
       <legend>Escolaridade</legend>
       <section>
         <div class="container escolaridade ">
@@ -406,7 +406,7 @@
         </div>
       </section>
     </fieldset>
-    <fieldset>
+    <fieldset name="transferencia">
       <legend>Transferência</legend>
       <div class="container transferencia">
         <form class="form-control">
@@ -511,26 +511,26 @@
             </div>
           </div>
           <div class="container-fluid lista-atividades">
-              <table class="table">
+              <table class="table" id="atividadeTable">
                   <thead>
                     <tr id="tableHeader">
                       <th scope="col">Atividade</th>
                       <th scope="col">Quanto Tempo</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr class="table-row" id="tableRow">
+                  <tbody id="atividadeTableBody">
+                    <tr class="table-row" id="atividadeItem">
                       <td >
                         <div class="col-sm-6">
-                          <input type="text" class="" id="atividadeVoluntaria">
+                          <input type="text" class="descricao-atividade" id="atividadeVoluntaria">
                         </div>
                       </td>
                       <td>
                         <div class="col-sm-4">
-                          <input type="text" class="" id="tempoAtividadeVoluntaria">
+                          <input type="text" class="tempo-atividade" id="tempoAtividadeVoluntaria">
                         </div>
                       </td>
-                      <td><button type="button" class="btn btn-sm btn-outline-info" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button></td>
+                      <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button></td>
                     </tr>
                   </tbody>
                 </table>
