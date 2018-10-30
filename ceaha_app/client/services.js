@@ -1,4 +1,5 @@
 export function getFormData(){
+  var atividades = getDataTable()
   var participante = {
     nome: $('#full-name').val(),
     nascimento: $('#date-birth').val(),
@@ -47,9 +48,7 @@ export function getFormData(){
     tomos_eade: $('#tomosEade').val(),
     obras_basicas: $('#obrasBasicas').val(),
     outras_obras: $('#outrasObras').val(),
-    atividades_voluntarias: [
-        {atividade: $('.descricao-atividade').val(), tempo_atividade_voluntaria: $('.tempo-atividade').val()}
-    ],
+    atividades_voluntarias: atividades,
     experiencia : {
       medium_sensitivo: $('#mediumSensitivo').val(),
       medium_sensitivo_tempo: $('#mediumSensitivoTempo').val(),
@@ -76,15 +75,22 @@ export function getFormData(){
   return participante
 };
 
-export function getDataTable(table){
-  console.log(table);
-  var tableData = $(table);
-  console.log(tableData);
+export function getDataTable(){
+ 
+  var listaDescricoes = []
+  var listaTempo = []
+  $('.descricao-atividade').each(function(inde, elem){
+    listaDescricoes.push($(this).val());
+  });
+  $('.tempo-atividade').each(function(index, elem){
+    listaTempo.push($(this).val());
+  });
 
-  tableData.find('tr').each(function (i, el) {
-    console.log("aqui no each");
-    
-});
+  var atividades = {
+    atividade: listaDescricoes,
+    tempo: listaTempo
+  }
+  return atividades ;
 }
 
 export {getDormData};
