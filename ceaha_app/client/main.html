@@ -1,4 +1,3 @@
-
 <head>
   <title>ceaha_app</title>
 </head>
@@ -8,7 +7,7 @@
   {{> navbar}}
 
 
-  
+
 </body>
 
 
@@ -20,7 +19,7 @@
       {{#if currentUser}}
       <div>
         <a class="navbar-brand" href="#">Bem vindo ao admin do banco de colaboradores CEAHA</a>
-       
+
         <span class="navbar-text mr-2">Olá, {{fullName}}</span>
         <button id="home" class="btn btn-sm btn-outline-warning">Home</button>
         <button id="novoParticipante" class="btn btn-sm btn-outline-info">Novo Participante</button>
@@ -30,7 +29,7 @@
       <div>
         <a class="navbar-brand" href="#">Bem vindo ao admin do banco de colaboradores CEAHA</a>
         <button id="botaoLogin" class="btn btn-sm btn-outline-info">Logar</button>
-        
+
       </div>
       {{/if}}
     </nav>
@@ -91,7 +90,8 @@
             <div class="form-row">
               <div class="form-group col-md-6 ">
                 <label for="full-name">Nome Completo</label>
-                <input type="text" class="form-control" id="full-name" placeholder="nome completo" autocomplete="on" required>
+                <input type="text" class="form-control" id="full-name" placeholder="nome completo" autocomplete="on"
+                  required>
               </div>
               <div class="form-group col-md-6">
                 <label for="date-birth">Data de Nascimento</label>
@@ -388,11 +388,11 @@
                   <option value="14">Outros</option>
                 </select>
               </div>
-              <div class="form-group col-sm-4"  style="display:none">
+              <div class="form-group col-sm-4" style="display:none">
                 <label for="cursoEscolaridade">Curso</label>
                 <input class="form-control" type="text" id="inputCursoEscolaridade" placeholder="curso">
               </div>
-              <div class="form-group col-sm-4"  style="display:none">
+              <div class="form-group col-sm-4" style="display:none">
                 <label for="instituicaoEscolaridade">Instituição</label>
                 <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição">
               </div>
@@ -507,33 +507,34 @@
               <h6>Atividades voluntárias que você desenvolveu no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
             </div>
             <div>
-              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus" ></i></button> 
+              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus"></i></button>
             </div>
           </div>
           <div class="container-fluid lista-atividades">
-              <table class="table" id="atividadeTable">
-                  <thead>
-                    <tr id="tableHeader">
-                      <th scope="col">Atividade</th>
-                      <th scope="col">Quanto Tempo</th>
-                    </tr>
-                  </thead>
-                  <tbody id="atividadeTableBody">
-                    <tr class="table-row" id="atividadeItem">
-                      <td >
-                        <div class="col-sm-6">
-                          <input type="text" class="descricao-atividade" id="atividadeVoluntaria">
-                        </div>
-                      </td>
-                      <td>
-                        <div class="col-sm-4">
-                          <input type="text" class="tempo-atividade" id="tempoAtividadeVoluntaria">
-                        </div>
-                      </td>
-                      <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button></td>
-                    </tr>
-                  </tbody>
-                </table>
+            <table class="table" id="atividadeTable">
+              <thead>
+                <tr id="tableHeader">
+                  <th scope="col">Atividade</th>
+                  <th scope="col">Quanto Tempo</th>
+                </tr>
+              </thead>
+              <tbody id="atividadeTableBody">
+                <tr class="table-row" id="atividadeItem">
+                  <td>
+                    <div class="col-sm-6">
+                      <input type="text" class="descricao-atividade" id="atividadeVoluntaria">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="col-sm-4">
+                      <input type="text" class="tempo-atividade" id="tempoAtividadeVoluntaria">
+                    </div>
+                  </td>
+                  <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria"><i
+                        class="fa fa-trash"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div class="container" id="experienciasPraticas">
@@ -541,78 +542,89 @@
               <h6>Você tem experiência em alguma das práticas abaixo?</h6>
             </div>
             <table class="table table-hover experiencia-praticas">
-                <thead>
-                  <tr>
-                    <th scope="col" width="50">Selecione</th>
-                    <th scope="col" width="100">Atividade</th>
-                    <th scope="col" width="100">Tempo de Atividade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumSensitivo" id="mediumSensitivo"></th>
-                    <td>Méduim Sensitivo</td>
-                    <td><input class="input-time" type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico" id="mediumPsicofonico"></th>
-                    <td>Médium Psicofônico</td>
-                    <td><input class="input-time" type="text" name="mediumPsicofonicoTempo" id="mediumPsicofonicoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicografo" id="mediumPsicografo"></th>
-                    <td>Médium Psicógrafo</td>
-                    <td><input class="input-time" type="text" name="mediumPsicografo" id="mediumPsicografo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo"></th>
-                    <td>Médium Pictógrafo</td>
-                    <td><input class="input-time" type="text" name="mediumPictografoTempo" id="mediumPictografoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumVidente" id="mediumVidente"></th>
-                    <td>Médium Vidente</td>
-                    <td><input class="input-time" type="text" name="mediumVidenteTempo" id="mediumVidenteTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumAudiente" id="mediumAudiente"></th>
-                    <td>Médium Audiente</td>
-                    <td><input class="input-time" type="text" name="mediumAudienteTempo" id="mediumAudienteTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumDesdobramento" id="mediumDesdobramento"></th>
-                    <td>Médio de Desdobramento</td>
-                    <td><input class="input-time" type="text" name="mediumDesdobramentoTempo" id="mediumDesdobramentoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="dirigenteGrupoMediunico" id="dirigenteGrupoMediunico"></th>
-                    <td>Dirigente de Grupo Mediúnico</td>
-                    <td><input class="input-time" type="text" name="dirigenteGrupoMediunicoTempo" id="dirigenteGrupoMediunicoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"> <input class="checkbox-experienca-pratica" type="checkbox" name="dialogador" id="dialogador"></th>
-                    <td>Dialogador</td>
-                    <td><input class="input-time" type="text" name="dialogadorTempo" id="dialogadorTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">  <input class="checkbox-experienca-pratica" type="checkbox" name="susutentacao" id="susutentacao"></th>
-                    <td>Sustentação</td>
-                    <td> <input class="input-time" type="text" name="susutentacaoTempo" id="susutentacaoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="outros" id="outros"></th>
-                    <td>Outros</td>
-                    <td> <input class="input-time" type="text" name="outrosTempo" id="outrosTempo" placeholder=""></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            
+              <thead>
+                <tr>
+                  <th scope="col" width="50">Selecione</th>
+                  <th scope="col" width="100">Atividade</th>
+                  <th scope="col" width="100">Tempo de Atividade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumSensitivo" id="mediumSensitivo"></th>
+                  <td>Méduim Sensitivo</td>
+                  <td><input class="input-time" type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico"
+                      id="mediumPsicofonico"></th>
+                  <td>Médium Psicofônico</td>
+                  <td><input class="input-time" type="text" name="mediumPsicofonicoTempo" id="mediumPsicofonicoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicografo" id="mediumPsicografo"></th>
+                  <td>Médium Psicógrafo</td>
+                  <td><input class="input-time" type="text" name="mediumPsicografo" id="mediumPsicografo" placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo"></th>
+                  <td>Médium Pictógrafo</td>
+                  <td><input class="input-time" type="text" name="mediumPictografoTempo" id="mediumPictografoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumVidente" id="mediumVidente"></th>
+                  <td>Médium Vidente</td>
+                  <td><input class="input-time" type="text" name="mediumVidenteTempo" id="mediumVidenteTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumAudiente" id="mediumAudiente"></th>
+                  <td>Médium Audiente</td>
+                  <td><input class="input-time" type="text" name="mediumAudienteTempo" id="mediumAudienteTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumDesdobramento"
+                      id="mediumDesdobramento"></th>
+                  <td>Médio de Desdobramento</td>
+                  <td><input class="input-time" type="text" name="mediumDesdobramentoTempo" id="mediumDesdobramentoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="dirigenteGrupoMediunico"
+                      id="dirigenteGrupoMediunico"></th>
+                  <td>Dirigente de Grupo Mediúnico</td>
+                  <td><input class="input-time" type="text" name="dirigenteGrupoMediunicoTempo" id="dirigenteGrupoMediunicoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"> <input class="checkbox-experienca-pratica" type="checkbox" name="dialogador" id="dialogador"></th>
+                  <td>Dialogador</td>
+                  <td><input class="input-time" type="text" name="dialogadorTempo" id="dialogadorTempo" placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"> <input class="checkbox-experienca-pratica" type="checkbox" name="susutentacao" id="susutentacao"></th>
+                  <td>Sustentação</td>
+                  <td> <input class="input-time" type="text" name="susutentacaoTempo" id="susutentacaoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="outros" id="outros"></th>
+                  <td>Outros</td>
+                  <td> <input class="input-time" type="text" name="outrosTempo" id="outrosTempo" placeholder=""></td>
+                </tr>
+
+              </tbody>
+            </table>
+
           </div>
 
-            
-            
-            <!-- <div class="form-row">
+
+
+          <!-- <div class="form-row">
               <div class="form-group col-sm-6">
                 <label for="atividadeVoluntaria">Atividade</label>
                 <input type="text" class="form-control" id="atividadeVoluntaria">
@@ -625,10 +637,10 @@
                   <i class="fa fa-trash form-control-sm" id="delteAtividadeVoluntaria"></i>
               </div>
             </div> -->
-          
-            
-            
-          
+
+
+
+
 
         </form>
       </div>
@@ -650,68 +662,68 @@
 
 <template name="buscaParticipante">
   <div class="container busca-participante">
-      <form id="busca" class="form-inline mb-3" style="padding-top: 10px">
+    <form id="busca" class="form-inline mb-3" style="padding-top: 10px">
+      <h6>Buscar Participante:</h6>
+      <div class="form-group ml-3 mx-sm-3">
+        <input type="text" id="buscaNome" name="buscaNome" class="form-control" placeholder="nome">
+      </div>
+      <button type="button" id="botaoBuscar" class="btn btn-success"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+
+</template>
+
+<template name="listaParticipante">
+
+  <div class="container">
+    <section id="meusContatos">
+      <div class="container busca-participante">
+        <form id="busca" class="form-inline mb-3" style="padding-top: 10px">
           <h6>Buscar Participante:</h6>
           <div class="form-group ml-3 mx-sm-3">
             <input type="text" id="buscaNome" name="buscaNome" class="form-control" placeholder="nome">
           </div>
           <button type="button" id="botaoBuscar" class="btn btn-success"><i class="fa fa-search"></i></button>
         </form>
-  </div>
-  
-</template>
+      </div>
 
-<template name="listaParticipante">
-    
-  <div class="container">
-      <section id="meusContatos">
-          <div class="container busca-participante">
-              <form id="busca" class="form-inline mb-3" style="padding-top: 10px">
-                  <h6>Buscar Participante:</h6>
-                  <div class="form-group ml-3 mx-sm-3">
-                    <input type="text" id="buscaNome" name="buscaNome" class="form-control" placeholder="nome">
-                  </div>
-                  <button type="button" id="botaoBuscar" class="btn btn-success"><i class="fa fa-search"></i></button>
-                </form>
-          </div>
-            
-          {{#if listaParticipantes.count}}
-          <table class="table">
-            <thead>
-              <th>Nome</th>
-              <th>Cidade</th>
-              <th>UF</th>
-              <th>Data Nascimento</th>
-              <th></th>
-            </thead>
-            <tbody>
-              {{#each listaParticipantes}}
-              <tr>
-                <td>{{nome}}</td>
-                <td>{{cidade}}</td>
-                <td>{{uf}}</td>
-                <td>{{nascimento}}</td> 
-                <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></button></td>
-                <td class="td-acoes"><button id="deletarContato" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button></td>
-              </tr>
-              {{/each}}
-            </tbody>
-          </table>
-          {{else}}
-          <div class="alert alert-warning" role="alert">
-            <i class="fa fa-exclamation-triangle"></i>
-            <p>Nenhum participante encontrato.</p>
-          </div>
-          {{/if}}
-      
-        </section>
+      {{#if listaParticipantes.count}}
+      <table class="table">
+        <thead>
+          <th>Nome</th>
+          <th>Cidade</th>
+          <th>UF</th>
+          <th>Data Nascimento</th>
+          <th></th>
+        </thead>
+        <tbody>
+          {{#each listaParticipantes}}
+          <tr>
+            <td>{{nome}}</td>
+            <td>{{cidade}}</td>
+            <td>{{uf}}</td>
+            <td>{{nascimento}}</td>
+            <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></button></td>
+            <td class="td-acoes"><button id="deletarContato" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+      <div class="alert alert-warning" role="alert">
+        <i class="fa fa-exclamation-triangle"></i>
+        <p>Nenhum participante encontrato.</p>
+      </div>
+      {{/if}}
+
+    </section>
   </div>
 
 </template>
 
 <template name="editarParticipante">
   <div class="container">
-    
+
     <fieldset id="dadosPessoais">
       <legend>Dados Pessoais</legend>
       <section>
@@ -720,7 +732,8 @@
             <div class="form-row">
               <div class="form-group col-md-6 ">
                 <label for="full-name">Nome Completo</label>
-                <input type="text" class="form-control" id="full-name" placeholder="nome completo" value="{{nome}}" required>
+                <input type="text" class="form-control" id="full-name" placeholder="nome completo" value="{{nome}}"
+                  required>
               </div>
               <div class="form-group col-md-6">
                 <label for="date-birth">Data de Nascimento</label>
@@ -849,7 +862,8 @@
               </div>
               <div class="col-md-4 form-group">
                 <label for="complemento">Complemento</label>
-                <input id="complemento" name="complemento" type="text" placeholder="" class="form-control input-md" value="{{endereco.complemento}}">
+                <input id="complemento" name="complemento" type="text" placeholder="" class="form-control input-md"
+                  value="{{endereco.complemento}}">
               </div>
               <div class="col-md-6 form-group">
                 <label for="cidade">Cidade</label>
@@ -918,7 +932,8 @@
                 <div class="form-row">
                   <div class="form-group col-sm-8">
                     <label for="inputLocalTrabalho">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" value="{{profissao.local_trabalho}}">
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho"
+                      value="{{profissao.local_trabalho}}">
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="telComercial">Telefone Comercial</label>
@@ -932,23 +947,28 @@
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="logradouroComercial">Rua</label>
-                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="" class="form-control input-md" value="{{endereco_comercial.logradouro}}">
+                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="" class="form-control input-md"
+                      value="{{endereco_comercial.logradouro}}">
                   </div>
                   <div class="col-md-2  form-group">
                     <label for="numeroComercial">Nº</label>
-                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="" class="form-control input-md" value="{{endereco_comercial.numero}}">
+                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="" class="form-control input-md"
+                      value="{{endereco_comercial.numero}}">
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="bairroComercial">Bairro</label>
-                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="" class="form-control input-md" value="{{endereco_comercial.bairro}}">
+                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="" class="form-control input-md"
+                      value="{{endereco_comercial.bairro}}">
                   </div>
                   <div class="col-md-4 form-group">
                     <label for="complementoComercial">Complemento</label>
-                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="" class="form-control input-md" value="{{endereco_comercial.complemento}}">
+                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="" class="form-control input-md"
+                      value="{{endereco_comercial.complemento}}">
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="cidadeComercial">Cidade</label>
-                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="" class="form-control input-md" value="{{endereco_comercial.cidade}}">
+                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="" class="form-control input-md"
+                      value="{{endereco_comercial.cidade}}">
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="ufComercial">UF</label>
@@ -1017,11 +1037,11 @@
                   <option value="14">Outros</option>
                 </select>
               </div>
-              <div class="form-group col-sm-4"  style="display:none">
+              <div class="form-group col-sm-4" style="display:none">
                 <label for="cursoEscolaridade">Curso</label>
                 <input class="form-control" type="text" id="inputCursoEscolaridade" placeholder="curso">
               </div>
-              <div class="form-group col-sm-4"  style="display:none">
+              <div class="form-group col-sm-4" style="display:none">
                 <label for="instituicaoEscolaridade">Instituição</label>
                 <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição">
               </div>
@@ -1136,10 +1156,38 @@
               <h6>Atividades voluntárias que você desenvolveu no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
             </div>
             <div>
-              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus" ></i></button> 
+              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus"></i></button>
             </div>
           </div>
-          <div class="container-fluid lista-atividades">
+          <div class="container-fluid lista-atividades"> -->
+            {{#if listaAtividades.count}}
+            <table class="table">
+              <thead>
+                <th>Nome</th>
+                <th>Cidade</th>
+                <th>UF</th>
+                <th>Data Nascimento</th>
+                <th></th>
+              </thead>
+              <tbody>
+                {{#each listaAtividades}}
+                <tr>
+                  <td>{{atividades_voluntarias}}</td>
+                  <td>{{atividades_voluntarias.atividade}}</td>
+                  <td>{{atividades_voluntarias.tempo}}</td>
+                  <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></button></td>
+                  <td class="td-acoes"><button id="deletarContato" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button></td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+            {{else}}
+            <div class="alert alert-warning" role="alert">
+              <i class="fa fa-exclamation-triangle"></i>
+              <p>Nenhum participante encontrato.</p>
+            </div>
+            {{/if}}
+            <!-- {{#if listaAtividades.count }}
               <table class="table">
                   <thead>
                     <tr id="tableHeader">
@@ -1148,8 +1196,11 @@
                     </tr>
                   </thead>
                   <tbody>
+                    {{each listaAtividades}}
                     <tr class="table-row" id="tableRow">
-                      <td >
+                      <td>{{atividades_voluntarias.atividade}}</td>
+                      <td>{{atividades_voluntarias.tempo}}</td>
+                       <td >
                         <div class="col-sm-6">
                           <input type="text" class="" id="atividadeVoluntaria" value="{{atividades_voluntarias.atividade}}">
                         </div>
@@ -1161,8 +1212,11 @@
                       </td>
                       <td><button type="button" class="btn btn-sm btn-outline-info" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button></td>
                     </tr>
+                    {{/each}}
                   </tbody>
                 </table>
+                {{/if}} -->
+            -->
           </div>
 
           <div class="container" id="experienciasPraticas">
@@ -1170,78 +1224,89 @@
               <h6>Você tem experiência em alguma das práticas abaixo?</h6>
             </div>
             <table class="table table-hover experiencia-praticas">
-                <thead>
-                  <tr>
-                    <th scope="col" width="50">Selecione</th>
-                    <th scope="col" width="100">Atividade</th>
-                    <th scope="col" width="100">Tempo de Atividade</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumSensitivo" id="mediumSensitivo"></th>
-                    <td>Méduim Sensitivo</td>
-                    <td><input class="input-time" type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico" id="mediumPsicofonico"></th>
-                    <td>Médium Psicofônico</td>
-                    <td><input class="input-time" type="text" name="mediumPsicofonicoTempo" id="mediumPsicofonicoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicografo" id="mediumPsicografo"></th>
-                    <td>Médium Psicógrafo</td>
-                    <td><input class="input-time" type="text" name="mediumPsicografo" id="mediumPsicografo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo"></th>
-                    <td>Médium Pictógrafo</td>
-                    <td><input class="input-time" type="text" name="mediumPictografoTempo" id="mediumPictografoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumVidente" id="mediumVidente"></th>
-                    <td>Médium Vidente</td>
-                    <td><input class="input-time" type="text" name="mediumVidenteTempo" id="mediumVidenteTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumAudiente" id="mediumAudiente"></th>
-                    <td>Médium Audiente</td>
-                    <td><input class="input-time" type="text" name="mediumAudienteTempo" id="mediumAudienteTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumDesdobramento" id="mediumDesdobramento"></th>
-                    <td>Médio de Desdobramento</td>
-                    <td><input class="input-time" type="text" name="mediumDesdobramentoTempo" id="mediumDesdobramentoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="dirigenteGrupoMediunico" id="dirigenteGrupoMediunico"></th>
-                    <td>Dirigente de Grupo Mediúnico</td>
-                    <td><input class="input-time" type="text" name="dirigenteGrupoMediunicoTempo" id="dirigenteGrupoMediunicoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"> <input class="checkbox-experienca-pratica" type="checkbox" name="dialogador" id="dialogador"></th>
-                    <td>Dialogador</td>
-                    <td><input class="input-time" type="text" name="dialogadorTempo" id="dialogadorTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">  <input class="checkbox-experienca-pratica" type="checkbox" name="susutentacao" id="susutentacao"></th>
-                    <td>Sustentação</td>
-                    <td> <input class="input-time" type="text" name="susutentacaoTempo" id="susutentacaoTempo" placeholder=""></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="outros" id="outros"></th>
-                    <td>Outros</td>
-                    <td> <input class="input-time" type="text" name="outrosTempo" id="outrosTempo" placeholder=""></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            
+              <thead>
+                <tr>
+                  <th scope="col" width="50">Selecione</th>
+                  <th scope="col" width="100">Atividade</th>
+                  <th scope="col" width="100">Tempo de Atividade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumSensitivo" id="mediumSensitivo"></th>
+                  <td>Méduim Sensitivo</td>
+                  <td><input class="input-time" type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico"
+                      id="mediumPsicofonico"></th>
+                  <td>Médium Psicofônico</td>
+                  <td><input class="input-time" type="text" name="mediumPsicofonicoTempo" id="mediumPsicofonicoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicografo" id="mediumPsicografo"></th>
+                  <td>Médium Psicógrafo</td>
+                  <td><input class="input-time" type="text" name="mediumPsicografo" id="mediumPsicografo" placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo"></th>
+                  <td>Médium Pictógrafo</td>
+                  <td><input class="input-time" type="text" name="mediumPictografoTempo" id="mediumPictografoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumVidente" id="mediumVidente"></th>
+                  <td>Médium Vidente</td>
+                  <td><input class="input-time" type="text" name="mediumVidenteTempo" id="mediumVidenteTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumAudiente" id="mediumAudiente"></th>
+                  <td>Médium Audiente</td>
+                  <td><input class="input-time" type="text" name="mediumAudienteTempo" id="mediumAudienteTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="mediumDesdobramento"
+                      id="mediumDesdobramento"></th>
+                  <td>Médio de Desdobramento</td>
+                  <td><input class="input-time" type="text" name="mediumDesdobramentoTempo" id="mediumDesdobramentoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="dirigenteGrupoMediunico"
+                      id="dirigenteGrupoMediunico"></th>
+                  <td>Dirigente de Grupo Mediúnico</td>
+                  <td><input class="input-time" type="text" name="dirigenteGrupoMediunicoTempo" id="dirigenteGrupoMediunicoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"> <input class="checkbox-experienca-pratica" type="checkbox" name="dialogador" id="dialogador"></th>
+                  <td>Dialogador</td>
+                  <td><input class="input-time" type="text" name="dialogadorTempo" id="dialogadorTempo" placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"> <input class="checkbox-experienca-pratica" type="checkbox" name="susutentacao" id="susutentacao"></th>
+                  <td>Sustentação</td>
+                  <td> <input class="input-time" type="text" name="susutentacaoTempo" id="susutentacaoTempo"
+                      placeholder=""></td>
+                </tr>
+                <tr>
+                  <th scope="row"><input class="checkbox-experienca-pratica" type="checkbox" name="outros" id="outros"></th>
+                  <td>Outros</td>
+                  <td> <input class="input-time" type="text" name="outrosTempo" id="outrosTempo" placeholder=""></td>
+                </tr>
+
+              </tbody>
+            </table>
+
           </div>
 
-            
-            
-            <!-- <div class="form-row">
+
+
+          <!-- <div class="form-row">
               <div class="form-group col-sm-6">
                 <label for="atividadeVoluntaria">Atividade</label>
                 <input type="text" class="form-control" id="atividadeVoluntaria">
@@ -1254,15 +1319,15 @@
                   <i class="fa fa-trash form-control-sm" id="delteAtividadeVoluntaria"></i>
               </div>
             </div> -->
-          
-            
-            
-          
+
+
+
+
 
         </form>
       </div>
     </fieldset>
-    
+
     <section>
       <div class="container button">
         <form class="form-control">
