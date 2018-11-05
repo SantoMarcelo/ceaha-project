@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { getFormData, getDataTable } from './services.js'
+import { getFormData, getMediumData } from './services.js'
 
 import './main.html';
 //import './services.js';
@@ -262,6 +262,8 @@ Template.novoParticipante.events({
         
         var participante = getFormData();
 
+        getMediumData()
+
         Meteor.call('inserirParticipante', participante, function (err, res) {
             if (err) {
                 sAlert.error(err.reason)
@@ -275,6 +277,7 @@ Template.novoParticipante.events({
 
 Template.listaParticipante.onCreated(function () {
     this.participante = new ReactiveVar(Participantes.find());
+
 })
 
 Template.listaParticipante.helpers({
@@ -305,7 +308,7 @@ Template.listaParticipante.events({
     },
     'click #editarContato'(event, instance) {
         event.preventDefault();
-        console.log(this._id);
+        //console.log(this._id);
         window.location.href = ('/editarParticipante/' + this._id);
 
     }
@@ -313,17 +316,16 @@ Template.listaParticipante.events({
 })
 
 Template.editarParticipante.onCreated(function () {
-    this.participante = new ReactiveVar(Participantes.find());
+   
+   
+    // this.participante = new ReactiveVar(Participantes.find({ _id: 'RAnsnTMyQWpXEiTqC' }));
+    
 })
 
 Template.editarParticipante.helpers({
-    'listaAtividades': function () {
-        console.log("aqui");
-        
-        var obj = Template.instance().participante.get()
-        console.log(obj);
-        return Template.instance().participante.get();
-    },
+    // 'Participante': function () {
+    //     return Template.instance().participante.get();
+    // },
 })
 
 Template.editarParticipante.events({

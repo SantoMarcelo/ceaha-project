@@ -77,20 +77,28 @@ export function getFormData(){
 
 export function getDataTable(){
  
-  var listaDescricoes = []
-  var listaTempo = []
-  $('.descricao-atividade').each(function(inde, elem){
-    listaDescricoes.push($(this).val());
-  });
-  $('.tempo-atividade').each(function(index, elem){
-    listaTempo.push($(this).val());
-  });
+  var atividades = []
+  $('.atividade-item').each(function(i, e){
+    
+    atividades.push({ nome: $(this).find('.descricao-atividade').val(), tempo: $(this).find('.tempo-atividade').val()})
 
-  var atividades = {
-    atividade: listaDescricoes,
-    tempo: listaTempo
-  }
+  });
+console.log(atividades);  
   return atividades ;
 }
+
+export function getMediumData(){
+  var obj = []
+  $(".experiencia-pratica").each(function(){
+    obj.push($('.checkbox-experienca-pratica:checked').toArray().map(function(check) { 
+      return $(check).val(); 
+  })  ); 
+  });
+  console.log(obj);
+  
+
+}
+
+
 
 export {getDormData};
