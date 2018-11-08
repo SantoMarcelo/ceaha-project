@@ -257,11 +257,16 @@ Template.novoParticipante.events({
         }
     },
 
+    'click .checkbox-experienca-pratica'(event, instance){
+        console.log(event);
+
+    },
+
     'click #cadastrar'(event, instance) {
         event.preventDefault();
         
         var participante = getFormData();
-console.log("Chamando Metodo");
+        console.log("Chamando Metodo");
         console.log(getMediumData());
         
 

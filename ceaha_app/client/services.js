@@ -95,20 +95,31 @@ export function getTempoValue() {
   return tempoAtividadeObj;
 }
 
-export function getCheckValue(){
+export function getCheckValue() {
   var chkObj = []
   $("input.checkbox-experienca-pratica:checked").each(function (i) {
-       chkObj.push({value: this.value, index: i})
+    chkObj.push({ value: this.value, index: i })
   });
   return chkObj
 }
 
 export function getMediumData() {
-  var tempoObj = getTempoValue();
-  var valueObj = getCheckValue()
+  var mediumData = []
 
-  console.log(tempoObj);
-  console.log(valueObj);
+  $(".experiencia-pratica").each(function (i) {
+    //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+    if ($(this).find('input.checkbox-experienca-pratica:checked').length > 0) {
+      mediumData.push({ value: $(this).find('input.checkbox-experienca-pratica').val(), tempo: $(this).find('.input-time').val() });
+    }
+
+  });
+  return mediumData
+
+  // var tempoObj = getTempoValue();
+  // var valueObj = getCheckValue()
+
+  // // console.log(tempoObj);
+  // // console.log(valueObj);
   // $("input.checkbox-experienca-pratica:checked").each(function (i) {
   //   var chk = this
   //   tempoObj.forEach(function (element, index) {
