@@ -261,8 +261,9 @@ Template.novoParticipante.events({
         event.preventDefault();
         
         var participante = getFormData();
-
-        getMediumData()
+console.log("Chamando Metodo");
+        console.log(getMediumData());
+        
 
         Meteor.call('inserirParticipante', participante, function (err, res) {
             if (err) {
