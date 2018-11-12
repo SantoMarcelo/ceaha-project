@@ -1,5 +1,6 @@
 export function getFormData() {
-  var atividades = getDataTable()
+  var atividades = getDataTable();
+  var atividadeMedium = getMediumData();
   var participante = {
     nome: $('#full-name').val(),
     nascimento: $('#date-birth').val(),
@@ -49,28 +50,7 @@ export function getFormData() {
     obras_basicas: $('#obrasBasicas').val(),
     outras_obras: $('#outrasObras').val(),
     atividades_voluntarias: atividades,
-    experiencia: {
-      medium_sensitivo: $('#mediumSensitivo').val(),
-      medium_sensitivo_tempo: $('#mediumSensitivoTempo').val(),
-      medium_psicofonico: $('#mediumPsicofonico').val(),
-      medium_psicofonico_tempo: $('#mediumPsicofonicoTempo').val(),
-      medium_psicografo: $('#mediumPsicografo').val(),
-      medium_pictografo: $('#mediumPictografo').val(),
-      medium_vidente: $('#mediumVidente').val(),
-      medium_idente_tempo: $('#mediumVidenteTempo').val(),
-      medium_audiente: $('#medium_audiente').val(),
-      medium_audiente_tempo: $('#mediumAudienteTempo').val(),
-      medium_desdobramento: $('#mediumDesdobramento').val(),
-      medium_desdobramento_tempo: $('#mediumDesdobramentoTempo').val(),
-      dirigente_grupo_mediunico: $('#dirigenteGrupoMediunico').val(),
-      dirigente_grupo_mediunico_tempo: $('#dirigenteGrupoMediunicoTempo').val(),
-      dialogador: $('#dialogador').val(),
-      dialogador_tempo: $('#dialogadorTempo').val(),
-      susutentacao: $('#susutentacao').val(),
-      susutentacao_tempo: $('#susutentacaoTempo').val(),
-      outros: $('#outros').val(),
-      outros_tempo: $('#outrosTempo').val()
-    }
+    experiencia: atividadeMedium
   }
   return participante
 };
@@ -95,14 +75,6 @@ export function getTempoValue() {
   return tempoAtividadeObj;
 }
 
-export function getCheckValue() {
-  var chkObj = []
-  $("input.checkbox-experienca-pratica:checked").each(function (i) {
-    chkObj.push({ value: this.value, index: i })
-  });
-  return chkObj
-}
-
 export function getMediumData() {
   var mediumData = []
 
@@ -114,38 +86,7 @@ export function getMediumData() {
 
   });
   return mediumData
-
-  // var tempoObj = getTempoValue();
-  // var valueObj = getCheckValue()
-
-  // // console.log(tempoObj);
-  // // console.log(valueObj);
-  // $("input.checkbox-experienca-pratica:checked").each(function (i) {
-  //   var chk = this
-  //   tempoObj.forEach(function (element, index) {
-  //       console.log(chk.value)
-  //     if (index == i) {
-
-  //       element = { tempo: element.tempo, value: chk.value };
-  //     } else {
-
-  //       element = { tempo: element.tempo, value: "off" };
-  //     }
-  //     console.log(element) ;
-  //   }
-  //   );
-  // });
+  
 }
-
-// var checkboxs = document.getElementsByClassName("checkbox-experienca-pratica");
-// for (loop = 0; loop < checkboxs.length; loop++) {
-//   var item = checkboxs[loop];
-//   if (item.type == "checkbox" && item.checked) {
-//     alert("ALGUMA COISA");
-//     // AQUI TRAVOU....                        
-//   }
-// }
-
-
 
 export { getDormData };

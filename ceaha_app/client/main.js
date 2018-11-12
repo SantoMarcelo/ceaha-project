@@ -257,18 +257,25 @@ Template.novoParticipante.events({
         }
     },
 
-    'click .checkbox-experienca-pratica'(event, instance){
+    'click .checkbox-experienca-pratica'(event, instance) {
         console.log(event);
+        console.log(instance.parentNode);
+        $(".experiencia-pratica").each(function (i) {
+            //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+            if ($(this).find('input.checkbox-experienca-pratica:checked').length > 0) {
+                 $(this).find('.input-time').prop("disabled", false);
+            }
+        });
 
     },
 
     'click #cadastrar'(event, instance) {
         event.preventDefault();
-        
+
         var participante = getFormData();
         console.log("Chamando Metodo");
         console.log(getMediumData());
-        
+
 
         Meteor.call('inserirParticipante', participante, function (err, res) {
             if (err) {
@@ -322,10 +329,10 @@ Template.listaParticipante.events({
 })
 
 Template.editarParticipante.onCreated(function () {
-   
-   
+
+
     // this.participante = new ReactiveVar(Participantes.find({ _id: 'RAnsnTMyQWpXEiTqC' }));
-    
+
 })
 
 Template.editarParticipante.helpers({
