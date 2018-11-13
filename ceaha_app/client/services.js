@@ -1,3 +1,4 @@
+
 export function getFormData() {
   var atividades = getDataTable();
   var atividadeMedium = getMediumData();
@@ -87,6 +88,12 @@ export function getMediumData() {
   });
   return mediumData
   
+}
+
+
+export function setMasks(){
+
+  $('date-birth').Inputmask('99/99/9999');
 }
 
 export { getDormData };

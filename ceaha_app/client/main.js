@@ -134,8 +134,9 @@ Template.acesso.events({
 })
 
 Template.novoParticipante.helpers(function () {
+   
 
-
+    
 
     // aposentado(){
     //   var aposentado = $('select[name=aposentadoria]').val()
@@ -159,7 +160,7 @@ Template.novoParticipante.helpers(function () {
 
 Template.novoParticipante.onRendered(function () {
 
-
+    
 
 
 
@@ -199,10 +200,25 @@ Template.novoParticipante.events({
 
         var row = document.getElementById("atividadeItem");
         var table = document.getElementById("atividadeTable");
+        var tbody = table.firstChild.parentElement.lastElementChild
         var clone = row.cloneNode(true);
         clone.id = Math.random().toString(32).substring(2, 10);
-        clone.class = 'test';
-        table.appendChild(clone);
+        tbody.appendChild(clone);
+        var element = clone.firstElementChild;
+        console.log('#'+clone.id);
+        console.log(clone.firstElementChild.id);
+
+        $('#'+clone.id).each(function(){
+            $(this).find('td .descricao-atividade').val("");
+            $(this).find('td .tempo-atividade').val("");
+        })
+        
+        $('#atividadeTable button:disabled').each(function(i){
+            if(i!= 0){
+                $(this).prop("disabled", false);
+            }
+        })
+        
 
     },
     'click #removeAtividadeVoluntaria'(event, instance) {
@@ -215,45 +231,54 @@ Template.novoParticipante.events({
 
     },
 
-    // 'click #adicionaAtividade'(event, instance){
-
-    //     //var element = $('.lista-atividades table ').html();
-    //     var element2 =  $('.lista-atividades tbody').html();
-    //     if (element2 == null) {
-    //         var element2 =  $('.lista-atividades tbody').html();
-    //     }
-    //     console.log(element2);
-    //     //console.log(element);
-    //     $(element2).appendTo('.lista-atividades tbody');
-    // },
-
     'click #transferencia'(event, instance) {
         var transferencia = $('#transferencia').val();
-        if (transferencia != 2) {
-            $('.dados-transferencia').hide();
+        if (transferencia == 'Sim') {
+            $('#nomeCentroEspirita').prop("disabled", false);
+            $('#cidadeCentroEspirita').prop("disabled", false);
+            $('#tempoCentroEspirita').prop("disabled", false);
+            $('#ufCentroEspirita').prop("disabled", false);
         } else {
-            $('.dados-transferencia').show();
+            $('#nomeCentroEspirita').prop("disabled", true);
+            $('#cidadeCentroEspirita').prop("disabled", true);
+            $('#tempoCentroEspirita').prop("disabled", true);
+            $('#ufCentroEspirita').prop("disabled", true);
         }
     },
 
     'click #aposentadoria'(event, instance) {
         var aposentado = $('#aposentadoria').val();
-        console.log(aposentado)
-        if (aposentado != 1) {
-            $('#enderecoTrabalho').hide();
-        } else {
-            $('#enderecoTrabalho').show();
+        if (aposentado == 'Não') {
+            $('#inputLocalTrabalho').prop("disabled", false);
+            $('#telComercial').prop("disabled", false);
+            $('#cepComercial').prop("disabled", false);
+            $('#logradouroComercial').prop("disabled", false);
+            $('#numeroComercial').prop("disabled", false);
+            $('#bairroComercial').prop("disabled", false);
+            $('#complementoComercial').prop("disabled", false);
+            $('#cidadeComercial').prop("disabled", false);
+            $('#ufComercial').prop("disabled", false);
+        }else{
+            $('#inputLocalTrabalho').prop("disabled", true);
+            $('#telComercial').prop("disabled", true);
+            $('#cepComercial').prop("disabled", true);
+            $('#logradouroComercial').prop("disabled", true);
+            $('#numeroComercial').prop("disabled", true);
+            $('#bairroComercial').prop("disabled", true);
+            $('#complementoComercial').prop("disabled", true);
+            $('#cidadeComercial').prop("disabled", true);
+            $('#ufComercial').prop("disabled", true);
         }
     },
 
     'click #escolaridade'(event, instance) {
         var escolaridade = $('#escolaridade').val();
         if (escolaridade < 4) {
-            $('#cursoEscolaridade').hide();
-            $('#instituiçãoEscolaridade').hide();
+            $('#inputCursoEscolaridade').prop("disabled", true);
+            $('#instituicaoEscolaridade').prop("disabled", true);
         } else {
-            $('#cursoEscolaridade').show();
-            $('#instituiçãoEscolaridade').show();
+            $('#inputCursoEscolaridade').prop("disabled", false);
+            $('#instituicaoEscolaridade').prop("disabled", false);
         }
     },
 
@@ -271,11 +296,7 @@ Template.novoParticipante.events({
 
     'click #cadastrar'(event, instance) {
         event.preventDefault();
-
         var participante = getFormData();
-        console.log("Chamando Metodo");
-        console.log(getMediumData());
-
 
         Meteor.call('inserirParticipante', participante, function (err, res) {
             if (err) {
@@ -283,6 +304,7 @@ Template.novoParticipante.events({
                 return false;
             } else {
                 sAlert.success('Participante cadastrado com sucesso.')
+                window.location.href = ('/')
             }
         })
     }
@@ -297,6 +319,7 @@ Template.listaParticipante.helpers({
     'listaParticipantes': function () {
         return Template.instance().participante.get();
     },
+
 })
 
 Template.listaParticipante.events({

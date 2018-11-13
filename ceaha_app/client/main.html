@@ -83,7 +83,7 @@
 <template name="novoParticipante">
   <div class="container">
     <fieldset name="dados-pessoais">
-      <legend>Dados Pessoais</legend>
+      <legend><i class="fa fa-address-card"></i>  Dados Pessoais</legend>
       <section>
         <div class="container dados-pessoais">
           <form class="form-control">
@@ -204,27 +204,27 @@
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="cep">CEP</label>
-                <input id="cep" name="cep" type="text" placeholder="" class="form-control input-md">
+                <input id="cep" name="cep" type="text" placeholder="99999-999" class="form-control input-md">
               </div>
               <div class="col-md-6 form-group">
                 <label for="rua">Rua</label>
-                <input id="rua" name="rua" type="text" placeholder="" class="form-control input-md">
+                <input id="rua" name="rua" type="text" placeholder="logradouro" class="form-control input-md">
               </div>
               <div class="col-md-2  form-group">
                 <label for="numero">Nº</label>
-                <input id="numero" name="numero" type="text" placeholder="" class="form-control input-md">
+                <input id="numero" name="numero" type="text" placeholder="999" class="form-control input-md">
               </div>
               <div class="col-md-6 form-group">
                 <label for="bairro">Bairro</label>
-                <input id="bairro" name="bairro" type="text" placeholder="" class="form-control input-md">
+                <input id="bairro" name="bairro" type="text" placeholder="bairro" class="form-control input-md">
               </div>
               <div class="col-md-4 form-group">
                 <label for="complemento">Complemento</label>
-                <input id="complemento" name="complemento" type="text" placeholder="" class="form-control input-md">
+                <input id="complemento" name="complemento" type="text" placeholder="casa, apto" class="form-control input-md">
               </div>
               <div class="col-md-6 form-group">
                 <label for="cidade">Cidade</label>
-                <input id="cidade" name="cidade" type="text" placeholder="" class="form-control input-md">
+                <input id="cidade" name="cidade" type="text" placeholder="cidade" class="form-control input-md">
               </div>
               <div class="col-md-6 form-group">
                 <label for="uf-endereco">UF</label>
@@ -271,59 +271,59 @@
           <form class="form-control">
             <div class="form-group">
               <label for="inputProfissao">Profissão</label>
-              <input type="text" class="form-control" id="inputProfissao">
+              <input type="text" class="form-control" id="inputProfissao" placeholder="profissão">
             </div>
             <div class="form-row" name="aposentadoriaChecbox" id="aposentadoriaChecbox">
               <div class="form-group col-md-8">
                 <label for="aposentadoria">Aposentado?</label>
                 <select name="aposentadoria" id="aposentadoria">
                   <option value="" selected>Selecione</option>
-                  <option value="1">Não</option>
-                  <option value="2">Sim</option>
+                  <option value="Não">Não</option>
+                  <option value="Sim">Sim</option>
 
                 </select>
               </div>
             </div>
-            <div class="container endereco" id="enderecoTrabalho" style="display:none">
+            <div class="container endereco" id="enderecoTrabalho" >
               <form>
                 <div class="form-row">
                   <div class="form-group col-sm-8">
                     <label for="inputLocalTrabalho">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho">
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" disabled>
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="telComercial">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial">
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" disabled>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="cepComercial">CEP</label>
-                    <input id="cepComercial" name="cep" type="text" placeholder="" class="form-control input-md">
+                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" disabled>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="logradouroComercial">Rua</label>
-                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="" class="form-control input-md">
+                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md"  disabled>
                   </div>
                   <div class="col-md-2  form-group">
                     <label for="numeroComercial">Nº</label>
-                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="" class="form-control input-md">
+                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" disabled>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="bairroComercial">Bairro</label>
-                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="" class="form-control input-md">
+                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" disabled>
                   </div>
                   <div class="col-md-4 form-group">
                     <label for="complementoComercial">Complemento</label>
-                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="" class="form-control input-md">
+                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md"  disabled>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="cidadeComercial">Cidade</label>
-                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="" class="form-control input-md">
+                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" disabled>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="ufComercial">UF</label>
-                    <select class="form-control" name="uf" id="ufComercial">
+                    <select class="form-control" name="uf" id="ufComercial" disabled>
                       <option value="">Selecione</option>
                       <option value="AC">AC</option>
                       <option value="AL">AL</option>
@@ -370,31 +370,31 @@
               <div class="form-group col-sm-4">
                 <label for="escolaridade">Grau de Instrução</label>
                 <select class="form-control" name="escolaridade" id="escolaridade">
-                  <option value="" selected>Selecione</option>
-                  <option value="0">Fundamental - Incompleto</option>
-                  <option value="1">Fundamental - Completo</option>
-                  <option value="2">Médio - Incompleto</option>
-                  <option value="3">Médio - Completo</option>
-                  <option value="4">Superior - Incompleto</option>
-                  <option value="5">Superior - Completo</option>
-                  <option value="6">Pós-graduação - Incompleto</option>
-                  <option value="7">Pós-graduação - Completo</option>
-                  <option value="8">Pós-graduação Mestrado - Incompleto</option>
-                  <option value="9">Pós-graduação Mestrado - Completo</option>
-                  <option value="10">Pós-graduação Doutorado - Incompleto</option>
-                  <option value="11">Pós-graduação Doutorado - Completo</option>
-                  <option value="12">Pós Doutorado - Incompleto</option>
-                  <option value="13">Pós Doutorado - Completo</option>
-                  <option value="14">Outros</option>
+                  <option value="0" selected>Selecione</option>
+                  <option value="1">Fundamental - Incompleto</option>
+                  <option value="2">Fundamental - Completo</option>
+                  <option value="3">Médio - Incompleto</option>
+                  <option value="4">Médio - Completo</option>
+                  <option value="5">Superior - Incompleto</option>
+                  <option value="6">Superior - Completo</option>
+                  <option value="7">Pós-graduação - Incompleto</option>
+                  <option value="8">Pós-graduação - Completo</option>
+                  <option value="9">Pós-graduação Mestrado - Incompleto</option>
+                  <option value="10">Pós-graduação Mestrado - Completo</option>
+                  <option value="11">Pós-graduação Doutorado - Incompleto</option>
+                  <option value="12">Pós-graduação Doutorado - Completo</option>
+                  <option value="13">Pós Doutorado - Incompleto</option>
+                  <option value="14">Pós Doutorado - Completo</option>
+                  <option value="15">Outros</option>
                 </select>
               </div>
-              <div class="form-group col-sm-4" style="display:none">
+              <div class="form-group col-sm-4" >
                 <label for="cursoEscolaridade">Curso</label>
-                <input class="form-control" type="text" id="inputCursoEscolaridade" placeholder="curso">
+                <input class="form-control" type="text" id="inputCursoEscolaridade" placeholder="curso" disabled>
               </div>
-              <div class="form-group col-sm-4" style="display:none">
+              <div class="form-group col-sm-4" >
                 <label for="instituicaoEscolaridade">Instituição</label>
-                <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição">
+                <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição" disabled>
               </div>
             </div>
             <div class="form-group ">
@@ -414,22 +414,22 @@
             <label for="transferencia">Você vem transferido de algum outro Centro Espírita?</label>
             <select name="transferencia" id="transferencia">
               <option value="" selected>Selecione</option>
-              <option value="1">Não</option>
-              <option value="2">Sim</option>
+              <option value="Não">Não</option>
+              <option value="Sim">Sim</option>
             </select>
           </div>
-          <div class="form-row dados-transferencia" style="display:none">
+          <div class="form-row dados-transferencia" >
             <div class="form-group col-md-4">
               <label for="nomeCentroEspirita">Nome do Centro Espírita</label>
-              <input type="text" class="form-control" id="nomeCentroEspirita">
+              <input type="text" class="form-control" id="nomeCentroEspirita" placeholder="" disabled>
             </div>
             <div class="form-group col-md-4">
               <label for="cidadeCentroEspirita">Cidade</label>
-              <input type="text" class="form-control" id="cidadeCentroEspirita">
+              <input type="text" class="form-control" id="cidadeCentroEspirita" disabled>
             </div>
             <div class="form-group col-md-4">
-              <label for="cidadeCentroEspirita">UF</label>
-              <select class="form-control" name="uf" id="cidadeCentroEspirita">
+              <label for="ufCentroEspirita">UF</label>
+              <select class="form-control" name="uf" id="ufCentroEspirita" disabled>
                 <option value="">Selecione</option>
                 <option value="AC">AC</option>
                 <option value="AL">AL</option>
@@ -462,7 +462,7 @@
             </div>
             <div class="form-group">
               <label for="tempoCentroEspirita">Tempo que frequentou esse Centro Espírita</label>
-              <input type="text" class="form-control" id="tempoCentroEspirita">
+              <input type="text" class="form-control" id="tempoCentroEspirita" disabled>
             </div>
           </div>
           <div>
@@ -470,45 +470,28 @@
               ESPÍRITA(s) ANTERIOR(es)</h6>
           </div>
 
-          <div class="form-row">
-            <div class="form-group">
+          
+            <div class="form-group estudo-obras">
               <label for="tomosESede">Tomos do ESDE - Quais?</label>
+              <input type="text" class="form-control col-md-6" id="tomosESede">
             </div>
-            <div class="form-group col-sm-8 estudo-obras">
-              <input type="text" class="form-control" id="tomosESede">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
+            <div class="form-group estudo-obras">
               <label for="tomosEade">Tomos do EADE - Quais?</label>
+              <input type="text" class="form-control col-md-6" id="tomosEade">
             </div>
-            <div class="form-group col-sm-8 estudo-obras">
-              <input type="text" class="form-control" id="tomosEade">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
+            <div class="form-group estudo-obras">
               <label for="obrasBasicas">Obras Básicas - Quais?</label>
+              <input type="text" class="form-control col-md-6" id="obrasBasicas">
             </div>
-            <div class="form-group col-sm-8 estudo-obras">
-              <input type="text" class="form-control" id="obrasBasicas">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
+            <div class="form-group estudo-obras">
               <label for="outrasObras">Outras obras - Quais?</label>
+              <input type="text" class="form-control col-md-6" id="outrasObras">
             </div>
-            <div class="form-group col-sm-8 estudo-obras">
-              <input type="text" class="form-control" id="outrasObras">
-            </div>
-          </div>
           <div class="form-row">
             <div class="form-group col-sm-8">
               <h6>Atividades voluntárias que você desenvolveu no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
             </div>
-            <div>
-              <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus"></i></button>
-            </div>
+            
           </div>
           <div class="container-fluid lista-atividades">
             <table class="table atividade-table" id="atividadeTable">
@@ -516,6 +499,11 @@
                 <tr id="tableHeader">
                   <th scope="col">Atividade</th>
                   <th scope="col">Quanto Tempo</th>
+                  <th>
+                    <div>
+                      <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus"></i> Adiconar Atividade</button>
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody id="atividadeTableBody">
@@ -530,8 +518,8 @@
                       <input type="text" class="tempo-atividade" id="tempoAtividadeVoluntaria">
                     </div>
                   </td>
-                  <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria"><i
-                        class="fa fa-trash"></i></button>
+                  <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria" disabled><i
+                        class="fa fa-trash" ></i></button>
                   </td>
                 </tr>
               </tbody>
