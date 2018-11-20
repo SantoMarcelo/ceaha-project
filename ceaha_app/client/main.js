@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { getFormData, getMediumData } from './services.js'
+import { getFormData, getMediumData, adicionaAtividade, removeAtividade } from './js/services.js'
 
 import './main.html';
 //import './services.js';
@@ -197,29 +197,7 @@ Template.novoParticipante.events({
 
     'click #adicionaAtividade'(event, instance) {
         event.preventDefault();
-
-        var row = document.getElementById("atividadeItem");
-        var table = document.getElementById("atividadeTable");
-        var tbody = table.firstChild.parentElement.lastElementChild
-        var clone = row.cloneNode(true);
-        clone.id = Math.random().toString(32).substring(2, 10);
-        tbody.appendChild(clone);
-        var element = clone.firstElementChild;
-        console.log('#'+clone.id);
-        console.log(clone.firstElementChild.id);
-
-        $('#'+clone.id).each(function(){
-            $(this).find('td .descricao-atividade').val("");
-            $(this).find('td .tempo-atividade').val("");
-        })
-        
-        $('#atividadeTable button:disabled').each(function(i){
-            if(i!= 0){
-                $(this).prop("disabled", false);
-            }
-        })
-        
-
+        adicionaAtividade();
     },
     'click #removeAtividadeVoluntaria'(event, instance) {
         event.preventDefault();
@@ -353,29 +331,46 @@ Template.listaParticipante.events({
 
 Template.editarParticipante.onCreated(function () {
 
-
+    var transferencia = $('#transferencia').val();
+    if (transferencia == 'Sim') {
+        $('#nomeCentroEspirita').prop("disabled", false);
+        $('#cidadeCentroEspirita').prop("disabled", false);
+        $('#tempoCentroEspirita').prop("disabled", false);
+        $('#ufCentroEspirita').prop("disabled", false);
+    } else {
+        $('#nomeCentroEspirita').prop("disabled", true);
+        $('#cidadeCentroEspirita').prop("disabled", true);
+        $('#tempoCentroEspirita').prop("disabled", true);
+        $('#ufCentroEspirita').prop("disabled", true);
+    }
+   
     // this.participante = new ReactiveVar(Participantes.find({ _id: 'RAnsnTMyQWpXEiTqC' }));
 
 })
 
-Template.editarParticipante.helpers({
-    // 'Participante': function () {
-    //     return Template.instance().participante.get();
-    // },
+Template.editarParticipante.helpers({function(){
+   
+    var transferencia = $('#transferencia').val();
+    if (transferencia == 'Sim') {
+        $('#nomeCentroEspirita').prop("disabled", false);
+        $('#cidadeCentroEspirita').prop("disabled", false);
+        $('#tempoCentroEspirita').prop("disabled", false);
+        $('#ufCentroEspirita').prop("disabled", false);
+    } else {
+        $('#nomeCentroEspirita').prop("disabled", true);
+        $('#cidadeCentroEspirita').prop("disabled", true);
+        $('#tempoCentroEspirita').prop("disabled", true);
+        $('#ufCentroEspirita').prop("disabled", true);
+    }
+   } 
 })
 
 Template.editarParticipante.events({
 
+    
     'click #adicionaAtividade'(event, instance) {
         event.preventDefault();
-
-        var row = document.getElementById("atividadeItem");
-        var table = document.getElementById("atividadeTable");
-        var clone = row.cloneNode(true);
-        clone.id = Math.random().toString(32).substring(2, 10);
-        clone.class = 'test';
-        table.appendChild(clone);
-
+        adicionaAtividade();
     },
     'click #removeAtividadeVoluntaria'(event, instance) {
         event.preventDefault();
@@ -386,34 +381,68 @@ Template.editarParticipante.events({
         table.deleteRow(current.parentNode.parentNode.rowIndex)
 
     },
+
     'click #transferencia'(event, instance) {
         var transferencia = $('#transferencia').val();
-        if (transferencia != 2) {
-            $('.dados-transferencia').hide();
+        if (transferencia == 'Sim') {
+            $('#nomeCentroEspirita').prop("disabled", false);
+            $('#cidadeCentroEspirita').prop("disabled", false);
+            $('#tempoCentroEspirita').prop("disabled", false);
+            $('#ufCentroEspirita').prop("disabled", false);
         } else {
-            $('.dados-transferencia').show();
+            $('#nomeCentroEspirita').prop("disabled", true);
+            $('#cidadeCentroEspirita').prop("disabled", true);
+            $('#tempoCentroEspirita').prop("disabled", true);
+            $('#ufCentroEspirita').prop("disabled", true);
         }
     },
 
     'click #aposentadoria'(event, instance) {
         var aposentado = $('#aposentadoria').val();
-        console.log(aposentado)
-        if (aposentado != 1) {
-            $('#enderecoTrabalho').hide();
-        } else {
-            $('#enderecoTrabalho').show();
+        if (aposentado == 'Não') {
+            $('#inputLocalTrabalho').prop("disabled", false);
+            $('#telComercial').prop("disabled", false);
+            $('#cepComercial').prop("disabled", false);
+            $('#logradouroComercial').prop("disabled", false);
+            $('#numeroComercial').prop("disabled", false);
+            $('#bairroComercial').prop("disabled", false);
+            $('#complementoComercial').prop("disabled", false);
+            $('#cidadeComercial').prop("disabled", false);
+            $('#ufComercial').prop("disabled", false);
+        }else{
+            $('#inputLocalTrabalho').prop("disabled", true);
+            $('#telComercial').prop("disabled", true);
+            $('#cepComercial').prop("disabled", true);
+            $('#logradouroComercial').prop("disabled", true);
+            $('#numeroComercial').prop("disabled", true);
+            $('#bairroComercial').prop("disabled", true);
+            $('#complementoComercial').prop("disabled", true);
+            $('#cidadeComercial').prop("disabled", true);
+            $('#ufComercial').prop("disabled", true);
         }
     },
 
     'click #escolaridade'(event, instance) {
         var escolaridade = $('#escolaridade').val();
         if (escolaridade < 4) {
-            $('#cursoEscolaridade').hide();
-            $('#instituiçãoEscolaridade').hide();
+            $('#inputCursoEscolaridade').prop("disabled", true);
+            $('#instituicaoEscolaridade').prop("disabled", true);
         } else {
-            $('#cursoEscolaridade').show();
-            $('#instituiçãoEscolaridade').show();
+            $('#inputCursoEscolaridade').prop("disabled", false);
+            $('#instituicaoEscolaridade').prop("disabled", false);
         }
+    },
+
+    'click .checkbox-experienca-pratica'(event, instance) {
+        console.log(event);
+        console.log(instance.parentNode);
+        $(".experiencia-pratica").each(function (i) {
+            //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+            if ($(this).find('input.checkbox-experienca-pratica:checked').length > 0) {
+                 $(this).find('.input-time').prop("disabled", false);
+            }
+        });
+
     },
 
     'click #salvar'(event, instance) {
