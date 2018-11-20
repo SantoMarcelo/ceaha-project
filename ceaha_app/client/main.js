@@ -38,9 +38,9 @@ Router.route('/editarParticipante/:_id', {
     name: 'edit',
     template: 'editarParticipante',
     data: function () {
-        console.log(Participantes.findOne({ _id: this.params._id }));
-        var participante = Participantes.findOne({ _id: this.params._id });
-        console.log(participante);
+        
+        //var participante = Participantes.findOne({ _id: this.params._id });
+        
         return Participantes.findOne({ _id: this.params._id });
     },
 
@@ -226,7 +226,8 @@ Template.novoParticipante.events({
 
     'click #aposentadoria'(event, instance) {
         var aposentado = $('#aposentadoria').val();
-        if (aposentado == 'Não') {
+        
+        if (aposentado == "false") {
             $('#inputLocalTrabalho').prop("disabled", false);
             $('#telComercial').prop("disabled", false);
             $('#cepComercial').prop("disabled", false);
@@ -329,9 +330,16 @@ Template.listaParticipante.events({
 
 })
 
-Template.editarParticipante.onRendered(function () {
+Template.editarParticipante.onCreated(function () {
+    console.log("Inicio");
+    $('#transferencia').click();
+        this.obj = new ReactiveVar(Participantes.find());
+        
+        
     
-    console.log("aqui" + $('#transferencia').val()); 
+
+
+    //console.log("aqui" + $('#transferencia').val()); 
     var transferencia = $('#transferencia').val();
     if (transferencia == 'Sim') {
         $('#nomeCentroEspirita').prop("disabled", false);
@@ -349,23 +357,14 @@ Template.editarParticipante.onRendered(function () {
 
 })
 
-Template.editarParticipante.helpers({function(){
-
+Template.editarParticipante.helpers({
+    
+    // checkedClass(todo){ 
+    //     return todo.checked && 'checked';
+    // }
     
    
-    var transferencia = $('#transferencia').val();
-    if (transferencia == 'Sim') {
-        $('#nomeCentroEspirita').prop("disabled", false);
-        $('#cidadeCentroEspirita').prop("disabled", false);
-        $('#tempoCentroEspirita').prop("disabled", false);
-        $('#ufCentroEspirita').prop("disabled", false);
-    } else {
-        $('#nomeCentroEspirita').prop("disabled", true);
-        $('#cidadeCentroEspirita').prop("disabled", true);
-        $('#tempoCentroEspirita').prop("disabled", true);
-        $('#ufCentroEspirita').prop("disabled", true);
-    }
-   } 
+   
 })
 
 Template.editarParticipante.events({
@@ -386,6 +385,7 @@ Template.editarParticipante.events({
     },
 
     'click #transferencia'(event, instance) {
+        event.preventDefault();
         var transferencia = $('#transferencia').val();
         if (transferencia == 'Sim') {
             $('#nomeCentroEspirita').prop("disabled", false);
@@ -401,8 +401,10 @@ Template.editarParticipante.events({
     },
 
     'click #aposentadoria'(event, instance) {
+        event.preventDefault();
         var aposentado = $('#aposentadoria').val();
-        if (aposentado == 'Não') {
+        
+        if (aposentado == "false") {
             $('#inputLocalTrabalho').prop("disabled", false);
             $('#telComercial').prop("disabled", false);
             $('#cepComercial').prop("disabled", false);
@@ -426,6 +428,7 @@ Template.editarParticipante.events({
     },
 
     'click #escolaridade'(event, instance) {
+        event.preventDefault();
         var escolaridade = $('#escolaridade').val();
         if (escolaridade < 4) {
             $('#inputCursoEscolaridade').prop("disabled", true);
@@ -437,6 +440,7 @@ Template.editarParticipante.events({
     },
 
     'click .checkbox-experienca-pratica'(event, instance) {
+        event.preventDefault();
         console.log(event);
         console.log(instance.parentNode);
         $(".experiencia-pratica").each(function (i) {

@@ -277,10 +277,9 @@
               <div class="form-group col-md-8">
                 <label for="aposentadoria">Aposentado?</label>
                 <select name="aposentadoria" id="aposentadoria">
-                  <option value="" selected>Selecione</option>
-                  <option value="Não">Não</option>
-                  <option value="Sim">Sim</option>
-
+                  <option value=true selected>Selecione</option>
+                  <option value=false>Não</option>
+                  <option value=true>Sim</option>
                 </select>
               </div>
             </div>
@@ -289,41 +288,41 @@
                 <div class="form-row">
                   <div class="form-group col-sm-8">
                     <label for="inputLocalTrabalho">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" disabled>
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" >
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="telComercial">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" disabled>
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" >
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="cepComercial">CEP</label>
-                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" disabled>
+                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" >
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="logradouroComercial">Rua</label>
-                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md"  disabled>
+                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md"  >
                   </div>
                   <div class="col-md-2  form-group">
                     <label for="numeroComercial">Nº</label>
-                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" disabled>
+                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" >
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="bairroComercial">Bairro</label>
-                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" disabled>
+                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" >
                   </div>
                   <div class="col-md-4 form-group">
                     <label for="complementoComercial">Complemento</label>
-                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md"  disabled>
+                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md"  >
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="cidadeComercial">Cidade</label>
-                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" disabled>
+                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" >
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="ufComercial">UF</label>
-                    <select class="form-control" name="uf" id="ufComercial" disabled>
+                    <select class="form-control" name="uf" id="ufComercial" >
                       <option value="">Selecione</option>
                       <option value="AC">AC</option>
                       <option value="AL">AL</option>
@@ -939,9 +938,9 @@
               <div class="form-group col-md-8">
                 <label for="aposentadoria">Aposentado?</label>
                 <select name="aposentadoria" id="aposentadoria" value="{{profissao.aposentado}}">
-                  <option value="{{profissao.aposentado}}" selected>{{profissao.aposentado}}</option>
-                  <option value="Não">Não</option>
-                  <option value="Sim">Sim</option>
+                  <option value="{{profissao.controlador}}" selected>{{profissao.aposentado}}</option>
+                  <option value=false>Não</option>
+                  <option value=true>Sim</option>
 
                 </select>
               </div>
@@ -951,41 +950,41 @@
                 <div class="form-row">
                   <div class="form-group col-sm-8">
                     <label for="inputLocalTrabalho">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" value="{{profissao.local_trabalho}}" disabled>
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" value="{{profissao.local_trabalho}}" disabled={{profissao.controlador}}>
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="telComercial">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" value="{{profissao.tel}}" disabled>
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" value="{{profissao.tel}}" disabled={{profissao.controlador}}>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="cepComercial">CEP</label>
-                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" value="{{endereco_comercial.cep}}" disabled>
+                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" value="{{endereco_comercial.cep}}" disabled={{profissao.controlador}}>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="logradouroComercial">Rua</label>
-                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md" value="{{endereco_comercial.logradouro}}"  disabled>
+                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md" value="{{endereco_comercial.logradouro}}"  disabled={{profissao.controlador}}>
                   </div>
                   <div class="col-md-2  form-group">
                     <label for="numeroComercial">Nº</label>
-                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" value="{{endereco_comercial.numero}}" disabled>
+                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" value="{{endereco_comercial.numero}}" disabled={{profissao.controlador}}>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="bairroComercial">Bairro</label>
-                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" value="{{endereco_comercial.bairro}}" disabled>
+                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" value="{{endereco_comercial.bairro}}" disabled={{profissao.controlador}}>
                   </div>
                   <div class="col-md-4 form-group">
                     <label for="complementoComercial">Complemento</label>
-                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md" value="{{endereco_comercial.complemento}}"  disabled>
+                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md" value="{{endereco_comercial.complemento}}"  disabled={{profissao.controlador}}>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="cidadeComercial">Cidade</label>
-                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" value="{{endereco_comercial.cidade}}" disabled>
+                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" value="{{endereco_comercial.cidade}}" disabled={{profissao.controlador}}>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="ufComercial">UF</label>
-                    <select class="form-control" name="uf" id="ufComercial" value="{{endereco_comercial.uf}}" disabled>
+                    <select class="form-control" name="uf" id="ufComercial" value="{{endereco_comercial.uf}}" disabled={{profissao.controlador}}>
                       <option value="">{{endereco_comercial.uf}}</option>
                       <option value="AC">AC</option>
                       <option value="AL">AL</option>
@@ -1075,7 +1074,7 @@
           <div class="form-group">
             <label for="transferencia">Você vem transferido de algum outro Centro Espírita?</label>
             <select name="transferencia" id="transferencia">
-              <option value="" selected>{{transferencia.transferido}}</option>
+              <option value="{{transferencia.transferido}}" selected>{{transferencia.transferido}}</option>
               <option value="Não">Não</option>
               <option value="Sim">Sim</option>
             </select>
@@ -1217,27 +1216,13 @@
               <tbody>
                 {{#each experiencia }}
                     <tr class="experiencia-pratica">
-                      {{#if value}}
-                        <th scope="row">
-                         <input class="checkbox-experienca-pratica" type="checkbox" name="colors" value="red" checked="yes" />
-                         <!-- <input class="checkbox-experienca-pratica" type="checkbox" name="{{value}}" id="{{value}}"   checked="yes" /> -->
-                        </th>
-                      {{else}}
-                        <th scope="row">
-                         <input class="checkbox-experienca-pratica" type="checkbox" name="colors" value="yellow"  />
-                         <!-- <input class="checkbox-experienca-pratica" type="checkbox" name="{{value}}" id="{{value}}" checked="no" /> -->
-                        </th>
-                      {{/if}}
+                      <th scope="row">
+                       <input class="checkbox-experienca-pratica" type="checkbox" name="colors" value="red" checked={{value}} />
+                      </th>
                       <td>{{atividade}}</td>
-                        {{#if tempo}}
-                          <td>
-                            <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" value="{{tempo}}" >
-                          </td>
-                        {{else}}
-                          <td>
-                            <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" value="{{tempo}}" disabled>
-                          </td>
-                        {{/if}}
+                      <td>
+                        <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" value="{{tempo}}" disabled={{disable}}>
+                      </td>
                     </tr>
               {{/each}}
               </tbody>

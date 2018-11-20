@@ -28,6 +28,7 @@ export function getFormData() {
       aposentado: $('#aposentadoria option:selected').text(),
       local_trabalho: $('#inputLocalTrabalho').val(),
       tel: $('#telComercial').val(),
+      controlador: getAposentadoValue(),
     },
     endereco_comercial: {
       cep: $('#cepComercial').val(),
@@ -85,27 +86,15 @@ export function getMediumData() {
   var mediumData = []
 
   $(".experiencia-pratica").each(function (i) {
-    //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
-    // if ($(this).find('input.checkbox-experienca-pratica:checked').length > 0) {
-    //   mediumData.push({ value: "on", atividade: $(this).find('input.checkbox-experienca-pratica').val(), tempo: $(this).find('.input-time').val() });
-    // }
-    // mediumData.push({ value: "off", atividade: $(this).find('input.checkbox-experienca-pratica').val(), tempo: $(this).find('.input-time').val() });
-
     if ($(this).find('input.checkbox-experienca-pratica:checked').prop("checked") == true) {
-      mediumData.push({ value: true, atividade: $(this).find('input.checkbox-experienca-pratica').val(), tempo: $(this).find('.input-time').val() });
+      mediumData.push({ value: true, atividade: $(this).find('input.checkbox-experienca-pratica').val(), tempo: $(this).find('.input-time').val(), disable: false });
     }else{
-      mediumData.push({ value: false, atividade: $(this).find('input.checkbox-experienca-pratica').val(), tempo: $(this).find('.input-time').val() });
+      mediumData.push({ value: false, atividade: $(this).find('input.checkbox-experienca-pratica').val(), tempo: $(this).find('.input-time').val(), disable: true });
     }
    
   });
   return mediumData
   
-}
-
-
-export function setMasks(){
-
-  $('date-birth').Inputmask('99/99/9999');
 }
 
 export function adicionaAtividade(){
@@ -138,4 +127,21 @@ export function removeAtividade(){
 
   table.deleteRow(current.parentNode.parentNode.rowIndex)
 }
+
+export function getAposentadoValue(){
+  var aposentado =  $('#aposentadoria option:selected').val();
+  if(aposentado == true){
+    return true;
+  }else{
+    return false;
+  }
+  
+}
+
+export function setMasks(){
+
+  $('date-birth').Inputmask('99/99/9999');
+}
+
+
 export { getDormData };
