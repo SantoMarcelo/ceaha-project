@@ -329,8 +329,9 @@ Template.listaParticipante.events({
 
 })
 
-Template.editarParticipante.onCreated(function () {
-
+Template.editarParticipante.onRendered(function () {
+    
+    console.log("aqui" + $('#transferencia').val()); 
     var transferencia = $('#transferencia').val();
     if (transferencia == 'Sim') {
         $('#nomeCentroEspirita').prop("disabled", false);
@@ -349,6 +350,8 @@ Template.editarParticipante.onCreated(function () {
 })
 
 Template.editarParticipante.helpers({function(){
+
+    
    
     var transferencia = $('#transferencia').val();
     if (transferencia == 'Sim') {
