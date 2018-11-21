@@ -28,7 +28,7 @@ export function getFormData() {
       aposentado: $('#aposentadoria option:selected').text(),
       local_trabalho: $('#inputLocalTrabalho').val(),
       tel: $('#telComercial').val(),
-      controlador: getAposentadoValue(),
+      controlador: $('#aposentadoria option:selected').val(),
     },
     endereco_comercial: {
       cep: $('#cepComercial').val(),
@@ -129,12 +129,6 @@ export function removeAtividade(){
 }
 
 export function getAposentadoValue(){
-  var aposentado =  $('#aposentadoria option:selected').val();
-  if(aposentado == true){
-    return true;
-  }else{
-    return false;
-  }
   
 }
 

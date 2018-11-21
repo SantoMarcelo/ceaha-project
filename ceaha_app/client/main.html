@@ -288,41 +288,41 @@
                 <div class="form-row">
                   <div class="form-group col-sm-8">
                     <label for="inputLocalTrabalho">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" >
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" disabled >
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="telComercial">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" >
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" disabled >
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="cepComercial">CEP</label>
-                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" >
+                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" disabled >
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="logradouroComercial">Rua</label>
-                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md"  >
+                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md"  disabled >
                   </div>
                   <div class="col-md-2  form-group">
                     <label for="numeroComercial">Nº</label>
-                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" >
+                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" disabled >
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="bairroComercial">Bairro</label>
-                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" >
+                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" disabled >
                   </div>
                   <div class="col-md-4 form-group">
                     <label for="complementoComercial">Complemento</label>
-                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md"  >
+                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md" disabled  >
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="cidadeComercial">Cidade</label>
-                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" >
+                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" disabled >
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="ufComercial">UF</label>
-                    <select class="form-control" name="uf" id="ufComercial" >
+                    <select class="form-control" name="uf" id="ufComercial" disabled >
                       <option value="">Selecione</option>
                       <option value="AC">AC</option>
                       <option value="AL">AL</option>
@@ -950,17 +950,17 @@
                 <div class="form-row">
                   <div class="form-group col-sm-8">
                     <label for="inputLocalTrabalho">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" value="{{profissao.local_trabalho}}" disabled={{profissao.controlador}}>
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" value={{profissao.controlador}} disabled="true" >
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="telComercial">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" value="{{profissao.tel}}" disabled={{profissao.controlador}}>
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" value="{{profissao.tel}}" disabled="false">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="cepComercial">CEP</label>
-                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" value="{{endereco_comercial.cep}}" disabled={{profissao.controlador}}>
+                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" value="{{endereco_comercial.cep}}" disabled="false">
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="logradouroComercial">Rua</label>
