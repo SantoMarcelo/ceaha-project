@@ -5,6 +5,7 @@
 <body>
   {{> sAlert}}
   {{> navbar}}
+  <p></p>
 
 
 
@@ -83,7 +84,7 @@
 <template name="novoParticipante">
   <div class="container">
     <fieldset name="dados-pessoais">
-      <legend><i class="fa fa-address-card"></i>  Dados Pessoais</legend>
+      <legend><i class="fa fa-address-card"></i> Dados Pessoais</legend>
       <section>
         <div class="container dados-pessoais">
           <form class="form-control">
@@ -283,46 +284,54 @@
                 </select>
               </div>
             </div>
-            <div class="container endereco" id="enderecoTrabalho" >
+            <div class="container endereco" id="enderecoTrabalho">
               <form>
                 <div class="form-row">
                   <div class="form-group col-sm-8">
                     <label for="inputLocalTrabalho">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" disabled >
+                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho"
+                      placeholder="empresa" disabled>
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="telComercial">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" disabled >
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999"
+                      disabled>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="cepComercial">CEP</label>
-                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" disabled >
+                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md"
+                      disabled>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="logradouroComercial">Rua</label>
-                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md"  disabled >
+                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro"
+                      class="form-control input-md" disabled>
                   </div>
                   <div class="col-md-2  form-group">
                     <label for="numeroComercial">Nº</label>
-                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" disabled >
+                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md"
+                      disabled>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="bairroComercial">Bairro</label>
-                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" disabled >
+                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md"
+                      disabled>
                   </div>
                   <div class="col-md-4 form-group">
                     <label for="complementoComercial">Complemento</label>
-                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md" disabled  >
+                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto"
+                      class="form-control input-md" disabled>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="cidadeComercial">Cidade</label>
-                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" disabled >
+                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md"
+                      disabled>
                   </div>
                   <div class="col-md-6 form-group">
                     <label for="ufComercial">UF</label>
-                    <select class="form-control" name="uf" id="ufComercial" disabled >
+                    <select class="form-control" name="uf" id="ufComercial" disabled>
                       <option value="">Selecione</option>
                       <option value="AC">AC</option>
                       <option value="AL">AL</option>
@@ -387,11 +396,11 @@
                   <option value="15">Outros</option>
                 </select>
               </div>
-              <div class="form-group col-sm-4" >
+              <div class="form-group col-sm-4">
                 <label for="cursoEscolaridade">Curso</label>
                 <input class="form-control" type="text" id="inputCursoEscolaridade" placeholder="curso" disabled>
               </div>
-              <div class="form-group col-sm-4" >
+              <div class="form-group col-sm-4">
                 <label for="instituicaoEscolaridade">Instituição</label>
                 <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição" disabled>
               </div>
@@ -417,7 +426,7 @@
               <option value="Sim">Sim</option>
             </select>
           </div>
-          <div class="form-row dados-transferencia" >
+          <div class="form-row dados-transferencia">
             <div class="form-group col-md-4">
               <label for="nomeCentroEspirita">Nome do Centro Espírita</label>
               <input type="text" class="form-control" id="nomeCentroEspirita" placeholder="" disabled>
@@ -469,28 +478,28 @@
               ESPÍRITA(s) ANTERIOR(es)</h6>
           </div>
 
-          
-            <div class="form-group estudo-obras">
-              <label for="tomosESede">Tomos do ESDE - Quais?</label>
-              <input type="text" class="form-control col-md-6" id="tomosESede">
-            </div>
-            <div class="form-group estudo-obras">
-              <label for="tomosEade">Tomos do EADE - Quais?</label>
-              <input type="text" class="form-control col-md-6" id="tomosEade">
-            </div>
-            <div class="form-group estudo-obras">
-              <label for="obrasBasicas">Obras Básicas - Quais?</label>
-              <input type="text" class="form-control col-md-6" id="obrasBasicas">
-            </div>
-            <div class="form-group estudo-obras">
-              <label for="outrasObras">Outras obras - Quais?</label>
-              <input type="text" class="form-control col-md-6" id="outrasObras">
-            </div>
+
+          <div class="form-group estudo-obras">
+            <label for="tomosESede">Tomos do ESDE - Quais?</label>
+            <input type="text" class="form-control col-md-6" id="tomosESede">
+          </div>
+          <div class="form-group estudo-obras">
+            <label for="tomosEade">Tomos do EADE - Quais?</label>
+            <input type="text" class="form-control col-md-6" id="tomosEade">
+          </div>
+          <div class="form-group estudo-obras">
+            <label for="obrasBasicas">Obras Básicas - Quais?</label>
+            <input type="text" class="form-control col-md-6" id="obrasBasicas">
+          </div>
+          <div class="form-group estudo-obras">
+            <label for="outrasObras">Outras obras - Quais?</label>
+            <input type="text" class="form-control col-md-6" id="outrasObras">
+          </div>
           <div class="form-row">
             <div class="form-group col-sm-8">
               <h6>Atividades voluntárias que você desenvolveu no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
             </div>
-            
+
           </div>
           <div class="container-fluid lista-atividades">
             <table class="table atividade-table" id="atividadeTable">
@@ -500,7 +509,8 @@
                   <th scope="col">Quanto Tempo</th>
                   <th>
                     <div>
-                      <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i class="fa fa-plus"></i> Adiconar Atividade</button>
+                      <button class="btn btn-outline-secondary add-atividade" id="adicionaAtividade" type="button"><i
+                          class="fa fa-plus"></i> Adiconar Atividade</button>
                     </div>
                   </th>
                 </tr>
@@ -517,8 +527,8 @@
                       <input type="text" class="tempo-atividade" id="tempoAtividadeVoluntaria">
                     </div>
                   </td>
-                  <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria" disabled><i
-                        class="fa fa-trash" ></i></button>
+                  <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria"
+                      disabled><i class="fa fa-trash"></i></button>
                   </td>
                 </tr>
               </tbody>
@@ -540,97 +550,118 @@
               <tbody>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumSensitivo" id="mediumSensitivo" value="Medium Sensitivo" data-target="mediumSensitivoTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumSensitivo" id="mediumSensitivo"
+                      value="Medium Sensitivo" data-target="mediumSensitivoTempo">
                   </th>
                   <td>Méduim Sensitivo</td>
                   <td>
-                    <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" disabled>
+                    <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo"
+                      placeholder="" disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico" id="mediumPsicofonico" value="Medium Psicofonico" data-target="mediumPsicofonicoTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicofonico" id="mediumPsicofonico"
+                      value="Medium Psicofonico" data-target="mediumPsicofonicoTempo">
                   </th>
                   <td>Médium Psicofônico</td>
                   <td>
-                    <input class="input-time" type="text" name="mediumPsicofonicoTempo" id="mediumPsicofonicoTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="mediumPsicofonicoTempo" id="mediumPsicofonicoTempo"
+                      placeholder="" disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicografo" id="mediumPsicografo" value="Medium Psicografo" data-target="mediumPsicografoTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumPsicografo" id="mediumPsicografo"
+                      value="Medium Psicografo" data-target="mediumPsicografoTempo">
                   </th>
                   <td>Médium Psicógrafo</td>
                   <td>
-                    <input class="input-time" type="text" name="mediumPsicografo" id="mediumPsicografoTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="mediumPsicografo" id="mediumPsicografoTempo"
+                      placeholder="" disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo" value="Medium Pictografo" data-target="mediumPictografoTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumPictografo" id="mediumPictografo"
+                      value="Medium Pictografo" data-target="mediumPictografoTempo">
                   </th>
                   <td>Médium Pictógrafo</td>
                   <td>
-                    <input class="input-time" type="text" name="mediumPictografoTempo" id="mediumPictografoTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="mediumPictografoTempo" id="mediumPictografoTempo"
+                      placeholder="" disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumVidente" id="mediumVidente" value="Medium Vidente" data-target="mediumVidenteTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumVidente" id="mediumVidente"
+                      value="Medium Vidente" data-target="mediumVidenteTempo">
                   </th>
                   <td>Médium Vidente</td>
                   <td>
-                    <input class="input-time" type="text" name="mediumVidenteTempo" id="mediumVidenteTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="mediumVidenteTempo" id="mediumVidenteTempo" placeholder=""
+                      disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumAudiente" id="mediumAudiente" value="Medium Audiente" data-target="mediumAudienteTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumAudiente" id="mediumAudiente"
+                      value="Medium Audiente" data-target="mediumAudienteTempo">
                   </th>
                   <td>Médium Audiente</td>
                   <td>
-                    <input class="input-time" type="text" name="mediumAudienteTempo" id="mediumAudienteTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="mediumAudienteTempo" id="mediumAudienteTempo"
+                      placeholder="" disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumDesdobramento" id="mediumDesdobramento" value="Medium Desdobramento" data-target="mediumDesdobramentoTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="mediumDesdobramento" id="mediumDesdobramento"
+                      value="Medium Desdobramento" data-target="mediumDesdobramentoTempo">
                   </th>
                   <td>Médio de Desdobramento</td>
                   <td>
-                    <input class="input-time" type="text" name="mediumDesdobramentoTempo" id="mediumDesdobramentoTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="mediumDesdobramentoTempo" id="mediumDesdobramentoTempo"
+                      placeholder="" disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="dirigenteGrupoMediunico" id="dirigenteGrupoMediunico" value="Dirigente Grupo Mediunico" data-target="dirigenteGrupoMediunicoTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="dirigenteGrupoMediunico" id="dirigenteGrupoMediunico"
+                      value="Dirigente Grupo Mediunico" data-target="dirigenteGrupoMediunicoTempo">
                   </th>
                   <td>Dirigente de Grupo Mediúnico</td>
                   <td>
-                    <input class="input-time" type="text" name="dirigenteGrupoMediunicoTempo" id="dirigenteGrupoMediunicoTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="dirigenteGrupoMediunicoTempo" id="dirigenteGrupoMediunicoTempo"
+                      placeholder="" disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="dialogador" id="dialogador" value="Dialogador" data-target="dialogadorTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="dialogador" id="dialogador" value="Dialogador"
+                      data-target="dialogadorTempo">
                   </th>
                   <td>Dialogador</td>
                   <td>
-                    <input class="input-time" type="text" name="dialogadorTempo" id="dialogadorTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="dialogadorTempo" id="dialogadorTempo" placeholder=""
+                      disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="susutentacao" id="susutentacao" value="Susutentacao" data-target="susutentacaoTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="susutentacao" id="susutentacao"
+                      value="Susutentacao" data-target="susutentacaoTempo">
                   </th>
                   <td>Sustentação</td>
                   <td>
-                    <input class="input-time" type="text" name="susutentacaoTempo" id="susutentacaoTempo" placeholder="" disabled>
+                    <input class="input-time" type="text" name="susutentacaoTempo" id="susutentacaoTempo" placeholder=""
+                      disabled>
                   </td>
                 </tr>
                 <tr class="experiencia-pratica">
                   <th scope="row">
-                    <input class="checkbox-experienca-pratica" type="checkbox" name="outros" id="outros" value="Outros" data-target="outrosTempo">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="outros" id="outros" value="Outros"
+                      data-target="outrosTempo">
                   </th>
                   <td>Outros</td>
                   <td>
@@ -743,27 +774,38 @@
 </template>
 
 <template name="editarParticipante">
-  <div class="container">
+
+    
+  <div class="container" id="editarParticipanteContainer" >
     <fieldset name="dados-pessoais">
-      <legend><i class="fa fa-address-card"></i>  Dados Pessoais</legend>
-      <section>
-        <div class="container dados-pessoais">
+        <div class="row">
+          <div class="col-md-10">
+              <legend><i class="fa fa-address-card"></i> Dados Pessoais</legend> 
+          </div>
+          <div  class="col-md-2">
+              <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target=".collapse" aria-expanded="false" aria-controls="multiCollapseExample2" style="float:right; margin-bottom: 20px ;">Mostrar todos os dados</button>
+          </div>
+        </div>
+       <section>
+        <div class="container dados-pessoais ">
           <form class="form-control">
             <div class="form-row">
               <div class="form-group col-md-6 ">
                 <label for="full-name">Nome Completo</label>
-                <input type="text" class="form-control" id="full-name" placeholder="nome completo" autocomplete="on" value="{{nome}}" required>
+                <input type="text" class="form-control" id="full-name" placeholder="nome completo" autocomplete="on"
+                  value="{{nome}}" required>
               </div>
               <div class="form-group col-md-6">
                 <label for="date-birth">Data de Nascimento</label>
-                <input type="text" class="form-control date" id="date-birth" placeholder="dd/mm/aaaa" value="{{nascimento}}" data-inputmask="'mask': '9999 9999 9999 9999'">
+                <input type="text" class="form-control date" id="date-birth" placeholder="dd/mm/aaaa" value="{{nascimento}}"
+                  data-inputmask="'mask': '9999 9999 9999 9999'">
               </div>
             </div>
             <div class="form-row">
               <div class="col col-md-4 form-group first ">
                 <label for="nacionality">Nacionalidade</label>
                 <select class="form-control" name="nacionality" id="nacionality" value="{{nacionalidade}}">
-                  <option value="">{{nacionalidade}}</option>
+                  <option value={{nacionalidade}}>{{nacionalidade}}</option>
                   <option value="Brasil">Brasil</option>
                   <option value="África do Sul">África do Sul</option>
                   <option value="Argentina">Argentina</option>
@@ -785,8 +827,8 @@
               </div>
               <div class="col col-md-4 first ">
                 <label for="uf">UF</label>
-                <select class="form-control" name="uf" id="uf" value="{{uf}}" >
-                  <option value="">{{uf}}</option>
+                <select class="form-control" name="uf" id="uf" value="{{uf}}">
+                  <option value={{uf}}>{{uf}}</option>
                   <option value="AC">AC</option>
                   <option value="AL">AL</option>
                   <option value="AM">AM</option>
@@ -843,7 +885,7 @@
               <div class="col-md-4 form-group ">
                 <label for="inputEstadoCivil">Estado Civil</label>
                 <select name="estado_civil" class="form-control" id="inputEstadoCivil" value="{{estado_civil}}">
-                  <option value="">{{estado_civil}}</option>
+                  <option value={{estado_civil}}>{{estado_civil}}</option>
                   <option value="Solteiro">Solteiro</option>
                   <option value="Casado">Casado</option>
                   <option value="Separado">Separado</option>
@@ -857,7 +899,7 @@
         </div>
       </section>
     </fieldset>
-    <fieldset name="endereco-residencial">
+    <fieldset class="collapse" name="endereco-residencial ">
       <legend>Endereço Residencial</legend>
       <section>
         <div class="container endereco">
@@ -869,7 +911,7 @@
               </div>
               <div class="col-md-6 form-group">
                 <label for="rua">Rua</label>
-                <input id="rua" name="rua" type="text" placeholder="logradouro" class="form-control input-md" value="{{endereco.logradouro}}">
+                <input id="rua" name="rua" type="text" placeholder="logradouro" class="form-control input-md" value={{endereco.logradouro}}>
               </div>
               <div class="col-md-2  form-group">
                 <label for="numero">Nº</label>
@@ -890,7 +932,7 @@
               <div class="col-md-6 form-group">
                 <label for="uf-endereco">UF</label>
                 <select class="form-control" name="uf" id="uf-endereco" value="{{endereco.uf_endereco}}">
-                  <option value="">{{endereco.uf_endereco}}</option>
+                  <option value={{endereco.uf_endereco}}>{{endereco.uf_endereco}}</option>
                   <option value="AC">AC</option>
                   <option value="AL">AL</option>
                   <option value="AM">AM</option>
@@ -925,7 +967,7 @@
         </div>
       </section>
     </fieldset>
-    <fieldset name="dados-profissionais">
+    <fieldset class="collapse" name="dados-profissionais">
       <legend>Dados Profissionais</legend>
       <section>
         <div class="container dados-profissionais">
@@ -937,55 +979,192 @@
             <div class="form-row" name="aposentadoriaChecbox" id="aposentadoriaChecbox">
               <div class="form-group col-md-8">
                 <label for="aposentadoria">Aposentado?</label>
-                <select name="aposentadoria" id="aposentadoria" value="{{profissao.aposentado}}">
-                  <option value="{{profissao.controlador}}" selected>{{profissao.aposentado}}</option>
+                <select name="aposentadoria" id="aposentadoria">
+                  <option value={{profissao.controlador}} selected>{{profissao.aposentado}}</option>
                   <option value=false>Não</option>
                   <option value=true>Sim</option>
 
                 </select>
+                
               </div>
             </div>
-            <div class="container endereco" id="enderecoTrabalho" >
+            <div class="container endereco" id="enderecoTrabalho">
               <form>
-                <div class="form-row">
-                  <div class="form-group col-sm-8">
-                    <label for="inputLocalTrabalho">Empresa</label>
-                    <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" value={{profissao.controlador}} disabled="true" >
+                <fieldset id="fieldDadosProfissionais" disabled="disabled">
+                  <div class="form-row">
+                    <div class="form-group col-sm-8">
+                      <label for="inputLocalTrabalho">Empresa</label>
+                      <input class="form-control input-md" type="text" name="inputLocalTrabalho" id="inputLocalTrabalho" placeholder="empresa" value={{profissao.local_trabalho}}>
+                    </div>
+                    <div class="form-group col-sm-4">
+                      <label for="telComercial">Telefone Comercial</label>
+                      <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" value="{{profissao.tel}}">
+                    </div>
                   </div>
-                  <div class="form-group col-sm-4">
-                    <label for="telComercial">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" value="{{profissao.tel}}" disabled="false">
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="cepComercial">CEP</label>
+                      <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md"
+                        value="{{endereco_comercial.cep}}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="logradouroComercial">Rua</label>
+                      <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro"
+                        class="form-control input-md" value="{{endereco_comercial.logradouro}}">
+                    </div>
+                    <div class="col-md-2  form-group">
+                      <label for="numeroComercial">Nº</label>
+                      <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md"
+                        value="{{endereco_comercial.numero}}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="bairroComercial">Bairro</label>
+                      <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md"
+                        value="{{endereco_comercial.bairro}}">
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label for="complementoComercial">Complemento</label>
+                      <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto"
+                        class="form-control input-md" value="{{endereco_comercial.complemento}}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="cidadeComercial">Cidade</label>
+                      <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md"
+                        value="{{endereco_comercial.cidade}}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <label for="ufComercial">UF</label>
+                      <select class="form-control" name="uf" id="ufComercial" value="{{endereco_comercial.uf}}">
+                        <option value={{endereco_comercial.uf}}>{{endereco_comercial.uf}}</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AM">AM</option>
+                        <option value="AP">AP</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MG">MG</option>
+                        <option value="MS">MS</option>
+                        <option value="MT">MT</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="PR">PR</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SE">SE</option>
+                        <option value="SP">SP</option>
+                        <option value="TO">TO</option>
+                      </select>
+                    </div>
                   </div>
+                  
+                </fieldset>
+                <div>
+                    <button style="float:left" id="editarProfissao" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i> Editar dados da Empresa</button>
+                </div> <br> <br> 
+
+              </form>
+            </div>
+          </form>
+        </div>
+      </section>
+    </fieldset>
+    <fieldset class="collapse" name="escolaridade">
+      <legend>Escolaridade</legend>
+      <section>
+        <div class="container escolaridade ">
+          <form class="form-control">
+              <div class="form-row">
+                <div class="form-group col-sm-4">
+                  <label for="escolaridade">Grau de Instrução</label>
+                  <select class="form-control" name="escolaridade" id="escolaridade" value="{{escolaridade.grau}}">
+                    <option value={{escolaridade.grau}} selected>{{escolaridade.grau}}</option>
+                    <option value="1">Fundamental - Incompleto</option>
+                    <option value="2">Fundamental - Completo</option>
+                    <option value="3">Médio - Incompleto</option>
+                    <option value="4">Médio - Completo</option>
+                    <option value="5">Superior - Incompleto</option>
+                    <option value="6">Superior - Completo</option>
+                    <option value="7">Pós-graduação - Incompleto</option>
+                    <option value="8">Pós-graduação - Completo</option>
+                    <option value="9">Pós-graduação Mestrado - Incompleto</option>
+                    <option value="10">Pós-graduação Mestrado - Completo</option>
+                    <option value="11">Pós-graduação Doutorado - Incompleto</option>
+                    <option value="12">Pós-graduação Doutorado - Completo</option>
+                    <option value="13">Pós Doutorado - Incompleto</option>
+                    <option value="14">Pós Doutorado - Completo</option>
+                    <option value="15">Outros</option>
+                  </select>
                 </div>
-                <div class="form-row">
+                <fieldset id="dadosEscolares" disabled="disabled">
+                    <div class="form-row">
+                        <div class="form-group col-sm-6">
+                            <label for="cursoEscolaridade">Curso</label>
+                            <input class="form-control" type="text" id="cursoEscolaridade" placeholder="curso" value="{{escolaridade.curso}}">
+                          </div>
+                          <div class="form-group col-sm-6">
+                            <label for="instituicaoEscolaridade">Instituição</label>
+                            <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição" value="{{escolaridade.instituicao}}">
+                          </div>
+                    </div>
+                   
+                </fieldset>
+               
+              </div>
+              <div class="form-group ">
+                  <button style="float:left" id="editarDadosEscolares" class="btn btn-sm btn-outline-primary "><i class="fa fa-edit"></i> Editar dados Escolares</button>
+              </div> <br>
+              <div class="form-group ">
+                <label for="descricaoAtividades">Outras habilidades que você desempenha, as quais poderiam ser
+                  desenvolvidas como voluntário(a) na casa</label>
+                <textarea class="form-control" name="descricaoAtividades" id="descricaoAtividades" cols="60" rows="5" value={{escolaridade.descricao_atividades}}>
+                {{escolaridade.descricao_atividades}}
+                </textarea>
+                
+              </div>
+              
+          </form>
+          
+        </div>
+        
+      </section>
+      
+    </fieldset>
+    <fieldset class="collapse" name="transferencia">
+      <legend>Transferência</legend>
+      <div class="container transferencia">
+        <form class="form-control">
+          <div class="form-group">
+            <label for="transferencia">Você vem transferido de algum outro Centro Espírita?</label>
+            <select name="transferencia" id="transferencia">
+              <option value="{{transferencia.transferido}}" selected>{{transferencia.transferido}}</option>
+              <option value="Não">Não</option>
+              <option value="Sim">Sim</option>
+            </select>
+          </div>
+          <fieldset id="dadosTransferencia" disabled="disabled">
+              <div class="form-row dados-transferencia">
                   <div class="form-group col-md-4">
-                    <label for="cepComercial">CEP</label>
-                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md" value="{{endereco_comercial.cep}}" disabled="false">
+                    <label for="nomeCentroEspirita">Nome do Centro Espírita</label>
+                    <input type="text" class="form-control" id="nomeCentroEspirita" placeholder="" value="{{transferencia.nome_centro_espirita}}">
                   </div>
-                  <div class="col-md-6 form-group">
-                    <label for="logradouroComercial">Rua</label>
-                    <input id="logradouroComercial" name="logradouroComercial" type="text" placeholder="logradouro" class="form-control input-md" value="{{endereco_comercial.logradouro}}"  disabled={{profissao.controlador}}>
+                  <div class="form-group col-md-4">
+                    <label for="cidadeCentroEspirita">Cidade</label>
+                    <input type="text" class="form-control" id="cidadeCentroEspirita" value="{{transferencia.cidade_centro_espirita}}">
                   </div>
-                  <div class="col-md-2  form-group">
-                    <label for="numeroComercial">Nº</label>
-                    <input id="numeroComercial" name="numeroComercial" type="text" placeholder="999" class="form-control input-md" value="{{endereco_comercial.numero}}" disabled={{profissao.controlador}}>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label for="bairroComercial">Bairro</label>
-                    <input id="bairroComercial" name="bairroComercial" type="text" placeholder="bairro" class="form-control input-md" value="{{endereco_comercial.bairro}}" disabled={{profissao.controlador}}>
-                  </div>
-                  <div class="col-md-4 form-group">
-                    <label for="complementoComercial">Complemento</label>
-                    <input id="complementoComercial" name="complementoComercial" type="text" placeholder="casa, apto" class="form-control input-md" value="{{endereco_comercial.complemento}}"  disabled={{profissao.controlador}}>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label for="cidadeComercial">Cidade</label>
-                    <input id="cidadeComercial" name="cidadeComercial" type="text" placeholder="cidade" class="form-control input-md" value="{{endereco_comercial.cidade}}" disabled={{profissao.controlador}}>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label for="ufComercial">UF</label>
-                    <select class="form-control" name="uf" id="ufComercial" value="{{endereco_comercial.uf}}" disabled={{profissao.controlador}}>
-                      <option value="">{{endereco_comercial.uf}}</option>
+                  <div class="form-group col-md-4">
+                    <label for="ufCentroEspirita">UF</label>
+                    <select class="form-control" name="uf" id="ufCentroEspirita" >
+                      <option value={{transferencia.uf_centro_espirita}}>{{transferencia.uf_centro_espirita}}</option>
                       <option value="AC">AC</option>
                       <option value="AL">AL</option>
                       <option value="AM">AM</option>
@@ -1015,142 +1194,41 @@
                       <option value="TO">TO</option>
                     </select>
                   </div>
+                  <div class="form-group col-md-4">
+                      <label for="tempoCentroEspirita">Tempo que frequentou esse Centro Espírita</label>
+                      <input type="text" class="form-control" id="tempoCentroEspirita" value="{{transferencia.tempo_centro_espirita}}">
+                    </div>
                 </div>
-              </form>
-            </div>
-          </form>
-        </div>
-      </section>
-    </fieldset>
-    <fieldset name="escolaridade">
-      <legend>Escolaridade</legend>
-      <section>
-        <div class="container escolaridade ">
-          <form class="form-control">
-            <div class="form-row">
-              <div class="form-group col-sm-4">
-                <label for="escolaridade">Grau de Instrução</label>
-                <select class="form-control" name="escolaridade" id="escolaridade" value="{{escolaridade.grau}}">
-                  <option value="{{escolaridade.grau}}" selected>{{escolaridade.grau}}</option>
-                  <option value="1">Fundamental - Incompleto</option>
-                  <option value="2">Fundamental - Completo</option>
-                  <option value="3">Médio - Incompleto</option>
-                  <option value="4">Médio - Completo</option>
-                  <option value="5">Superior - Incompleto</option>
-                  <option value="6">Superior - Completo</option>
-                  <option value="7">Pós-graduação - Incompleto</option>
-                  <option value="8">Pós-graduação - Completo</option>
-                  <option value="9">Pós-graduação Mestrado - Incompleto</option>
-                  <option value="10">Pós-graduação Mestrado - Completo</option>
-                  <option value="11">Pós-graduação Doutorado - Incompleto</option>
-                  <option value="12">Pós-graduação Doutorado - Completo</option>
-                  <option value="13">Pós Doutorado - Incompleto</option>
-                  <option value="14">Pós Doutorado - Completo</option>
-                  <option value="15">Outros</option>
-                </select>
-              </div>
-              <div class="form-group col-sm-4" >
-                <label for="cursoEscolaridade">Curso</label>
-                <input class="form-control" type="text" id="cursoEscolaridade" placeholder="curso" value="{{curso_escolaridade}}" disabled>
-              </div>
-              <div class="form-group col-sm-4" >
-                <label for="instituicaoEscolaridade">Instituição</label>
-                <input class="form-control" type="text" id="instituicaoEscolaridade" placeholder="instituição" value="{{instituicao_escolaridade}}" disabled>
-              </div>
-            </div>
-            <div class="form-group ">
-              <label for="descricaoAtividades">Outras habilidades que você desempenha, as quais poderiam ser
-                desenvolvidas como voluntário(a) na casa</label>
-              <textarea class="form-control" name="descricaoAtividades" id="descricaoAtividades" cols="60" rows="5" value="{{escolaridade.descricao_atividades}}"></textarea>
-            </div>
-          </form>
-        </div>
-      </section>
-    </fieldset>
-    <fieldset name="transferencia">
-      <legend>Transferência</legend>
-      <div class="container transferencia">
-        <form class="form-control">
-          <div class="form-group">
-            <label for="transferencia">Você vem transferido de algum outro Centro Espírita?</label>
-            <select name="transferencia" id="transferencia">
-              <option value="{{transferencia.transferido}}" selected>{{transferencia.transferido}}</option>
-              <option value="Não">Não</option>
-              <option value="Sim">Sim</option>
-            </select>
-          </div>
-          <div class="form-row dados-transferencia" >
-            <div class="form-group col-md-4">
-              <label for="nomeCentroEspirita">Nome do Centro Espírita</label>
-              <input type="text" class="form-control" id="nomeCentroEspirita" placeholder="" value="{{transferencia.nome_centro_espirita}}" disabled>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="cidadeCentroEspirita">Cidade</label>
-              <input type="text" class="form-control" id="cidadeCentroEspirita" value="{{transferencia.cidade_centro_espirita}}" disabled>
-            </div>
-            <div class="form-group col-md-4">
-              <label for="ufCentroEspirita">UF</label>
-              <select class="form-control" name="uf" id="ufCentroEspirita" disabled>
-                <option value="">{{transferencia.uf_centro_espirita}}</option>
-                <option value="AC">AC</option>
-                <option value="AL">AL</option>
-                <option value="AM">AM</option>
-                <option value="AP">AP</option>
-                <option value="BA">BA</option>
-                <option value="CE">CE</option>
-                <option value="DF">DF</option>
-                <option value="ES">ES</option>
-                <option value="GO">GO</option>
-                <option value="MA">MA</option>
-                <option value="MG">MG</option>
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="PA">PA</option>
-                <option value="PB">PB</option>
-                <option value="PE">PE</option>
-                <option value="PI">PI</option>
-                <option value="PR">PR</option>
-                <option value="RJ">RJ</option>
-                <option value="RN">RN</option>
-                <option value="RS">RS</option>
-                <option value="RO">RO</option>
-                <option value="RR">RR</option>
-                <option value="SC">SC</option>
-                <option value="SE">SE</option>
-                <option value="SP">SP</option>
-                <option value="TO">TO</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="tempoCentroEspirita">Tempo que frequentou esse Centro Espírita</label>
-              <input type="text" class="form-control" id="tempoCentroEspirita" value="{{transferencia.tempo_centro_espirita}}" disabled>
-            </div>
-          </div>
+                
+          </fieldset>
           <div>
-            <h6 for="estudosDoutrina">  Estudos da Doutrina Espírita que você desenvolveu em grupo no (s) CENTRO(s)
+              <button style="float:left" id="editarDadosCentroEspirita" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i> Editar dados do Centro Espírita</button>
+          </div> <br> <br> 
+          <div>
+            <h6 for="estudosDoutrina"> Estudos da Doutrina Espírita que você desenvolveu em grupo no (s) CENTRO(s)
               ESPÍRITA(s) ANTERIOR(es)</h6>
           </div>
-            <div class="form-group estudo-obras">
-              <label for="tomosESede">Tomos do ESDE - Quais?</label>
-              <input type="text" class="form-control col-md-6" id="tomosESede" value="{{transferencia.tomos_esede}}">
-            </div>
-            <div class="form-group estudo-obras">
-              <label for="tomosEade">Tomos do EADE - Quais?</label>
-              <input type="text" class="form-control col-md-6" id="tomosEade" value="{{transferencia.tomos_eade}}">
-            </div>
-            <div class="form-group estudo-obras">
-              <label for="obrasBasicas">Obras Básicas - Quais?</label>
-              <input type="text" class="form-control col-md-6" id="obrasBasicas" value="{{transferencia.obras_basicas}}">
-            </div>
-            <div class="form-group estudo-obras">
-              <label for="outrasObras">Outras obras - Quais?</label>
-              <input type="text" class="form-control col-md-6" id="outrasObras" value="{{transferencia.outras_obras}}">
-            </div>
+          <div class="form-group estudo-obras">
+            <label for="tomosESede">Tomos do ESDE - Quais?</label>
+            <input type="text" class="form-control col-md-6" id="tomosESede" value="{{transferencia.tomos_esede}}">
+          </div>
+          <div class="form-group estudo-obras">
+            <label for="tomosEade">Tomos do EADE - Quais?</label>
+            <input type="text" class="form-control col-md-6" id="tomosEade" value="{{transferencia.tomos_eade}}">
+          </div>
+          <div class="form-group estudo-obras">
+            <label for="obrasBasicas">Obras Básicas - Quais?</label>
+            <input type="text" class="form-control col-md-6" id="obrasBasicas" value="{{transferencia.obras_basicas}}">
+          </div>
+          <div class="form-group estudo-obras">
+            <label for="outrasObras">Outras obras - Quais?</label>
+            <input type="text" class="form-control col-md-6" id="outrasObras" value="{{transferencia.outras_obras}}">
+          </div>
           <div class="form-row">
             <div class="form-group col-sm-8">
               <h6>Atividades voluntárias que você desenvolveu no (s) CENTRO(s) ESPÍRITA(s) ANTERIOR(es)</h6>
             </div>
-            
+
           </div>
           <div class="container-fluid lista-atividades">
             {{#if atividades_voluntarias}}
@@ -1173,8 +1251,7 @@
                       <input type="text" class="tempo-atividade" id="tempoAtividadeVoluntaria" value="{{tempo}}">
                     </div>
                   </td>
-                  <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria"><i
-                        class="fa fa-trash"></i></button>
+                  <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria"><i class="fa fa-trash"></i></button>
                   </td>
                 </tr>
                 {{/each}}
@@ -1193,8 +1270,7 @@
                     <input type="text" class="tempo-atividade" id="tempoAtividadeVoluntaria" value="{{tempo}}">
                   </div>
                 </td>
-                <td><button type="button" class="btn btn-sm btn-outline-info btn-delete-atividade" id="removeAtividadeVoluntaria" disabled><i
-                      class="fa fa-trash"></i></button>
+                <td><button type="button" class="btn btn-sm btn-outline-danger btn-delete-atividade" id="removeAtividadeVoluntaria" disabled><i class="fa fa-trash"></i></button>
                 </td>
               </tr>
             </tbody>
@@ -1215,16 +1291,16 @@
               </thead>
               <tbody>
                 {{#each experiencia }}
-                    <tr class="experiencia-pratica">
-                      <th scope="row">
-                       <input class="checkbox-experienca-pratica" type="checkbox" name="colors" value="red" checked={{value}} />
-                      </th>
-                      <td>{{atividade}}</td>
-                      <td>
-                        <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" value="{{tempo}}" disabled={{disable}}>
-                      </td>
-                    </tr>
-              {{/each}}
+                <tr class="experiencia-pratica">
+                  <th scope="row">
+                    <input class="checkbox-experienca-pratica" type="checkbox" name="colors" value="red" checked={{value}} />
+                  </th>
+                  <td>{{atividade}}</td>
+                  <td>
+                    <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" value="{{tempo}}" disabled={{disable}}>
+                  </td>
+                </tr>
+                {{/each}}
               </tbody>
             </table>
 
@@ -1253,12 +1329,144 @@
         </form>
       </div>
     </fieldset>
+   <section>
+      <div class="container atividades">
+          <form class="form-control">
+            <div class="row">
+                <div class="form-group col-sm-4">
+                  </div>
+                  <div class="form-group col-sm-4">
+                      <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target=".internos" aria-expanded="false" aria-controls="multiCollapseExample2" >Preenchimento Interno CEAHA</button>
+                  </div>
+                  <div class="form-group col-sm-4">
+                  </div>
+            </div>
+            
+          </form>
+        </div>
+   </section>
+   <fieldset class=" interno" name="preenchimentoInterno">
+      <div class="container transferencia">
+          <form class="form-control">
+
+            <table class="table table-hover tipo-socio">
+                <thead>
+                  <tr>
+                    <th scope="col" width="50">Selecione</th>
+                    <th scope="col" width="100">Tipo de sócio</th>
+                    <th scope="col" width="100">Valor Mensal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="socio">
+                    <th scope="row">
+                      <input class="checkbox-tipo-socio" type="checkbox" name="socioLivre" id="socioLivre" value="Socio Livre" data-target="socioLivre">
+                    </th>
+                    <td>Sócio Livre</td>
+                    <td>
+                      <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" disabled>
+                    </td>
+                  </tr>
+                  <tr class="socio">
+                    <th scope="row">
+                      <input class="checkbox-tipo-socio" type="checkbox" name="socioVoluntario" id="socioVoluntario" value="Socio Voluntario" data-target="socioVoluntario">
+                    </th>
+                    <td>Sócio Voluntário</td>
+                    <td>
+                      <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" disabled>
+                    </td>
+                  </tr>
+                  <tr class="socio">
+                    <th scope="row">
+                      <input class="checkbox-tipo-socio" type="checkbox" name="socioEfetivo" id="socioEfetivo"
+                        value="Socio Efetivo" data-target="socioEfetivo">
+                    </th>
+                    <td>Sócio Efetivo</td>
+                    <td>
+                      <input class="input-time " type="text" name="mediumSensitivoTempo" id="mediumSensitivoTempo" placeholder="" disabled>
+                    </td>
+                  </tr>
+  
+                </tbody>
+            </table>
+            <fieldset id="addAtividadeInterna">
+              <section id="sectionAddAtividadeInterna">
+                <form id="formAtividadeInterna" action="">
+                    <section>
+                      <h3>Atividades Internas Realizadas</h3>
+                        <table class="table table-bordered atividade-interna">
+                            <thead class="table-head">
+                              <th>Ano</th>
+                              <th>Atividade</th>
+                              <th colspan="2">Frequencia</th>
+                            </thead>
+                            <tbody id="atividadeTableBody">
+                              <tr class="table-row atividade-interna-departamento" id="atividadeItem" >
+                                <td colspan="4">
+                                  <div class="col" >
+                                      <select class="form-control" name="uf" id="departamento" value="">
+                                          <option value="select">Selecione um Departamento</option>
+                                          <option value="DIJE"> DIJE  – DEPARTAMENTO  DE  INF NCIA E JUVENTUDE ESPÍRITA</option>
+                                          <option value="DECDE"> DECDE  – DEPARTAMENTO  DE  ESTUDO CONTINUADO DA DOUTRINA ESPÍRITA</option>
+                                          <option value="DDOU"> DDOU – DEPARTAMENTO DOUTRINÁRIO</option>
+                                          <option value="DAFT"> DAFT – DEPARTAMENTO DO ATENDIMENTO FRATERNO</option>
+                                          <option value="DMED"> DMED  – DEPARTAMENTO  DE  MEDIUNIDADE</option>
+                                          <option value="DPAS"> DPAS - DEPARTAMENTO DO PASSE</option>
+                                          <option value="DAPS"> DAPS – DEPARTAMENTO DE ASSISTÊNCIA  E PROMOÇÃO SOCIAL</option>
+                                          <option value="DFAM">  DFAM - DEPARTAMENTO DE FAMÍLIA</option>
+                                        </select>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr class="table-row atividade-interna-item" id="atividadeItem">
+                                <td>
+                                  <div class="col">
+                                    <input type="text" class="atividade-interna-item-ano" id="atividadeInternaAno" value="" placeholder="ano">
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="col">
+                                    <input type="text" class="atividade-interna-item-atividade" id="tempoAtividadeVoluntaria" value=""  placeholder="atividades realizadas">
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="col">
+                                    <input type="text" class="atividade-interna-item-total frequencia" id="atividadeInternaAno" value="" placeholder="total">
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="col">
+                                    <input type="text" class="atividade-interna-item-real frequencia" id="atividadeInternaAno" value="" placeholder="real">
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr class="table-row atividade-interna-add">
+                                <td colspan="4">
+                                  <div class="col">
+                                      <button type="submit" class="btn btn-primary" id="editar">Adicionar Atividade</button>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        
+                      </section>
+                </form>
+                  
+              </section>
+            </fieldset>
+            
+              
+          </form>
+        </div>
+   </fieldset>
     <section>
       <div class="container button">
         <form class="form-control">
           <div class="form-group">
-            <label for="submit"></label>
-            <button type="submit" class="btn btn-primary" id="cadastrar">Cadastrar</button>
+            <button type="submit" class="btn btn-primary" id="editar">Salvar Edição</button>
+            <button type="submit" class="btn btn-danger" id="cancelar">Cancelar Edição</button>
           </div>
         </form>
       </div>
@@ -1267,12 +1475,12 @@
 
 </template>
 
+
 <template name="preenchimentoInterno">
   <div class="container">
-    <div class="form">
-      <div class="form-group">
-
-      </div>
-    </div>
+      <fieldset name="preenchimentoInterno">
+          <legend style="text-align: center">Preenchimento interno do CEAHA</legend>
+          
+      </fieldset>
   </div>
 </template>

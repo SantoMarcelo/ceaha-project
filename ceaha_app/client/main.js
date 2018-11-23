@@ -331,13 +331,6 @@ Template.listaParticipante.events({
 })
 
 Template.editarParticipante.onCreated(function () {
-    console.log("Inicio");
-    $('#transferencia').click();
-        this.obj = new ReactiveVar(Participantes.find());
-        
-        
-    
-
 
     //console.log("aqui" + $('#transferencia').val()); 
     var transferencia = $('#transferencia').val();
@@ -369,6 +362,20 @@ Template.editarParticipante.helpers({
 
 Template.editarParticipante.events({
 
+    'click #aposentadoria'(event, instance) {
+        event.preventDefault();
+        var aposentado = $('#aposentadoria').val();
+        
+        if (aposentado == "false") {
+            $('#fieldDadosProfissionais').prop("disabled", false)
+        }else{
+            $('#fieldDadosProfissionais').prop("disabled", true)
+        }
+    },
+    'click #editarProfissao'(event){
+        event.preventDefault();
+        $('#fieldDadosProfissionais').prop("disabled", false)
+    },
     
     'click #adicionaAtividade'(event, instance) {
         event.preventDefault();
@@ -388,56 +395,34 @@ Template.editarParticipante.events({
         event.preventDefault();
         var transferencia = $('#transferencia').val();
         if (transferencia == 'Sim') {
-            $('#nomeCentroEspirita').prop("disabled", false);
-            $('#cidadeCentroEspirita').prop("disabled", false);
-            $('#tempoCentroEspirita').prop("disabled", false);
-            $('#ufCentroEspirita').prop("disabled", false);
+            $('#dadosTransferencia').prop("disabled", false)
         } else {
-            $('#nomeCentroEspirita').prop("disabled", true);
-            $('#cidadeCentroEspirita').prop("disabled", true);
-            $('#tempoCentroEspirita').prop("disabled", true);
-            $('#ufCentroEspirita').prop("disabled", true);
+            $('#dadosTransferencia').prop("disabled", true)
         }
     },
 
-    'click #aposentadoria'(event, instance) {
+    'click #editarDadosCentroEspirita'(event){
         event.preventDefault();
-        var aposentado = $('#aposentadoria').val();
-        
-        if (aposentado == "false") {
-            $('#inputLocalTrabalho').prop("disabled", false);
-            $('#telComercial').prop("disabled", false);
-            $('#cepComercial').prop("disabled", false);
-            $('#logradouroComercial').prop("disabled", false);
-            $('#numeroComercial').prop("disabled", false);
-            $('#bairroComercial').prop("disabled", false);
-            $('#complementoComercial').prop("disabled", false);
-            $('#cidadeComercial').prop("disabled", false);
-            $('#ufComercial').prop("disabled", false);
-        }else{
-            $('#inputLocalTrabalho').prop("disabled", true);
-            $('#telComercial').prop("disabled", true);
-            $('#cepComercial').prop("disabled", true);
-            $('#logradouroComercial').prop("disabled", true);
-            $('#numeroComercial').prop("disabled", true);
-            $('#bairroComercial').prop("disabled", true);
-            $('#complementoComercial').prop("disabled", true);
-            $('#cidadeComercial').prop("disabled", true);
-            $('#ufComercial').prop("disabled", true);
-        }
+        console.log($('#dadosTransferencia'))
+        $('#dadosTransferencia').prop("disabled", false)
     },
+    
 
     'click #escolaridade'(event, instance) {
         event.preventDefault();
         var escolaridade = $('#escolaridade').val();
-        if (escolaridade < 4) {
-            $('#inputCursoEscolaridade').prop("disabled", true);
-            $('#instituicaoEscolaridade').prop("disabled", true);
+        if (escolaridade <= 4) {
+            $('#dadosEscolares').prop("disabled", true)
         } else {
-            $('#inputCursoEscolaridade').prop("disabled", false);
-            $('#instituicaoEscolaridade').prop("disabled", false);
+            $('#dadosEscolares').prop("disabled", false)
         }
     },
+
+    'click #editarDadosEscolares'(event){
+        event.preventDefault();
+        $('#dadosEscolares').prop("disabled", false)
+    },
+    
 
     'click .checkbox-experienca-pratica'(event, instance) {
         event.preventDefault();
@@ -452,7 +437,21 @@ Template.editarParticipante.events({
 
     },
 
-    'click #salvar'(event, instance) {
+    'click #atividadeAno'(event){
+        event.preventDefault();
+        var myDate = new Date();
+        var year = myDate.getFullYear();
+        for(var i = 1950; i < year+1; i++){
+            //document.find()write('<option value="'+i+'">'+i+'</option>');
+            $('#atividadeAno').append('<option value="'+i+'">'+i+'</option>');
+        }
+
+        
+    
+        $('#atividadeAno').html(itensOrdenados);
+    },
+
+    'click #editar'(event, instance) {
         event.preventDefault();
         var participante = getFormData()
 
@@ -484,6 +483,11 @@ Template.editarParticipante.events({
         //       sAlert.success('Participante cadastrado com sucesso.')
         //   }
         // })     
+    },
+
+    'click #cancelar'(event){
+        event.preventDefault();
+        window.location.href = ('/home');
     }
 })
 
