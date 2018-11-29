@@ -6,7 +6,7 @@ import { Mongo } from 'meteor/mongo';
 Meteor.startup(() => {
   
   const Participantes = new Mongo.Collection('participantes');
-
+  const Atividades = new Mongo.Collection('atividades');
   
 
   Meteor.methods({
@@ -18,6 +18,9 @@ Meteor.startup(() => {
     },
     'updateParticipante'(id, participante){
       Participantes.update({_id:id},{$set:participante});
+    },
+    'adicionaAtividadeInterna'(atividade){
+      Atividades.insert(atividade);
     }
   });
 });

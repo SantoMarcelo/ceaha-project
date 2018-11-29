@@ -132,6 +132,27 @@ export function getAposentadoValue(){
   
 }
 
+export function getAtividadesInternas(){
+  console.log("Aqui");
+  var atividades_internas = new Array();
+  var atividade_interna = {
+    ano: $('#atividadeInternaAno').val(),
+    atividade: $('#atividadeInterna').val(),
+    frequencia_total: $('#atividadeInternaFreqTotal').val(),
+    frequencia_real: $('#atividadeInternaFreqReal').val(),
+    departamento: $('#atividadeInternaDepartamento option:selected').text(),
+  }
+  atividades_internas.push(atividade_interna);
+  return atividades_internas;
+}
+
+export function setAtividadeInterna(){
+  var atividades_list = getAtividadesInternas()
+  console.log(atividades_list[0]);
+
+  $('#anoListaAtvidade').val(atividades_list[0].ano);
+}
+
 export function setMasks(){
 
   $('date-birth').Inputmask('99/99/9999');

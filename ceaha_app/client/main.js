@@ -2,13 +2,14 @@ import { Template } from 'meteor/templating';
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { getFormData, getMediumData, adicionaAtividade, removeAtividade } from './js/services.js'
+import { getFormData, getMediumData, adicionaAtividade, getAtividadesInternas, setAtividadeInterna, removeAtividade } from './js/services.js'
 
 import './main.html';
 //import './services.js';
 
 
 const Participantes = new Mongo.Collection('participantes');
+const Atividades = new Mongo.Collection('atividades');
 
 Meteor.startup(function () {
 
@@ -40,7 +41,6 @@ Router.route('/editarParticipante/:_id', {
     data: function () {
         
         //var participante = Participantes.findOne({ _id: this.params._id });
-        
         return Participantes.findOne({ _id: this.params._id });
     },
 
@@ -291,7 +291,7 @@ Template.novoParticipante.events({
 
 Template.listaParticipante.onCreated(function () {
     this.participante = new ReactiveVar(Participantes.find());
-
+    console.log(this.participante);
 })
 
 Template.listaParticipante.helpers({
@@ -331,8 +331,10 @@ Template.listaParticipante.events({
 })
 
 Template.editarParticipante.onCreated(function () {
-
-    //console.log("aqui" + $('#transferencia').val()); 
+    
+    this.atividades = new ReactiveVar(Atividades.find());
+    var atividadeList = this.atividades.curValue.collection._docs._map
+    console.log(atividadeList); 
     var transferencia = $('#transferencia').val();
     if (transferencia == 'Sim') {
         $('#nomeCentroEspirita').prop("disabled", false);
@@ -351,13 +353,9 @@ Template.editarParticipante.onCreated(function () {
 })
 
 Template.editarParticipante.helpers({
-    
-    // checkedClass(todo){ 
-    //     return todo.checked && 'checked';
-    // }
-    
-   
-   
+    'listaAtividades': function () {
+        return Template.instance().atividadeList.get();
+    },
 })
 
 Template.editarParticipante.events({
@@ -426,8 +424,6 @@ Template.editarParticipante.events({
 
     'click .checkbox-experienca-pratica'(event, instance) {
         event.preventDefault();
-        console.log(event);
-        console.log(instance.parentNode);
         $(".experiencia-pratica").each(function (i) {
             //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
             if ($(this).find('input.checkbox-experienca-pratica:checked').length > 0) {
@@ -488,13 +484,52 @@ Template.editarParticipante.events({
     'click #cancelar'(event){
         event.preventDefault();
         window.location.href = ('/home');
+    },
+
+    'click .checkbox-tipo-socio'(event, instance) {
+        event.preventDefault();
+        console.log("tamo aqui")
+        
+        $("tr.tipo-socio-item").each(function (i) {
+            console.log(i);
+            $(this).find('input.checkbox-tipo-socio').prop("checked", true)
+            //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+            if ($(this).find('input.checkbox-tipo-socio:checked').length > 0) {
+                
+                $(this).find('.input-valor-mensal').prop("disabled", false);
+            }
+        });
+
+    },
+
+    'click #btnAddAtividadeInterna'(event, instance){
+        event.preventDefault();
+        var participante = getFormData()
+        var atividade = getAtividadesInternas();
+        atividade.participante_id = this._id;
+        participante.atividades_internas = atividade;
+
+        setAtividadeInterna();
+        
+        // Meteor.call('adicionaAtividadeInterna', this._id, atividade, function (err, res) {
+        //     if (err) {
+        //         sAlert.error(err.reason)
+        //         return false;
+        //     } else {
+        //         sAlert.success('Atividade adicionada com sucesso.')
+        //     }
+        // })
+        // Meteor.call('updateParticipante', this._id, participante, function (err, res) {
+        //     if (err) {
+        //         sAlert.error(err.reason)
+        //         return false;
+        //     } else {
+        //         sAlert.success('Participante alterado com sucesso.')
+        //     }
+        // })
     }
 })
 
-Template.editarParticipante.helpers({
-    // 'listaParticipantes': function () {
-    //    return Template.instance().participante.get();
-    // },
-})
+
 
 
