@@ -54,3 +54,9 @@ h3{
 .atividade-interna-add{
   text-align: right;
 }
+.td-acoes{
+  text-align: center;
+}
+.atividade-item{
+  text-align: center !important;
+}

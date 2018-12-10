@@ -45,6 +45,16 @@ Router.route('/editarParticipante/:_id', {
     },
 
 });
+Router.route('/adicionarAtividade/:_id', {
+    name: 'add activity',
+    template: 'preenchimentoInterno',
+    data: function () {
+        
+        //var participante = Participantes.findOne({ _id: this.params._id });
+        return Participantes.findOne({ _id: this.params._id });
+    },
+
+});
 
 
 Template.navbar.events({
@@ -326,6 +336,13 @@ Template.listaParticipante.events({
         //console.log(this._id);
         window.location.href = ('/editarParticipante/' + this._id);
 
+    },
+
+    'click #addAtividade'(event, instance) {
+        event.preventDefault();
+        //console.log(this._id);
+        window.location.href = ('/adicionarAtividade/' + this._id);
+
     }
 
 })
@@ -530,6 +547,33 @@ Template.editarParticipante.events({
     }
 })
 
+Template.preenchimentoInterno.events({
+    'click #btnAddAtividadeInterna'(event, instance){
+        event.preventDefault();
+        
+        var atividades = {
+            ano: $('#atividadeInternaAno').val(),
+            atividade: $('#atividadeInterna').val(),
+            freq_total: $('#atividadeInternaFreqTotal').val(),
+            freq_real: $('#atividadeInternaFreqReal').val(),
+            departamento: $('#atividadeInternaDepartamento option:selected').text(),
+          }
+          console.log(atividades);
+
+          $('#anoAtividadeLista').text(atividades.ano);
+          $('#AtividadeLista').text( atividades.atividade);
+          $('#freqRealAtividadeLista').text(atividades.freq_real);
+          $('#freqTotalAtividadeLista').text( atividades.freq_total);
+          $('#deptoAtividadeLista').text( atividades.departamento);
+               
+        //   $('#anoAtividadeLista').prop("value", atividades.ano);
+        //   $('#AtividadeLista').prop("value", atividades.atividade);
+        //   $('#freqRealAtividadeLista').prop("value", atividades.freq_real);
+        //   $('#freqTotalAtividadeLista').prop("value", atividades.freq_total);
+        //   $('#deptoAtividadeLista').prop("value", atividades.departamento);
+               
+    }
+})
 
 
 

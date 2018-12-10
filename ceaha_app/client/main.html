@@ -746,7 +746,9 @@
           <th>Cidade</th>
           <th>UF</th>
           <th>Data Nascimento</th>
-          <th></th>
+          <th>Editar</th>
+          <th>Adiconar Atividade</th>
+          <th>Apagar</th>
         </thead>
         <tbody>
           {{#each listaParticipantes}}
@@ -756,6 +758,7 @@
             <td>{{uf}}</td>
             <td>{{nascimento}}</td>
             <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></button></td>
+            <td class="td-acoes"><button id="addAtividade" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button></td>
             <td class="td-acoes"><button id="deletarContato" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button></td>
           </tr>
           {{/each}}
@@ -1345,150 +1348,77 @@
           </form>
         </div>
    </section>
-   <fieldset class=" interno" name="preenchimentoInterno">
+   
+    <section>
+      <div class="container button">
+        <form class="form-control">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="editar">Salvar Edição</button>
+            <button type="submit" class="btn btn-danger" id="cancelar">Cancelar Edição</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+</template>
+
+
+<template name="preenchimentoInterno">
+  <div class="container">
+    <fieldset name="preenchimentoInterno">
+        <legend style="text-align: center">Preenchimento interno do CEAHA</legend>
+    </fieldset>
+    <fieldset class=" interno" name="preenchimentoInterno">
       <div class="container transferencia">
-          <form class="form-control">
+        <form class="form-control">
+          <h5 class="text" style="text-align: center">Colaborador: {{nome}}</h5>
+          <table class="table table-hover tipo-socio">
+              <thead>
+                <tr>
+                  <th scope="col" width="50">Selecione</th>
+                  <th scope="col" width="100">Tipo de sócio</th>
+                  <th scope="col" width="100">Valor Mensal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="tipo-socio-item">
+                  <th scope="row">
+                    
+                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioLivre" id="socioLivre" value="Socio Livre" data-target="" >
+                  </th>
+                  <td>Sócio Livre</td>
+                  <td>
+                    <input class="input-valor-mensal " type="text" name="socioLivreMEnsalidade" id="socioLivreMEnsalidade" placeholder="" disabled>
+                  </td>
+                </tr>
+                <tr class="tipo-socio-item">
+                  <th scope="row">
+                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioVoluntario" id="socioVoluntario" value="Socio Voluntario" data-target="socioVoluntario">
+                  </th>
+                  <td>Sócio Voluntário</td>
+                  <td>
+                    <input class="input-valor-mensal " type="text" name="socioVoluntarioMEnsalidade" id="socioVoluntarioMEnsalidade" placeholder="" disabled>
+                  </td>
+                </tr>
+                <tr class="tipo-socio-item">
+                  <th scope="row">
+                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioEfetivo" id="socioEfetivo" value="Socio Efetivo" data-target="socioEfetivo">
+                  </th>
+                  <td>Sócio Efetivo</td>
+                  <td>
+                    <input class="input-valor-mensal " type="text" name="socioEfetivoMensalidade" id="socioEfetivoMensalidade" placeholder="" disabled>
+                  </td>
+                </tr>
 
-            <table class="table table-hover tipo-socio">
-                <thead>
-                  <tr>
-                    <th scope="col" width="50">Selecione</th>
-                    <th scope="col" width="100">Tipo de sócio</th>
-                    <th scope="col" width="100">Valor Mensal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="tipo-socio-item">
-                    <th scope="row">
-                      
-                      <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioLivre" id="socioLivre" value="Socio Livre" data-target="" >
-                    </th>
-                    <td>Sócio Livre</td>
-                    <td>
-                      <input class="input-valor-mensal " type="text" name="socioLivreMEnsalidade" id="socioLivreMEnsalidade" placeholder="" disabled>
-                    </td>
-                  </tr>
-                  <tr class="tipo-socio-item">
-                    <th scope="row">
-                      <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioVoluntario" id="socioVoluntario" value="Socio Voluntario" data-target="socioVoluntario">
-                    </th>
-                    <td>Sócio Voluntário</td>
-                    <td>
-                      <input class="input-valor-mensal " type="text" name="socioVoluntarioMEnsalidade" id="socioVoluntarioMEnsalidade" placeholder="" disabled>
-                    </td>
-                  </tr>
-                  <tr class="tipo-socio-item">
-                    <th scope="row">
-                      <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioEfetivo" id="socioEfetivo" value="Socio Efetivo" data-target="socioEfetivo">
-                    </th>
-                    <td>Sócio Efetivo</td>
-                    <td>
-                      <input class="input-valor-mensal " type="text" name="socioEfetivoMensalidade" id="socioEfetivoMensalidade" placeholder="" disabled>
-                    </td>
-                  </tr>
-  
-                </tbody>
-            </table>
-            <fieldset id="addAtividadeInterna">
-              <section id="sectionAddAtividadeInterna">
-                <form id="formAtividadeInterna" action="">
-                    <section>
-                      <h3>Atividades Internas Realizadas</h3>
-                        <table class="table table-bordered atividade-interna">
-                            <thead class="table-head">
-                              <th>Ano</th>
-                              <th>Atividade</th>
-                              <th colspan="2">Frequencia</th>
-                            </thead>
-                            <tbody id="atividadeTableBody">
-                              <tr class="table-row atividade-interna-item" id="atividadeItem">
-                                <td>
-                                  <div class="col">
-                                    <input type="text" class="atividade-interna-item-ano" id="atividadeInternaAno" value="" placeholder="ano">
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="col">
-                                    <input type="text" class="atividade-interna-item-atividade" id="atividadeInterna" value=""  placeholder="atividades realizadas">
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="col">
-                                    <input type="text" class="atividade-interna-item-total frequencia" id="atividadeInternaFreqTotal" value="" placeholder="total">
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="col">
-                                    <input type="text" class="atividade-interna-item-real frequencia" id="atividadeInternaFreqReal" value="" placeholder="real">
-                                  </div>
-                                </td>
-                              </tr>
-                              
-                              <tr class="table-row atividade-interna-departamento" id="atividadeItem" >
-                                <td colspan="4">
-                                  <div class="col" >
-                                      <select class="form-control" name="uf" id="atividadeInternaDepartamento" value="">
-                                          <option value="select">Selecione um Departamento</option>
-                                          <option value="DIJE"> DIJE  – DEPARTAMENTO  DE  INF NCIA E JUVENTUDE ESPÍRITA</option>
-                                          <option value="DECDE"> DECDE  – DEPARTAMENTO  DE  ESTUDO CONTINUADO DA DOUTRINA ESPÍRITA</option>
-                                          <option value="DDOU"> DDOU – DEPARTAMENTO DOUTRINÁRIO</option>
-                                          <option value="DAFT"> DAFT – DEPARTAMENTO DO ATENDIMENTO FRATERNO</option>
-                                          <option value="DMED"> DMED  – DEPARTAMENTO  DE  MEDIUNIDADE</option>
-                                          <option value="DPAS"> DPAS - DEPARTAMENTO DO PASSE</option>
-                                          <option value="DAPS"> DAPS – DEPARTAMENTO DE ASSISTÊNCIA  E PROMOÇÃO SOCIAL</option>
-                                          <option value="DFAM">  DFAM - DEPARTAMENTO DE FAMÍLIA</option>
-                                        </select>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr class="table-row atividade-interna-add">
-                                <td colspan="4">
-                                  <div class="col">
-                                      <button type="submit" class="btn btn-primary" id="btnAddAtividadeInterna">Adicionar Atividade</button>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-
-                        
-                      </section>
-                </form>
-                  
-              </section>
-            </fieldset>
-            
-              
-          </form>
-        </div>
-   </fieldset>
-   <fieldset name="atividadesInternasList">
-    <div class="container transferencia">
-      <form class="form-control">
-        <fieldset id="addAtividadeInterna">
-          <section id="sectionAddAtividadeInterna">
-            <form id="formAtividadeInterna" action="">
-                <section>
-                  <h3>Atividades Internas Realizadas</h3>
-                  <div class="col-sm-6">
-                    <div class="row">
-                      <div class="col-xs-6 text-right oppt-label">Ano:
-                      </div>
-                      <div class="col-xs-6 text-right oppt-label" id="anoAtividadeLista">ASD
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="row">
-                      <div class="col-xs-6 text-right oppt-label">Atividade:
-                      </div>
-                      <div class="col-xs-6 text-right oppt-label" id="anoAtividadeLista">ASD
-                      </div>
-
-                    </div>
-                  </div>
-                    <table class="table table-bordered atividade-interna">
+              </tbody>
+          </table>
+          <fieldset id="addAtividadeInterna">
+            <section id="sectionAddAtividadeInterna">
+              <form id="formAtividadeInterna" action="">
+                  <section>
+                    <h3>Atividades Internas Realizadas</h3>
+                      <table class="table table-bordered atividade-interna">
                         <thead class="table-head">
                           <th>Ano</th>
                           <th>Atividade</th>
@@ -1498,22 +1428,22 @@
                           <tr class="table-row atividade-interna-item" id="atividadeItem">
                             <td>
                               <div class="col">
-                                <input type="text" class="atividade-interna-item-ano" id="anoListaAtvidade" value={{participante_id}} placeholder="ano">
+                                <input type="text" class="atividade-interna-item-ano" id="atividadeInternaAno" value="" placeholder="ano">
                               </div>
                             </td>
                             <td>
                               <div class="col">
-                                <input type="text" class="atividade-interna-item-atividade" id="atividadeListaAtividade" value=""  placeholder="atividades realizadas">
+                                <input type="text" class="atividade-interna-item-atividade" id="atividadeInterna" value=""  placeholder="atividades realizadas">
                               </div>
                             </td>
                             <td>
                               <div class="col">
-                                <input type="text" class="atividade-interna-item-total frequencia" id="freqTotalListaAtividade" value="" placeholder="total">
+                                <input type="text" class="atividade-interna-item-total frequencia" id="atividadeInternaFreqTotal" value="" placeholder="total">
                               </div>
                             </td>
                             <td>
                               <div class="col">
-                                <input type="text" class="atividade-interna-item-real frequencia" id="freqRealListaAtividade" value="" placeholder="real">
+                                <input type="text" class="atividade-interna-item-real frequencia" id="atividadeInternaFreqReal" value="" placeholder="real">
                               </div>
                             </td>
                           </tr>
@@ -1521,7 +1451,7 @@
                           <tr class="table-row atividade-interna-departamento" id="atividadeItem" >
                             <td colspan="4">
                               <div class="col" >
-                                  <select class="form-control" name="uf" id="departamentoListaAtividade" value="">
+                                  <select class="form-control" name="uf" id="atividadeInternaDepartamento" value="">
                                       <option value="select">Selecione um Departamento</option>
                                       <option value="DIJE"> DIJE  – DEPARTAMENTO  DE  INF NCIA E JUVENTUDE ESPÍRITA</option>
                                       <option value="DECDE"> DECDE  – DEPARTAMENTO  DE  ESTUDO CONTINUADO DA DOUTRINA ESPÍRITA</option>
@@ -1544,8 +1474,98 @@
                           </tr>
                         </tbody>
                       </table>
-
+                  </section>
+              </form>
+                
+            </section>
+          </fieldset>
+        </form>
+      </div>
+    </fieldset>
+    <fieldset name="atividadesInternasList">
+    <div class="container transferencia">
+      <form class="form-control">
+        <fieldset id="addAtividadeInterna">
+          <section id="sectionAddAtividadeInterna">
+            <form id="formAtividadeInterna" action="">
+                <section>
+                  <h3>Atividades Internas Realizadas</h3>
+                  <!-- <div class="col-sm-6">
+                    <div class="row">
+                      <div class="col-xs-6 text-right oppt-label">Ano:</div>
+                      <div class="col-xs-6 text-right oppt-label" id="anoAtividadeLista"></div>
+                      <div class="col-xs-6 text-right oppt-label">Atividade:</div>
+                      <div class="col-xs-6 text-right oppt-label" id="AtividadeLista"></div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
                     
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <div class="col-xs-6 text-right oppt-label">Frequencia Real:
+                      </div>
+                      <div class="col-xs-6 text-right oppt-label" id="freqRealAtividadeLista">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="row">
+                      <div class="col-xs-6 text-right oppt-label">Frequencia Total:
+                      </div>
+                      <div class="col-xs-6 text-right oppt-label" id="freqTotalAtividadeLista">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="row">
+                        <div class="col-xs-6 text-right oppt-label">Departamento:
+                        </div>
+                        <div class="col-xs-6 text-right oppt-label" id="deptoAtividadeLista">
+                        </div>
+                      </div>
+                    </div>   -->
+                    <table class="table table-bordered atividade-interna-list">
+                        <thead class="table-head">
+                          <th>Ano</th>
+                          <th>Atividade</th>
+                          <th colspan="2">Frequencia</th>
+                        </thead>
+                        <tbody id="atividadeTableBody">
+                          <tr class="table-row atividade-interna-list-departamento" id="atividadeItem" style="text-align: center !important">
+                            <td colspan="4">
+                              <div class="col" >
+                                  <div  class="col-xs-6 text-right oppt-label atividade-item" id="deptoAtividadeLista"></div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr class="table-row atividade-interna-list-item" id="atividadeItem">
+                            <td>
+                              <div class="col">
+                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="anoAtividadeLista"></div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="col">
+                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="AtividadeLista"></div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="col">
+                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="freqTotalAtividadeLista"></div>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="col">
+                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="freqRealAtividadeLista"></div>
+                              </div>
+                            </td>
+                          </tr>
+                          
+                          
+                          
+                        </tbody>
+                      </table>
                   </section>
             </form>
               
@@ -1555,27 +1575,6 @@
           
       </form>
     </div>
-   </fieldset>
-    <section>
-      <div class="container button">
-        <form class="form-control">
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary" id="editar">Salvar Edição</button>
-            <button type="submit" class="btn btn-danger" id="cancelar">Cancelar Edição</button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </div>
-
-</template>
-
-
-<template name="preenchimentoInterno">
-  <div class="container">
-      <fieldset name="preenchimentoInterno">
-          <legend style="text-align: center">Preenchimento interno do CEAHA</legend>
-          
-      </fieldset>
+    </fieldset>
   </div>
 </template>

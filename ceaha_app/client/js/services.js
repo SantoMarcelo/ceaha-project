@@ -148,9 +148,31 @@ export function getAtividadesInternas(){
 
 export function setAtividadeInterna(){
   var atividades_list = getAtividadesInternas()
-  console.log(atividades_list[0]);
+  //console.log(atividades_list[0]);
+  //var element = $( '<p/>' )
+  var atividades = {
+    ano: $('#atividadeInternaAno').val(),
+    atividade: $('#atividadeInterna').val(),
+    freq_total: $('#atividadeInternaFreqTotal').val(),
+    freq_real: $('#atividadeInternaFreqReal').val(),
+    departamento: $('#atividadeInternaDepartamento').val(),
+  }
+  console.log(atividades);
 
-  $('#anoListaAtvidade').val(atividades_list[0].ano);
+  $('#anoAtividadeLista').prop("value", atividades.ano);
+  $('#AtividadeLista').prop("value", atividades.atividade);
+  $('#freqRealAtividadeLista').prop("value", atividades.freq_real);
+  $('#freqTotalAtividadeLista').prop("value", atividades.freq_total);
+  $('#deptoAtividadeLista').prop("value", atividades.departamento);
+
+  
+  // element.text( atividades.ano ).addClass( 'text' ).appendTo( '#anoAtividadeLista' );
+  // element.text( atividades.atividade ).addClass( 'text' ).appendTo( '#AtividadeLista' );
+  // element.text( atividades.freq_total ).addClass( 'text' ).appendTo( '#freqtotalAtividadeLista' );
+  // element.text( atividades.freq_real ).addClass( 'text' ).appendTo( '#freqRealAtividadeLista' );
+  // element.text( atividades.departamento ).addClass( 'text' ).appendTo( '#departamentoAtividadeLista' );
+
+ 
 }
 
 export function setMasks(){
