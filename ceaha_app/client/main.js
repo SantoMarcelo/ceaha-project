@@ -51,6 +51,9 @@ Router.route('/adicionarAtividade/:_id', {
     data: function () {
         
         //var participante = Participantes.findOne({ _id: this.params._id });
+        var ati = Atividades.find({user_id: 'PTuATQp2FKQ95HLZ2'})
+        console.log("Atividades router")
+        console.log(ati);
         return Participantes.findOne({ _id: this.params._id });
     },
 
@@ -523,52 +526,75 @@ Template.editarParticipante.events({
         event.preventDefault();
         var participante = getFormData()
         var atividade = getAtividadesInternas();
+        console.log(participante);
+        var atividade_interna = {
+            ano: $('#atividadeInternaAno').val(),
+            atividade: $('#atividadeInterna').val(),
+            frequencia_total: $('#atividadeInternaFreqTotal').val(),
+            frequencia_real: $('#atividadeInternaFreqReal').val(),
+            departamento: $('#atividadeInternaDepartamento option:selected').text(),
+          }
+          participante.atividades_internas.push(atividade_interna);
         atividade.participante_id = this._id;
-        participante.atividades_internas = atividade;
+        console.log(participante);
 
-        setAtividadeInterna();
         
-        // Meteor.call('adicionaAtividadeInterna', this._id, atividade, function (err, res) {
-        //     if (err) {
-        //         sAlert.error(err.reason)
-        //         return false;
-        //     } else {
-        //         sAlert.success('Atividade adicionada com sucesso.')
-        //     }
-        // })
-        // Meteor.call('updateParticipante', this._id, participante, function (err, res) {
-        //     if (err) {
-        //         sAlert.error(err.reason)
-        //         return false;
-        //     } else {
-        //         sAlert.success('Participante alterado com sucesso.')
-        //     }
-        // })
+        
+        Meteor.call('adicionaAtividadeInterna', this._id, atividade, function (err, res) {
+            if (err) {
+                sAlert.error(err.reason)
+                return false;
+            } else {
+                sAlert.success('Atividade adicionada com sucesso.')
+            }
+        })
+        Meteor.call('updateParticipante', this._id, participante, function (err, res) {
+            if (err) {
+                sAlert.error(err.reason)
+                return false;
+            } else {
+                sAlert.success('Participante alterado com sucesso.')
+            }
+        })
     }
 })
 
 Template.preenchimentoInterno.onCreated(function () {
-    console.log(this._id)
+   
     this.atividade = new ReactiveVar(Atividades.find());
     this.participante = new ReactiveVar(Participantes.find());
-    console.log(this.atividade);
+   
 })
 
 Template.preenchimentoInterno.helpers({
+    
     'listaAtividadesInternas': function () {
-        console.log(Template.instance().atividade.get());
+        console.log("atividade filtradas");
+        console.log(this._id);
+        console.log(Template.instance().atividade.get({user_id: this._id}));
         return Template.instance().atividade.get();
     },
     'usuario': function () {
-        console.log(Template.instance().participante.get());
-        return Template.instance().participante.get();
+        console.log("usuario")
+        console.log(this._id)
+        console.log(Template.instance().participante.get({user_id: this._id}));
+        return Template.instance().participante.get({user_id: this._id});
     },
+    'lista': function(){
+       var atividades = Template.instance().atividade.get();
+       var participantes = Template.instance().participante.get();
+       console.log("HELPERS");
+
+       
+   
+    }
 
 })
 
 Template.preenchimentoInterno.events({
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
+        var participante = Participantes.findOne({ _id: this.params._id });
         
         var atividades = {
             ano: $('#atividadeInternaAno').val(),
@@ -577,15 +603,15 @@ Template.preenchimentoInterno.events({
             freq_real: $('#atividadeInternaFreqReal').val(),
             departamento: $('#atividadeInternaDepartamento option:selected').text(),
           }
-          console.log(atividades);
-
+          
           $('#anoAtividadeLista').text(atividades.ano);
           $('#AtividadeLista').text( atividades.atividade);
           $('#freqRealAtividadeLista').text(atividades.freq_real);
           $('#freqTotalAtividadeLista').text( atividades.freq_total);
           $('#deptoAtividadeLista').text( atividades.departamento);
       
-        atividades.user_id = this._id
+        participante.push(atividades);
+        console.log(participante)
 
         Meteor.call('adicionaAtividadeInterna', atividades,function (err, res) {
             if (err) {
@@ -595,6 +621,15 @@ Template.preenchimentoInterno.events({
                 sAlert.success('Atividade cadastrado com sucesso.')
             }
         })
+
+        // Meteor.call('updateParticipante',participante._id, participante, function (err, res) {
+        //     if (err) {
+        //         sAlert.error(err.reason)
+        //         return false;
+        //     } else {
+        //         sAlert.success('Participante alterado com sucesso.')
+        //     }
+        // })
     }
 })
 

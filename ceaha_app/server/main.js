@@ -22,8 +22,8 @@ Meteor.startup(() => {
     'adicionaAtividadeInterna'(atividade){
       Atividades.insert(atividade);
     },
-    'buscaAtividade'(){
-      Atividades.find()
+    'buscaAtividade'(user){
+      Atividades.find({user_id:user})
     },
   });
 });
