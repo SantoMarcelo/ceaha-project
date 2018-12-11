@@ -547,6 +547,25 @@ Template.editarParticipante.events({
     }
 })
 
+Template.preenchimentoInterno.onCreated(function () {
+    console.log(this._id)
+    this.atividade = new ReactiveVar(Atividades.find());
+    this.participante = new ReactiveVar(Participantes.find());
+    console.log(this.atividade);
+})
+
+Template.preenchimentoInterno.helpers({
+    'listaAtividadesInternas': function () {
+        console.log(Template.instance().atividade.get());
+        return Template.instance().atividade.get();
+    },
+    'usuario': function () {
+        console.log(Template.instance().participante.get());
+        return Template.instance().participante.get();
+    },
+
+})
+
 Template.preenchimentoInterno.events({
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
@@ -565,13 +584,17 @@ Template.preenchimentoInterno.events({
           $('#freqRealAtividadeLista').text(atividades.freq_real);
           $('#freqTotalAtividadeLista').text( atividades.freq_total);
           $('#deptoAtividadeLista').text( atividades.departamento);
-               
-        //   $('#anoAtividadeLista').prop("value", atividades.ano);
-        //   $('#AtividadeLista').prop("value", atividades.atividade);
-        //   $('#freqRealAtividadeLista').prop("value", atividades.freq_real);
-        //   $('#freqTotalAtividadeLista').prop("value", atividades.freq_total);
-        //   $('#deptoAtividadeLista').prop("value", atividades.departamento);
-               
+      
+        atividades.user_id = this._id
+
+        Meteor.call('adicionaAtividadeInterna', atividades,function (err, res) {
+            if (err) {
+                sAlert.error(err.reason)
+                return false;
+            } else {
+                sAlert.success('Atividade cadastrado com sucesso.')
+            }
+        })
     }
 })
 

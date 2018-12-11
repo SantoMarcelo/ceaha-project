@@ -1531,40 +1531,47 @@
                           <th>Atividade</th>
                           <th colspan="2">Frequencia</th>
                         </thead>
+                        
                         <tbody id="atividadeTableBody">
+                          {{#with 1=1}}
+                          {{_id}}
+                          {{#each listaAtividadesInternas}}
+                            {{user_id}}
                           <tr class="table-row atividade-interna-list-departamento" id="atividadeItem" style="text-align: center !important">
                             <td colspan="4">
                               <div class="col" >
-                                  <div  class="col-xs-6 text-right oppt-label atividade-item" id="deptoAtividadeLista"></div>
+                                  <div  class="col-xs-6 text-right oppt-label atividade-item" id="deptoAtividadeLista">{{departamento}}</div>
                               </div>
                             </td>
                           </tr>
                           <tr class="table-row atividade-interna-list-item" id="atividadeItem">
                             <td>
                               <div class="col">
-                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="anoAtividadeLista"></div>
+                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="anoAtividadeLista">{{ano}}</div>
                               </div>
                             </td>
                             <td>
                               <div class="col">
-                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="AtividadeLista"></div>
+                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="AtividadeLista">{{atividade}}</div>
                               </div>
                             </td>
                             <td>
                               <div class="col">
-                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="freqTotalAtividadeLista"></div>
+                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="freqTotalAtividadeLista">{{freq_total}}</div>
                               </div>
                             </td>
                             <td>
                               <div class="col">
-                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="freqRealAtividadeLista"></div>
+                                  <div class="col-xs-6 text-right oppt-label atividade-item" id="freqRealAtividadeLista">{{freq_real}}</div>
                               </div>
                             </td>
                           </tr>
+                           
+                          {{/each}}
                           
-                          
-                          
+                          {{/with}}
                         </tbody>
+                        
                       </table>
                   </section>
             </form>

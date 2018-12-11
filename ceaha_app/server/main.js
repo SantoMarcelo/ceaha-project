@@ -21,7 +21,10 @@ Meteor.startup(() => {
     },
     'adicionaAtividadeInterna'(atividade){
       Atividades.insert(atividade);
-    }
+    },
+    'buscaAtividade'(){
+      Atividades.find()
+    },
   });
 });
 
