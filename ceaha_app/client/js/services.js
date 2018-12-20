@@ -2,6 +2,7 @@
 export function getFormData() {
   var atividades = getDataTable();
   var atividadeMedium = getMediumData();
+  var lista_atividades_internas = new Array();
   var participante = {
     nome: $('#full-name').val(),
     nascimento: $('#date-birth').val(),
@@ -57,7 +58,9 @@ export function getFormData() {
       outras_obras: $('#outrasObras').val(),
     }, 
     atividades_voluntarias: atividades,
-    experiencia: atividadeMedium
+    experiencia: atividadeMedium,
+    atividades_internas: []
+    
   }
   return participante
 };

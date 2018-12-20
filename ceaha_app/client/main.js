@@ -376,6 +376,7 @@ Template.editarParticipante.helpers({
     'listaAtividades': function () {
         return Template.instance().atividadeList.get();
     },
+    
 })
 
 Template.editarParticipante.events({
@@ -524,36 +525,30 @@ Template.editarParticipante.events({
 
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
-        var participante = getFormData()
-        var atividade = getAtividadesInternas();
-        console.log(participante);
-        var atividade_interna = {
+        var participante = Participantes.findOne({ _id: this._id });
+        console.log("participante da base");
+        console.log(participante.atividades_internas);
+        var atv_part = participante.atividades_interna
+        var atividades = {
             ano: $('#atividadeInternaAno').val(),
             atividade: $('#atividadeInterna').val(),
-            frequencia_total: $('#atividadeInternaFreqTotal').val(),
-            frequencia_real: $('#atividadeInternaFreqReal').val(),
+            freq_total: $('#atividadeInternaFreqTotal').val(),
+            freq_real: $('#atividadeInternaFreqReal').val(),
             departamento: $('#atividadeInternaDepartamento option:selected').text(),
           }
-          participante.atividades_internas.push(atividade_interna);
-        atividade.participante_id = this._id;
-        console.log(participante);
-
-        
-        
-        Meteor.call('adicionaAtividadeInterna', this._id, atividade, function (err, res) {
-            if (err) {
-                sAlert.error(err.reason)
-                return false;
-            } else {
-                sAlert.success('Atividade adicionada com sucesso.')
-            }
-        })
+          console.log(atv_part)
+        if(atv_part.length = 0){
+            atv_part = atv_part.concat(atividades);
+        } else {
+            atv_part = atv_part.push(atividades);
+        }
+        participante.atividades_internas = atv_part
         Meteor.call('updateParticipante', this._id, participante, function (err, res) {
             if (err) {
                 sAlert.error(err.reason)
                 return false;
             } else {
-                sAlert.success('Participante alterado com sucesso.')
+                sAlert.success('Atividade cadastrada com sucesso.')
             }
         })
     }
