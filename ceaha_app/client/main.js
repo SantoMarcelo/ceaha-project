@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { getFormData, getMediumData, adicionaAtividade, getAtividadesInternas, setAtividadeInterna, removeAtividade } from './js/services.js'
+import { getFormData, getMediumData, adicionaAtividade, adicionaAtividadeInterna, getAtividadesInternas, setAtividadeInterna, removeAtividade } from './js/services.js'
 
 import './main.html';
 //import './services.js';
@@ -525,32 +525,57 @@ Template.editarParticipante.events({
 
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
-        var participante = Participantes.findOne({ _id: this._id });
-        console.log("participante da base");
-        console.log(participante.atividades_internas);
-        var atv_part = participante.atividades_interna
-        var atividades = {
-            ano: $('#atividadeInternaAno').val(),
-            atividade: $('#atividadeInterna').val(),
-            freq_total: $('#atividadeInternaFreqTotal').val(),
-            freq_real: $('#atividadeInternaFreqReal').val(),
-            departamento: $('#atividadeInternaDepartamento option:selected').text(),
-          }
-          console.log(atv_part)
-        if(atv_part.length = 0){
-            atv_part = atv_part.concat(atividades);
-        } else {
-            atv_part = atv_part.push(atividades);
-        }
-        participante.atividades_internas = atv_part
-        Meteor.call('updateParticipante', this._id, participante, function (err, res) {
-            if (err) {
-                sAlert.error(err.reason)
-                return false;
-            } else {
-                sAlert.success('Atividade cadastrada com sucesso.')
-            }
-        })
+
+
+        var ano = $('#atividadeInternaAno').val();
+        var atividade = $('#atividadeInterna').val()
+        var freq_real = $('#atividadeInternaFreqReal').val()
+        var freq_total = $('#atividadeInternaFreqTotal').val()
+        var depto = $('#atividadeInternaDepartamento').val()
+        
+        $('.atividade-ano').text(ano);
+        $('.atividade-atividade').text(atividade);
+        $('.atividade-freq-total').text(freq_total);
+        $('.atividade-freq-real').text( freq_real);
+        $('.atividade-depto').text( depto);
+
+
+        // var form = $('atividades-historico');
+        // var dados = form.serializeArray();
+        // console.log(dados);
+        
+        
+
+
+
+        // var participante = Participantes.findOne({ _id: this._id });
+        // console.log("participante da base");
+        // console.log(participante.atividades_internas);
+        // var atv_part = participante.atividades_internas
+        // var atividades = {
+        //     ano: $('#atividadeInternaAno').val(),
+        //     atividade: $('#atividadeInterna').val(),
+        //     freq_total: $('#atividadeInternaFreqTotal').val(),
+        //     freq_real: $('#atividadeInternaFreqReal').val(),
+        //     departamento: $('#atividadeInternaDepartamento option:selected').text(),
+        //   }
+        //   console.log(atv_part)
+        // if(atv_part.length = 0){
+        //     console.log("no if")
+        //     atv_part = atv_part.push(atividades);
+        // } else {
+        //     console.log("no elser")
+        //     atv_part = atv_part.push(atividades);
+        // }
+        // participante.atividades_internas = atv_part
+        // Meteor.call('updateParticipante', this._id, participante, function (err, res) {
+        //     if (err) {
+        //         sAlert.error(err.reason)
+        //         return false;
+        //     } else {
+        //         sAlert.success('Atividade cadastrada com sucesso.')
+        //     }
+        // })
     }
 })
 

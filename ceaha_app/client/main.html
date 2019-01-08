@@ -1394,7 +1394,7 @@
                       </table>
                       <fieldset id="addAtividadeInterna">
                         <section id="sectionAddAtividadeInterna">
-                          <form id="formAtividadeInterna" action="">
+                          <form id="formAtividadeInterna" class="atividades-historico" action="">
                               <section>
                                 <h3>Atividades Internas Realizadas</h3>
                                   <table class="table table-bordered atividade-interna">
@@ -1461,6 +1461,15 @@
                     </form>
                   </div>
                 </fieldset>
+                <div class="container">
+                    <h2>Atividades</h2>
+                    Ano: <div class="atividade-ano"></div>
+                    Atividade: <div class="atividade-atividade"></div>
+                    Frequencia Total: <div class="atividade-freq-total"></div>
+                    Frequencia Real: <div class="atividade-freq-real"></div>
+                    Departamento: <div class="atividade-depto"></div>
+                
+                  </div>
                 <fieldset name="atividadesInternasList">
                 <div class="container transferencia">
                   <form class="form-control">
@@ -1542,7 +1551,7 @@
 <template name="preenchimentoInterno">
   <div class="container">
     <fieldset name="preenchimentoInterno">
-        <legend style="text-align: center">Preenchimento interno do CEAHA</legend>
+        <legend style="text-align: center">Preenchimento interno do CEAHA test</legend>
     </fieldset>
     <fieldset class=" interno" name="preenchimentoInterno">
       <div class="container transferencia">
@@ -1657,6 +1666,8 @@
         </form>
       </div>
     </fieldset>
+  
+  
     <fieldset name="atividadesInternasList">
     <div class="container transferencia">
       <form class="form-control">
@@ -1664,7 +1675,7 @@
           <section id="sectionAddAtividadeInterna">
             <form id="formAtividadeInterna" action="">
                 <section>
-                  <h3>Atividades Internas Realizadas</h3>
+                  <h3>Atividades Internas Realizadasss</h3>
                   
                     <table class="table table-bordered atividade-interna-list">
                         <thead class="table-head">
@@ -1705,7 +1716,7 @@
                                 </tr>
                             {{/each}}
                         </tbody>
-                      </table>
+                    </table>
                   </section>
             </form>
           </section>

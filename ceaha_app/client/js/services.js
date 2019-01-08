@@ -59,7 +59,7 @@ export function getFormData() {
     }, 
     atividades_voluntarias: atividades,
     experiencia: atividadeMedium,
-    atividades_internas: []
+    atividades_internas: lista_atividades_internas
     
   }
   return participante
@@ -176,6 +176,33 @@ export function setAtividadeInterna(){
   // element.text( atividades.departamento ).addClass( 'text' ).appendTo( '#departamentoAtividadeLista' );
 
  
+}
+
+export function adicionaAtividadeInterna(){
+  var depto_row = document.getElementsByClassName("atividade-interna-list-departamento");
+  var item_row = document.getElementsByClassName("atividade-interna-list-item");
+  var table = document.getElementsByClassName("atividade-interna-list");
+  var tbody = table.firstChild.parentElement.lastElementChild
+  var clone_depto = depto_row.cloneNode(true);
+  var clone_item = item_row.cloneNode(true);
+  clone_depto.id = Math.random().toString(32).substring(2, 10);
+  tbody.appendChild(clone_depto);
+  tbody.appendChild(clone_item);
+  // var element = clone.firstElementChild;
+  // console.log('#'+clone.id);
+  // console.log(clone.firstElementChild.id);
+
+  // $('#'+clone.id).each(function(){
+  //     $(this).find('td .descricao-atividade').val("");
+  //     $(this).find('td .tempo-atividade').val("");
+  // })
+  
+  // $('#atividadeTable button:disabled').each(function(i){
+  //     if(i!= 0){
+  //         $(this).prop("disabled", false);
+  //     }
+  // })
+        
 }
 
 export function setMasks(){
