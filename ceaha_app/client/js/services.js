@@ -1,8 +1,8 @@
 
-export function getFormData() {
+export function getFormData(dataAtividade) {
   var atividades = getDataTable();
   var atividadeMedium = getMediumData();
-  var lista_atividades_internas = new Array();
+  var atividadesInternas = getAtividadesInternas(dataAtividade);
   var participante = {
     nome: $('#full-name').val(),
     nascimento: $('#date-birth').val(),
@@ -59,7 +59,8 @@ export function getFormData() {
     }, 
     atividades_voluntarias: atividades,
     experiencia: atividadeMedium,
-    atividades_internas: lista_atividades_internas
+    atividades_internas: atividadesInternas
+   
     
   }
   return participante
@@ -135,79 +136,63 @@ export function getAposentadoValue(){
   
 }
 
-export function getAtividadesInternas(){
-  console.log("Aqui");
-  var atividades_internas = new Array();
-  var atividade_interna = {
-    ano: $('#atividadeInternaAno').val(),
-    atividade: $('#atividadeInterna').val(),
-    frequencia_total: $('#atividadeInternaFreqTotal').val(),
-    frequencia_real: $('#atividadeInternaFreqReal').val(),
-    departamento: $('#atividadeInternaDepartamento option:selected').text(),
-  }
-  atividades_internas.push(atividade_interna);
-  return atividades_internas;
-}
 
-export function setAtividadeInterna(){
-  var atividades_list = getAtividadesInternas()
-  //console.log(atividades_list[0]);
-  //var element = $( '<p/>' )
-  var atividades = {
-    ano: $('#atividadeInternaAno').val(),
-    atividade: $('#atividadeInterna').val(),
-    freq_total: $('#atividadeInternaFreqTotal').val(),
-    freq_real: $('#atividadeInternaFreqReal').val(),
-    departamento: $('#atividadeInternaDepartamento').val(),
-  }
-  console.log(atividades);
 
-  $('#anoAtividadeLista').prop("value", atividades.ano);
-  $('#AtividadeLista').prop("value", atividades.atividade);
-  $('#freqRealAtividadeLista').prop("value", atividades.freq_real);
-  $('#freqTotalAtividadeLista').prop("value", atividades.freq_total);
-  $('#deptoAtividadeLista').prop("value", atividades.departamento);
 
-  
-  // element.text( atividades.ano ).addClass( 'text' ).appendTo( '#anoAtividadeLista' );
-  // element.text( atividades.atividade ).addClass( 'text' ).appendTo( '#AtividadeLista' );
-  // element.text( atividades.freq_total ).addClass( 'text' ).appendTo( '#freqtotalAtividadeLista' );
-  // element.text( atividades.freq_real ).addClass( 'text' ).appendTo( '#freqRealAtividadeLista' );
-  // element.text( atividades.departamento ).addClass( 'text' ).appendTo( '#departamentoAtividadeLista' );
 
- 
-}
-
-export function adicionaAtividadeInterna(){
-  var depto_row = document.getElementsByClassName("atividade-interna-list-departamento");
-  var item_row = document.getElementsByClassName("atividade-interna-list-item");
-  var table = document.getElementsByClassName("atividade-interna-list");
+export function addAtividadeInterna(){
+  var rowItem = document.getElementById("atividadeItemList");
+  var table = document.getElementById("atividadeInternaTable");
+  var rowDepto = document.getElementById("atividadeItemDeptoList");
   var tbody = table.firstChild.parentElement.lastElementChild
-  var clone_depto = depto_row.cloneNode(true);
-  var clone_item = item_row.cloneNode(true);
-  clone_depto.id = Math.random().toString(32).substring(2, 10);
-  tbody.appendChild(clone_depto);
-  tbody.appendChild(clone_item);
-  // var element = clone.firstElementChild;
-  // console.log('#'+clone.id);
-  // console.log(clone.firstElementChild.id);
+  var clone = rowItem.cloneNode(true);
+  console.log(clone);
+  clone.id = Math.random().toString(32).substring(2, 10);
+  clone.class = "clone"
+  console.log(clone)
+  tbody.appendChild(clone);
+  var clone2 = rowDepto.cloneNode(true);
+  console.log(clone2);
+  clone2.id = Math.random().toString(32).substring(2, 10);
+  clone2.class = "clone2"
+  tbody.appendChild(clone2);
 
-  // $('#'+clone.id).each(function(){
-  //     $(this).find('td .descricao-atividade').val("");
-  //     $(this).find('td .tempo-atividade').val("");
-  // })
-  
-  // $('#atividadeTable button:disabled').each(function(i){
-  //     if(i!= 0){
-  //         $(this).prop("disabled", false);
-  //     }
-  // })
+  $('#'+clone.id).each(function(){
+	  console.log($(this));
+	  console.log($(this).find('input#atividadeInternaAno'));
+    $(this).find('input#atividadeInternaAno').val("");
+	  $(this).find('input#atividadeInterna').val("");
+    $(this).find('input#atividadeInternaFreqTotal').val("");
+    $(this).find('input#atividadeInternaFreqReal').val("");
+    $(this).find('select#atividadeInternaDepartamento').val("");
+  })
         
 }
 
-export function setMasks(){
 
-  $('date-birth').Inputmask('99/99/9999');
+
+export function getAtividadesInternas(data = null){
+  console.log("Aqui no get atividades")
+  console.log(data)
+
+  atividadesList = data
+
+  if(atividadesList == null){
+    atividadesList = []
+  } 
+  
+  $('.atividade-interna-item').each(function (i, e) {
+  
+    atividadesList.push({ ano:  $(this).find('input#atividadeInternaAno').val(),
+    atividade: $(this).find('input#atividadeInterna').val(), 
+    freq_real: $(this).find('input#atividadeInternaFreqReal').val(), 
+    freq_total: $(this).find('input#atividadeInternaFreqTotal').val(),
+    departamento: $('.atividade-interna-departamento').find('select#atividadeInternaDepartamento option:selected').text()
+    })
+  })
+  console.log("Aqui no get atividades 2")
+  console.log(atividadesList)
+  return atividadesList
 }
 
 
