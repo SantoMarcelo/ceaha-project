@@ -4,12 +4,14 @@ import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { getFormData, getMediumData, adicionaAtividade, addAtividadeInterna, getAtividadesInternas, setAtividadeInterna, removeAtividade } from './js/services.js'
 
+_ = lodash;
 import './main.html';
 //import './services.js';
 
 
 const Participantes = new Mongo.Collection('participantes');
 const Atividades = new Mongo.Collection('atividades');
+const Departamentos = new Mongo.Collection('departamentos');
 
 Meteor.startup(function () {
 
@@ -350,54 +352,65 @@ Template.listaParticipante.events({
 
 })
 
-Template.editarParticipante.onCreated(function () {
+// Template.editarParticipante.onCreated(function () {
     
-    this.atividades = new ReactiveVar(Atividades.find());
-    var atividadeList = this.atividades.curValue.collection._docs._map
-    console.log(atividadeList); 
-    var transferencia = $('#transferencia').val();
-    if (transferencia == 'Sim') {
-        $('#nomeCentroEspirita').prop("disabled", false);
-        $('#cidadeCentroEspirita').prop("disabled", false);
-        $('#tempoCentroEspirita').prop("disabled", false);
-        $('#ufCentroEspirita').prop("disabled", false);
-    } else {
-        $('#nomeCentroEspirita').prop("disabled", true);
-        $('#cidadeCentroEspirita').prop("disabled", true);
-        $('#tempoCentroEspirita').prop("disabled", true);
-        $('#ufCentroEspirita').prop("disabled", true);
-    }
+//     this.atividades = new ReactiveVar(Atividades.find());
+//     var atividadeList = this.atividades.curValue.collection._docs._map
+//     console.log(atividadeList); 
+//     var transferencia = $('#transferencia').val();
+//     if (transferencia == 'Sim') {
+//         $('#nomeCentroEspirita').prop("disabled", false);
+//         $('#cidadeCentroEspirita').prop("disabled", false);
+//         $('#tempoCentroEspirita').prop("disabled", false);
+//         $('#ufCentroEspirita').prop("disabled", false);
+//     } else {
+//         $('#nomeCentroEspirita').prop("disabled", true);
+//         $('#cidadeCentroEspirita').prop("disabled", true);
+//         $('#tempoCentroEspirita').prop("disabled", true);
+//         $('#ufCentroEspirita').prop("disabled", true);
+//     }
    
-    // this.participante = new ReactiveVar(Participantes.find({ _id: 'RAnsnTMyQWpXEiTqC' }));
+//     // this.participante = new ReactiveVar(Participantes.find({ _id: 'RAnsnTMyQWpXEiTqC' }));
 
-})
+// })
 
 Template.editarParticipante.helpers({
     'listaAtividades': function () {
-         var lista = this.atividades_internas;
-         
-        // // var data = JSON.parse(lista);
-        //  var groupedData = {};
-
-        // for (var it = 0; it < lista.length; it++) {
-        //     var item = lista[it];
-        //     if (!groupedData[item.departamento])
-        //         groupedData[item.departamento] = [];
-        //     groupedData[item.departamento].push(item);
-        // }
+        var lista = this.atividades_internas;
+        var listaDeptos = [];
         
         for (var i = 0; i< lista.length; i++){
-            console.log("***")
-            console.log(lista[i].departamento)
+            listaDeptos.push(lista[i].departamento);
         }
-        
-         return this.atividades_internas;
-    },
+         
+         listaDeptos = _.uniq(listaDeptos);
 
-    'orderedList': function(){
-        
+         var listaAgrupada = _.map(listaDeptos, function(item){
+            return {
+                 departamento: item, 
+                 atividades: _.filter(lista, function(o){
+                    return o.departamento == item;
+                })
+             }
+         })
+         console.log("Lista Agrupada" , listaAgrupada)
+         return listaAgrupada;
+         
+    },
+    'socioInformation': function() {
+        console.log(this);
+        var socio = this.socio
+        console.log("socio" + socio.value);
+        return socio
+    },
+    'listaDepartamentos': function(){
+        var departamentos = Departamentos.find();
+
+        console.log("deptos " , departamentos);
+        return departamentos;
+
     }
-    
+
 })
 
 Template.editarParticipante.events({
@@ -465,7 +478,8 @@ Template.editarParticipante.events({
     
 
     'click .checkbox-experienca-pratica'(event, instance) {
-        event.preventDefault();
+        console.log(event);
+        console.log(instance.parentNode);
         $(".experiencia-pratica").each(function (i) {
             //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
             if ($(this).find('input.checkbox-experienca-pratica:checked').length > 0) {
@@ -527,116 +541,30 @@ Template.editarParticipante.events({
         window.location.href = ('/home');
     },
 
-    'click .checkbox-tipo-socio'(event, instance) {
-        event.preventDefault();
-        console.log("tamo aqui")
-        
+    'click .tipo-socio'(event, instance) {
+        console.log(event);
+        console.log(instance.parentNode);
         $("tr.tipo-socio-item").each(function (i) {
-            console.log(i);
-            $(this).find('input.checkbox-tipo-socio').prop("checked", true)
             //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
-            if ($(this).find('input.checkbox-tipo-socio:checked').length > 0) {
-                
-                $(this).find('.input-valor-mensal').prop("disabled", false);
+            if ($(this).find('input.tipo-socio:checked').length > 0) {
+                 $(this).find('.input-valor-mensal').prop("disabled", false);
             }
         });
-
+        // $("tr.tipo-socio-item").each(function (i) {
+        //     //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+        //     if ($(this).find('input.tipo-socio').length > 0) {
+        //          $(this).find('.input-valor-mensal').prop("disabled", true);
+        //     }
+        // });
     },
+
 
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
-
-        
-
         
         addAtividadeInterna();
         
 
     },
-    'click #btntest'(event){
-        event.preventDefault();
-        var atv = getAtividadesInternas();
-        console.log(atv);
-        var part = getFormData();
-        console.log(part);
-        part.atividades_internas = atv;
-        console.log(part);
-    }
-})
-
-Template.preenchimentoInterno.onCreated(function () {
-   
-    this.atividade = new ReactiveVar(Atividades.find());
-    this.participante = new ReactiveVar(Participantes.find());
-   
-})
-
-Template.preenchimentoInterno.helpers({
     
-    'listaAtividadesInternas': function () {
-        console.log("atividade filtradas");
-        console.log(this._id);
-        console.log(Template.instance().atividade.get({user_id: this._id}));
-        return Template.instance().atividade.get();
-    },
-    'usuario': function () {
-        console.log("usuario")
-        console.log(this._id)
-        console.log(Template.instance().participante.get({user_id: this._id}));
-        return Template.instance().participante.get({user_id: this._id});
-    },
-    'lista': function(){
-       var atividades = Template.instance().atividade.get();
-       var participantes = Template.instance().participante.get();
-       console.log("HELPERS");
-
-       
-   
-    }
-
 })
-
-Template.preenchimentoInterno.events({
-    'click #btnAddAtividadeInterna'(event, instance){
-        event.preventDefault();
-        var participante = Participantes.findOne({ _id: this.params._id });
-        
-        var atividades = {
-            ano: $('#atividadeInternaAno').val(),
-            atividade: $('#atividadeInterna').val(),
-            freq_total: $('#atividadeInternaFreqTotal').val(),
-            freq_real: $('#atividadeInternaFreqReal').val(),
-            departamento: $('#atividadeInternaDepartamento option:selected').text(),
-          }
-          
-          $('#anoAtividadeLista').text(atividades.ano);
-          $('#AtividadeLista').text( atividades.atividade);
-          $('#freqRealAtividadeLista').text(atividades.freq_real);
-          $('#freqTotalAtividadeLista').text( atividades.freq_total);
-          $('#deptoAtividadeLista').text( atividades.departamento);
-      
-        participante.push(atividades);
-        console.log(participante)
-
-        Meteor.call('adicionaAtividadeInterna', atividades,function (err, res) {
-            if (err) {
-                sAlert.error(err.reason)
-                return false;
-            } else {
-                sAlert.success('Atividade cadastrado com sucesso.')
-            }
-        })
-
-        // Meteor.call('updateParticipante',participante._id, participante, function (err, res) {
-        //     if (err) {
-        //         sAlert.error(err.reason)
-        //         return false;
-        //     } else {
-        //         sAlert.success('Participante alterado com sucesso.')
-        //     }
-        // })
-    }
-})
-
-
-
