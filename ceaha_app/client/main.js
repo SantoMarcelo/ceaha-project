@@ -405,8 +405,7 @@ Template.editarParticipante.helpers({
     },
     'listaDepartamentos': function(){
         var departamentos = Departamentos.find();
-
-        console.log("deptos " , departamentos);
+        
         return departamentos;
 
     }

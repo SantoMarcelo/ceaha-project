@@ -1389,6 +1389,15 @@
                                     <td>
                                       <div class="form-group col">
                                         <input type="text" class="atividade-interna-item-atividade atividade-atividade" id="atividadeInterna" value=""  placeholder="atividades realizadas">
+                                        <select class="form-control atividade-interna-item-atividade atividade-atividade" id="atividadeInterna" value="">
+                                          <option value="Selecione">Selecione</option>
+                                          {{#each listaDepartamentos}} 
+                                            {{#each atividades}}
+                                              <option value="{{descricao}}">{{descricao}}</option>
+                                            {{/each}}
+                                          {{/each}}
+                                          </select>
+
                                       </div>
                                     </td>
                                     <td>
@@ -1406,17 +1415,10 @@
                                     <td colspan="4" class="item-list-depto">
                                       <div class="form-group col" >
                                           <select class="form-control atividade-interna-depto " name="uf" id="atividadeInternaDepartamento" value="">
+                                            <option value="Selecione">Selecione um Departamento</option>
                                             {{#each listaDepartamentos}} 
-                                            <option value="select">{{sigla}} - {{nome}}</option>
+                                              <option value="{{sigla}}">{{sigla}} - {{nome}}</option>
                                             {{/each}}
-                                              <!-- <option value="DIJE"> DIJE  – DEPARTAMENTO  DE  INFÂNCIA E JUVENTUDE ESPÍRITA </option>
-                                              <option value="DECDE"> DECDE  – DEPARTAMENTO  DE  ESTUDO CONTINUADO DA DOUTRINA ESPÍRITA</option>
-                                              <option value="DDOU"> DDOU – DEPARTAMENTO DOUTRINÁRIO</option>
-                                              <option value="DAFT"> DAFT – DEPARTAMENTO DO ATENDIMENTO FRATERNO</option>
-                                              <option value="DMED"> DMED  – DEPARTAMENTO  DE  MEDIUNIDADE</option>
-                                              <option value="DPAS"> DPAS - DEPARTAMENTO DO PASSE</option>
-                                              <option value="DAPS"> DAPS – DEPARTAMENTO DE ASSISTÊNCIA  E PROMOÇÃO SOCIAL</option>
-                                              <option value="DFAM">  DFAM - DEPARTAMENTO DE FAMÍLIA</option> -->
                                             </select>
                                       </div>
                                     </td>
