@@ -134,10 +134,6 @@ export function removeAtividade(){
   table.deleteRow(current.parentNode.parentNode.rowIndex)
 }
 
-export function getAposentadoValue(){
-  
-}
-
 export function addAtividadeInterna(){
   var rowItem = document.getElementById("atividadeItemList");
   var table = document.getElementById("atividadeInternaTable");
@@ -157,41 +153,38 @@ export function addAtividadeInterna(){
 
   $('#'+clone.id).each(function(){
 	  $(this).find('input#atividadeInternaAno').val("");
-	  $(this).find('input#atividadeInterna').val("");
+	  $(this).find('select.atividade-interna-item-atividade').val("");
     $(this).find('input#atividadeInternaFreqTotal').val("");
     $(this).find('input#atividadeInternaFreqReal').val("");
-    $(this).find('select#atividadeInternaDepartamento').val("");
+    $(this).find('select#atividadeInternaDepartamento').val("Selecione");
   })
         
 }
 
 export function getAtividadesInternas(data = null){
   
-
-  atividadesList = data
+  var atividadesList = data
 
   if(atividadesList == null){
     atividadesList = []
-  } 
-  
-  atividadesList.push({ ano:  $(this).find('input#atividadeInternaAno').val(),
-  atividade: $(this).find('input#atividadeInterna').val(), 
-  freq_real: $(this).find('input#atividadeInternaFreqReal').val(), 
-  freq_total: $(this).find('input#atividadeInternaFreqTotal').val(),
-  departamento: $('.atividade-interna-departamento').find('select#atividadeInternaDepartamento option:selected').text()
+  }
+  var departments = [] 
+  $('#atividadeTableBody tr.atividade-interna-departamento').each(function(){
+    departments.push($(this).find('select#atividadeInternaDepartamento option:selected').text())
   })
-  $('.atividade-interna-item').each(function (i, e) {
+
+  $('#atividadeTableBody tr.atividade-interna-item').each(function (i, e) {
     if($(this).find('input#atividadeInternaAno').val() == "" && 
-        $(this).find('input#atividadeInterna').val() == "" &&
-        $(this).find('input#atividadeInternaFreqReal').val() == "" &&
-        $('.atividade-interna-departamento').find('select#atividadeInternaDepartamento option:selected').text() == "Selecione um Departamento"){
-        return atividadesList
+      $(this).find('select.atividade-interna-item-atividade option:selected').text() == "" &&
+      $(this).find('input#atividadeInternaFreqReal').val() == "" &&
+      $('#atividadeTableBody tr.atividade-interna-departamento').find('select#atividadeInternaDepartamento option:selected').text() == "Selecione um Departamento"){
+      return atividadesList
     } else {
       atividadesList.push({ ano:  $(this).find('input#atividadeInternaAno').val(),
-      atividade: $(this).find('input#atividadeInterna').val(), 
+      atividade: $(this).find('select.atividade-interna-item-atividade option:selected').text(), 
       freq_real: $(this).find('input#atividadeInternaFreqReal').val(), 
       freq_total: $(this).find('input#atividadeInternaFreqTotal').val(),
-      departamento: $('.atividade-interna-departamento').find('select#atividadeInternaDepartamento option:selected').text()
+      departamento: departments[i]
       })
     }
   })

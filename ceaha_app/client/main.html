@@ -1375,8 +1375,7 @@
                               <table class="table table-bordered atividade-interna-table" id="atividadeInternaTable">
                                 <thead class="table-head">
                                   <th class="col-sm-6">Ano</th>
-                                  <th class="col-sm-6">Atividades
-                                    )</th>
+                                  <th class="col-sm-6">Atividades</th>
                                   <th class="col-sm-6" colspan="2">Frequencia</th>
                                 </thead>
                                 <tbody id="atividadeTableBody">
@@ -1386,18 +1385,12 @@
                                         <input type="text" class="atividade-interna-item-ano atividade-ano" id="atividadeInternaAno" value="" placeholder="ano">
                                       </div>
                                     </td>
-                                    <td>
+                                    <td class="item-list atividade">
                                       <div class="form-group col">
-                                        <input type="text" class="atividade-interna-item-atividade atividade-atividade" id="atividadeInterna" value=""  placeholder="atividades realizadas">
-                                        <select class="form-control atividade-interna-item-atividade atividade-atividade" id="atividadeInterna" value="">
+                                        <select class="form-control atividade-interna-item-atividade atividade-atividade" id="atividadeInterna" value="" disabled>
                                           <option value="Selecione">Selecione</option>
-                                          {{#each listaDepartamentos}} 
-                                            {{#each atividades}}
-                                              <option value="{{descricao}}">{{descricao}}</option>
-                                            {{/each}}
-                                          {{/each}}
-                                          </select>
-
+                                        </select>
+                                        
                                       </div>
                                     </td>
                                     <td>
@@ -1446,7 +1439,7 @@
             <th>Atividade</th>
             <th colspan="2">Frequencia Total / Real</th>
           </thead>
-          <tbody id="atividadeTableBody" >
+          <tbody id="atividadeHistoryTableBody" >
               {{#each listaAtividades}}
                 <tr class="table-row atividade-interna-departamento" id="histAtividadeItemDeptoList" >
                   <td colspan="4" class="item-list-depto" >

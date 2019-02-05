@@ -6,6 +6,7 @@ import { getFormData, getMediumData, adicionaAtividade, addAtividadeInterna, get
 
 _ = lodash;
 import './main.html';
+//import { Session } from 'inspector';
 //import './services.js';
 
 
@@ -407,8 +408,8 @@ Template.editarParticipante.helpers({
         var departamentos = Departamentos.find();
         
         return departamentos;
-
-    }
+    },
+    
 
 })
 
@@ -564,6 +565,25 @@ Template.editarParticipante.events({
         addAtividadeInterna();
         
 
+    },
+
+    'change select.atividade-interna-depto'(event, instance){
+        console.log($(event.target).closest("tr").parentElement)
+        $('select.atividade-interna-item-atividade').prop("disabled" , false) 
+        $('select.atividade-interna-item-atividade option').remove();
+        $('select.atividade-interna-item-atividade option').last().append("<option value=\"Selecione\">Selecione</option>")
+        var departamentos = Departamentos.find();
+        departamentos = departamentos.collection._docs._map
+        var deptoSelecionado = $('tr#atividadeItemDeptoList select.atividade-interna-depto').val();
+        var atividades = []
+        _.map(departamentos, function(item){
+            if(item.sigla == deptoSelecionado){
+                atividades = item.atividades
+            }
+        })
+        _.map(atividades, function(item){
+            $('select.atividade-interna-item-atividade').last().append("<option value=" + item.descricao + ">"+ item.descricao + "</option>");
+        })
     },
     
 })
