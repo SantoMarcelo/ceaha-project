@@ -568,7 +568,7 @@ Template.editarParticipante.events({
     },
 
     'change select.atividade-interna-depto'(event, instance){
-        console.log($(event.target).closest("tr").parentElement)
+        
         $('select.atividade-interna-item-atividade').prop("disabled" , false) 
         $('select.atividade-interna-item-atividade option').remove();
         $('select.atividade-interna-item-atividade option').last().append("<option value=\"Selecione\">Selecione</option>")
