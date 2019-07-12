@@ -1339,7 +1339,7 @@
                 <div class="form-group col-sm-4">
                   </div>
                   <div class="form-group col-sm-4">
-                      <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target=".internos" aria-expanded="false" aria-controls="multiCollapseExample2" >Preenchimento Interno CEAHA</button>
+                      <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target=".internos" aria-expanded="false" aria-controls="multiCollapseExample2" id="btn_preenchimento-interno">Preenchimento Interno CEAHA</button>
                   </div>
                   <div class="form-group col-sm-4">
                   </div>
@@ -1384,8 +1384,8 @@
               <tbody>
                 <tr class="tipo-socio-item">
                   <th scope="row">
-                    
-                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioLivre" id="socioLivre" value="Socio Livre" data-target="" >
+                    <input type="checkbox" class="checkbox-tipo-socio-2" >
+                    <!-- <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioLivre" id="socioLivre" value="Socio Livre" data-target=""  > -->
                   </th>
                   <td>Sócio Livre</td>
                   <td>
@@ -1394,7 +1394,8 @@
                 </tr>
                 <tr class="tipo-socio-item">
                   <th scope="row">
-                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioVoluntario" id="socioVoluntario" value="Socio Voluntario" data-target="socioVoluntario">
+                      <input type="checkbox" class="checkbox-tipo-socio-2" >
+                    <!-- <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioVoluntario" id="socioVoluntario" value="Socio Voluntario" data-target="socioVoluntario"> -->
                   </th>
                   <td>Sócio Voluntário</td>
                   <td>
@@ -1403,7 +1404,8 @@
                 </tr>
                 <tr class="tipo-socio-item">
                   <th scope="row">
-                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioEfetivo" id="socioEfetivo" value="Socio Efetivo" data-target="socioEfetivo">
+                      <input type="checkbox" class="checkbox-tipo-socio-2" >
+                    <!-- <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioEfetivo" id="socioEfetivo" value="Socio Efetivo" data-target="socioEfetivo"> -->
                   </th>
                   <td>Sócio Efetivo</td>
                   <td>
@@ -1536,7 +1538,7 @@
                           {{#with 1=1}}
                           {{_id}}
                           {{#each listaAtividadesInternas}}
-                            {{user_id}}
+                           
                           <tr class="table-row atividade-interna-list-departamento" id="atividadeItem" style="text-align: center !important">
                             <td colspan="4">
                               <div class="col" >

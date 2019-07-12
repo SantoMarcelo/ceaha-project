@@ -503,21 +503,7 @@ Template.editarParticipante.events({
         window.location.href = ('/home');
     },
 
-    'click .checkbox-tipo-socio'(event, instance) {
-        event.preventDefault();
-        console.log("tamo aqui")
-        
-        $("tr.tipo-socio-item").each(function (i) {
-            console.log(i);
-            $(this).find('input.checkbox-tipo-socio').prop("checked", true)
-            //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
-            if ($(this).find('input.checkbox-tipo-socio:checked').length > 0) {
-                
-                $(this).find('.input-valor-mensal').prop("disabled", false);
-            }
-        });
-
-    },
+   
 
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
@@ -553,7 +539,7 @@ Template.preenchimentoInterno.onCreated(function () {
     this.participante = new ReactiveVar(Participantes.find());
     console.log(this.atividade);
 })
-
+ 
 Template.preenchimentoInterno.helpers({
     'listaAtividadesInternas': function () {
         console.log(Template.instance().atividade.get());
@@ -563,6 +549,7 @@ Template.preenchimentoInterno.helpers({
         console.log(Template.instance().participante.get());
         return Template.instance().participante.get();
     },
+    
 
 })
 
@@ -595,7 +582,28 @@ Template.preenchimentoInterno.events({
                 sAlert.success('Atividade cadastrado com sucesso.')
             }
         })
-    }
+    },
+    'click .checkbox-tipo-socio-2'(event, instance) {
+        // event.preventDefault();
+        
+        $("input.checkbox-tipo-socio-2:checked").each(function (i) {
+            //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+            //if ($(this).find('input.checkbox-tipo-socio-2:checked').length > 0) {
+                $(this).prop("checked", true)
+                $(this).find('.input-valor-mensal').prop("disabled", false);
+           // }
+        });
+
+        // $("tr.tipo-socio-item").each(function (i) {
+        //     //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+        //     if ($(this).find('input.checkbox-tipo-socio-2:checked').length > 0) {
+        //         $(this).prop("checked", true)
+        //         $(this).find('.input-valor-mensal').prop("disabled", false);
+        //     }
+        // });
+       
+       
+    },
 })
 
 
