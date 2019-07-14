@@ -747,7 +747,6 @@
           <th>UF</th>
           <th>Data Nascimento</th>
           <th>Editar</th>
-          <th>Adiconar Atividade</th>
           <th>Apagar</th>
         </thead>
         <tbody>
@@ -757,8 +756,7 @@
             <td>{{cidade}}</td>
             <td>{{uf}}</td>
             <td>{{nascimento}}</td>
-            <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></button></td>
-            <td class="td-acoes"><button id="addAtividade" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button></td>
+            <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary" ><i class="fa fa-edit"></i></button></td>
             <td class="td-acoes"><button id="deletarContato" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button></td>
           </tr>
           {{/each}}
@@ -1306,29 +1304,7 @@
                 {{/each}}
               </tbody>
             </table>
-
           </div>
-
-
-
-          <!-- <div class="form-row">
-              <div class="form-group col-sm-6">
-                <label for="atividadeVoluntaria">Atividade</label>
-                <input type="text" class="form-control" id="atividadeVoluntaria">
-              </div>
-              <div class="form-group col-sm-4">
-                <label for="tempoAtividadeVoluntaria">Quanto Tempo</label>
-                <input type="text" class="form-control " id="tempoAtividadeVoluntaria">
-              </div>
-              <div class="form-group">
-                  <i class="fa fa-trash form-control-sm" id="delteAtividadeVoluntaria"></i>
-              </div>
-            </div> -->
-
-
-
-
-
         </form>
       </div>
     </fieldset>
@@ -1344,9 +1320,165 @@
                   <div class="form-group col-sm-4">
                   </div>
             </div>
-            
+            <div class="container">
+                <fieldset name="preenchimentoInterno">
+                    <legend style="text-align: center">Preenchimento interno do CEAHA</legend>
+                </fieldset>
+                <fieldset class=" interno" name="preenchimentoInterno">
+                  <div class="container transferencia">
+                    <form class="form-control">
+                      <h5 class="text" style="text-align: center">Colaborador: {{nome}}</h5>
+                      <table class="table table-hover tipo-socio">
+                          <thead>
+                            <tr>
+                              <th scope="col" width="50">Selecione</th>
+                              <th scope="col" width="100">Tipo de sócio</th>
+                              <th scope="col" width="100">Valor Mensal</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each socio}}
+                            <tr class="tipo-socio-item">
+                              <th scope="row">
+                                <div class="form-check">
+                                  <input class="form-check-input tipo-socio" type="checkbox" name="socioLivre" id="socioLivre" value="Socio Livre" checked="{{value}}" >
+                                </div>
+                              </th>
+                              <td class="tipo-socio-nome" value="Sócio Livre">{{tipo}}</td>
+                              <td>
+                                <input class="input-valor-mensal " type="text" name="socioLivreMEnsalidade" id="socioLivreMEnsalidade" placeholder=""  value="{{valor_mensal}}"  disabled>
+                              </td>
+                            </tr>
+                            {{/each}}
+                          </tbody>
+                      </table>
+                    </form>
+                  </div>
+                </fieldset>
+                <fieldset name="atividadesInternasList">
+                  <div class="container transferencia">
+                    <form class="form-control">
+                      <fieldset id="addAtividadeInterna">
+                        <section id="sectionAddAtividadeInterna">
+                          <form class="form-control" id="formAtividadeInterna" action="">
+                            <section>
+                              <div class="row ">
+                                <div class="clumn col-lg-8" style="text-align: center">
+                                    <h3>Atividades Internas </h3>
+                                </div>
+                                <div class="colum col-lg-2">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary" id="btnAddAtividadeInterna">Adicionar Atividade</button>
+                                      </div>
+                                </div>
+                              </div>
+                              <table class="table table-bordered atividade-interna-table" id="atividadeInternaTable">
+                                <thead class="table-head">
+                                  <th class="col-sm-6">Ano</th>
+                                  <th class="col-sm-6">Atividades</th>
+                                  <th class="col-sm-6" colspan="2">Frequencia</th>
+                                </thead>
+                                <tbody id="atividadeTableBody">
+                                  <tr class="form-group table-row atividade-interna-item" id="atividadeItemList">
+                                    <td class="item-list">
+                                      <div class="form-group col">
+                                        <input type="text" class="atividade-interna-item-ano atividade-ano" id="atividadeInternaAno" value="" placeholder="ano">
+                                      </div>
+                                    </td>
+                                    <td class="item-list atividade">
+                                      <div class="form-group col">
+                                        <select class="form-control atividade-interna-item-atividade atividade-atividade" id="atividadeInterna" value="" disabled>
+                                          <option value="Selecione">Selecione</option>
+                                        </select>
+                                        
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="form-group col">
+                                        <input type="text" class="atividade-interna-item-total frequencia atividade-freq-total" id="atividadeInternaFreqTotal" value="" placeholder="total">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <div class="form-group col">
+                                        <input type="text" class="atividade-interna-item-real frequencia atividade-freq-real" id="atividadeInternaFreqReal" value="" placeholder="real">
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr class="table-row atividade-interna-departamento" id="atividadeItemDeptoList" >
+                                    <td colspan="4" class="item-list-depto">
+                                      <div class="form-group col" >
+                                          <select class="form-control atividade-interna-depto " name="uf" id="atividadeInternaDepartamento" value="">
+                                            <option value="Selecione">Selecione um Departamento</option>
+                                            {{#each listaDepartamentos}} 
+                                              <option value="{{sigla}}">{{sigla}} - {{nome}}</option>
+                                            {{/each}}
+                                            </select>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </section>
+                          </form>
+                        </section>
+                      </fieldset>
+                    </form>
+                  </div>
+                </fieldset>
+              </div>
           </form>
         </div>
+   </section>
+   <section>
+     <div class="form-group">
+       <h3>Histórico de Atividades</h3>
+       
+       <table class="table table-bordered atividade-interna-table" id="atividadeInternaTable">
+          <thead class="table-head">
+            <th>Ano</th>
+            <th>Atividade</th>
+            <th colspan="2">Frequencia Total / Real</th>
+          </thead>
+          <tbody id="atividadeHistoryTableBody" >
+              {{#each listaAtividades}}
+                <tr class="table-row atividade-interna-departamento" id="histAtividadeItemDeptoList" >
+                  <td colspan="4" class="item-list-depto" >
+                      <div class="col">
+                          <input type="text" style="text-align: center" class="form-control atividade-interna-depto" value="{{departamento}}" placeholder="departamento" disabled>
+                        </div>
+                    
+                  </td>
+                </tr>
+                {{#each atividades}}
+                  <tr class="table-row atividade-interna-item" id="atividadeItemList">
+                      <td class="item-list" >
+                        <div class="col">
+                          <input type="text" style="text-align: center" class="atividade-interna-item-ano atividade-ano" id="histAtividadeInternaAno" value="{{ano}}" placeholder="ano" disabled>
+                        </div>
+                      </td>
+                      <td class="item-list">
+                        <div class="col">
+                          <input type="text" style="text-align: center" class="atividade-interna-item-atividade atividade-atividade" id="histAtividadeInterna" value="{{atividade}}"  placeholder="atividades realizadas" disabled>
+                        </div>
+                      </td>
+                      <td class="item-list">
+                        <div class="col">
+                          <input type="text" style="text-align: center" class="atividade-interna-item-total frequencia atividade-freq-total" id="histAtividadeInternaFreqTotal" value="{{freq_total}}" placeholder="total" disabled>
+                        </div>
+                      </td>
+                      <td class="item-list">
+                        <div class="col">
+                          <input type="text" style="text-align: center" class="atividade-interna-item-real frequencia atividade-freq-real" id="histAtividadeInternaFreqReal" value="{{freq_real}}" placeholder="real" disabled>
+                        </div>
+                      </td>
+                    </tr>
+                {{/each}}
+              {{/each}}
+           
+            
+          </tbody>
+        </table>
+     </div>
    </section>
    
     <section>
@@ -1364,6 +1496,7 @@
 </template>
 
 
+<<<<<<< HEAD
 <template name="preenchimentoInterno">
   <div class="container">
     <fieldset name="preenchimentoInterno">
@@ -1587,3 +1720,5 @@
     </fieldset>
   </div>
 </template>
+=======
+>>>>>>> 92bad78cbc526b807a5da9dc137ed2da5872dd35

@@ -44,7 +44,7 @@ input.checkbox-experienca-pratica{
   position: relative;
   left: 30px;
 }
-input.checkbox-tipo-socio{
+input.tipo-socio{
   position: relative;
   left: 30px;
 }
@@ -59,4 +59,8 @@ h3{
 }
 .atividade-item{
   text-align: center !important;
+}
+
+.item-list{
+  text-align: center;
 }

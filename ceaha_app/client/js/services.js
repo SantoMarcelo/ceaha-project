@@ -1,7 +1,9 @@
 
-export function getFormData() {
+export function getFormData(dataAtividade) {
   var atividades = getDataTable();
   var atividadeMedium = getMediumData();
+  var atividadesInternas = getAtividadesInternas(dataAtividade);
+  var socio = getSocioData();
   var participante = {
     nome: $('#full-name').val(),
     nascimento: $('#date-birth').val(),
@@ -57,7 +59,11 @@ export function getFormData() {
       outras_obras: $('#outrasObras').val(),
     }, 
     atividades_voluntarias: atividades,
-    experiencia: atividadeMedium
+    experiencia: atividadeMedium,
+    atividades_internas: atividadesInternas,
+    socio: socio
+   
+    
   }
   return participante
 };
@@ -128,57 +134,101 @@ export function removeAtividade(){
   table.deleteRow(current.parentNode.parentNode.rowIndex)
 }
 
-export function getAposentadoValue(){
+export function addAtividadeInterna(){
+  var rowItem = document.getElementById("atividadeItemList");
+  var table = document.getElementById("atividadeInternaTable");
+  var rowDepto = document.getElementById("atividadeItemDeptoList");
+  var tbody = table.firstChild.parentElement.lastElementChild
+  var clone = rowItem.cloneNode(true);
+  console.log(clone);
+  clone.id = Math.random().toString(32).substring(2, 10);
+  clone.class = "clone"
+  console.log(clone)
+  tbody.appendChild(clone);
+  var clone2 = rowDepto.cloneNode(true);
+  console.log(clone2);
+  clone2.id = Math.random().toString(32).substring(2, 10);
+  clone2.class = "clone2"
+  tbody.appendChild(clone2);
+
+  $('#'+clone.id).each(function(){
+	  $(this).find('input#atividadeInternaAno').val("");
+	  $(this).find('select.atividade-interna-item-atividade').val("");
+    $(this).find('input#atividadeInternaFreqTotal').val("");
+    $(this).find('input#atividadeInternaFreqReal').val("");
+    $(this).find('select#atividadeInternaDepartamento').val("Selecione");
+  })
+        
+}
+
+export function getAtividadesInternas(data = null){
+  
+  var atividadesList = data
+
+  if(atividadesList == null){
+    atividadesList = []
+  }
+  var departments = [] 
+  $('#atividadeTableBody tr.atividade-interna-departamento').each(function(){
+    departments.push($(this).find('select#atividadeInternaDepartamento option:selected').text())
+  })
+
+  $('#atividadeTableBody tr.atividade-interna-item').each(function (i, e) {
+    if($(this).find('input#atividadeInternaAno').val() == "" && 
+      $(this).find('select.atividade-interna-item-atividade option:selected').text() == "" &&
+      $(this).find('input#atividadeInternaFreqReal').val() == "" &&
+      $('#atividadeTableBody tr.atividade-interna-departamento').find('select#atividadeInternaDepartamento option:selected').text() == "Selecione um Departamento"){
+      return atividadesList
+    } else {
+      atividadesList.push({ ano:  $(this).find('input#atividadeInternaAno').val(),
+      atividade: $(this).find('select.atividade-interna-item-atividade option:selected').text(), 
+      freq_real: $(this).find('input#atividadeInternaFreqReal').val(), 
+      freq_total: $(this).find('input#atividadeInternaFreqTotal').val(),
+      departamento: departments[i]
+      })
+    }
+  })
+  
+  return atividadesList
+}
+
+export function getSocioData(){
+  socioData = []
+
+  $('.tipo-socio-item').each(function(){
+    if ($(this).find('input.tipo-socio:checked').prop("checked") == true) {
+      socioData.push({
+        value: true,
+        tipo: $(this).find('.tipo-socio-nome').text(),
+        valor_mensal: $(this).find('.input-valor-mensal').val()
+      }) 
+    }else {
+      socioData.push({
+        value: false,
+        tipo: $(this).find('.tipo-socio-nome').text(),
+        valor_mensal: $(this).find('.input-valor-mensal').val()
+      }) 
+    }
+  })
+  
+  if(socioData.length == 0){
+    socioData = [{
+      value: false,
+      tipo: "Sócio Livre",
+      valor_mensal: ""
+    },
+    {
+      value: false,
+      tipo: "Sócio Voluntário",
+      valor_mensal: ""
+    },
+    {
+      value: false,
+      tipo: "Sócio Efetivo",
+      valor_mensal: ""
+    }]
+  }
+  return socioData;
   
 }
-
-export function getAtividadesInternas(){
-  console.log("Aqui");
-  var atividades_internas = new Array();
-  var atividade_interna = {
-    ano: $('#atividadeInternaAno').val(),
-    atividade: $('#atividadeInterna').val(),
-    frequencia_total: $('#atividadeInternaFreqTotal').val(),
-    frequencia_real: $('#atividadeInternaFreqReal').val(),
-    departamento: $('#atividadeInternaDepartamento option:selected').text(),
-  }
-  atividades_internas.push(atividade_interna);
-  return atividades_internas;
-}
-
-export function setAtividadeInterna(){
-  var atividades_list = getAtividadesInternas()
-  //console.log(atividades_list[0]);
-  //var element = $( '<p/>' )
-  var atividades = {
-    ano: $('#atividadeInternaAno').val(),
-    atividade: $('#atividadeInterna').val(),
-    freq_total: $('#atividadeInternaFreqTotal').val(),
-    freq_real: $('#atividadeInternaFreqReal').val(),
-    departamento: $('#atividadeInternaDepartamento').val(),
-  }
-  console.log(atividades);
-
-  $('#anoAtividadeLista').prop("value", atividades.ano);
-  $('#AtividadeLista').prop("value", atividades.atividade);
-  $('#freqRealAtividadeLista').prop("value", atividades.freq_real);
-  $('#freqTotalAtividadeLista').prop("value", atividades.freq_total);
-  $('#deptoAtividadeLista').prop("value", atividades.departamento);
-
-  
-  // element.text( atividades.ano ).addClass( 'text' ).appendTo( '#anoAtividadeLista' );
-  // element.text( atividades.atividade ).addClass( 'text' ).appendTo( '#AtividadeLista' );
-  // element.text( atividades.freq_total ).addClass( 'text' ).appendTo( '#freqtotalAtividadeLista' );
-  // element.text( atividades.freq_real ).addClass( 'text' ).appendTo( '#freqRealAtividadeLista' );
-  // element.text( atividades.departamento ).addClass( 'text' ).appendTo( '#departamentoAtividadeLista' );
-
- 
-}
-
-export function setMasks(){
-
-  $('date-birth').Inputmask('99/99/9999');
-}
-
-
 export { getDormData };

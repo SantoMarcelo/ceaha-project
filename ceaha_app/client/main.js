@@ -2,14 +2,17 @@ import { Template } from 'meteor/templating';
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { getFormData, getMediumData, adicionaAtividade, getAtividadesInternas, setAtividadeInterna, removeAtividade } from './js/services.js'
+import { getFormData, getMediumData, adicionaAtividade, addAtividadeInterna, getAtividadesInternas, setAtividadeInterna, removeAtividade } from './js/services.js'
 
+_ = lodash;
 import './main.html';
+//import { Session } from 'inspector';
 //import './services.js';
 
 
 const Participantes = new Mongo.Collection('participantes');
 const Atividades = new Mongo.Collection('atividades');
+const Departamentos = new Mongo.Collection('departamentos');
 
 Meteor.startup(function () {
 
@@ -51,6 +54,9 @@ Router.route('/adicionarAtividade/:_id', {
     data: function () {
         
         //var participante = Participantes.findOne({ _id: this.params._id });
+        var ati = Atividades.find({user_id: 'PTuATQp2FKQ95HLZ2'})
+        console.log("Atividades router")
+        console.log(ati);
         return Participantes.findOne({ _id: this.params._id });
     },
 
@@ -347,32 +353,64 @@ Template.listaParticipante.events({
 
 })
 
-Template.editarParticipante.onCreated(function () {
+// Template.editarParticipante.onCreated(function () {
     
-    this.atividades = new ReactiveVar(Atividades.find());
-    var atividadeList = this.atividades.curValue.collection._docs._map
-    console.log(atividadeList); 
-    var transferencia = $('#transferencia').val();
-    if (transferencia == 'Sim') {
-        $('#nomeCentroEspirita').prop("disabled", false);
-        $('#cidadeCentroEspirita').prop("disabled", false);
-        $('#tempoCentroEspirita').prop("disabled", false);
-        $('#ufCentroEspirita').prop("disabled", false);
-    } else {
-        $('#nomeCentroEspirita').prop("disabled", true);
-        $('#cidadeCentroEspirita').prop("disabled", true);
-        $('#tempoCentroEspirita').prop("disabled", true);
-        $('#ufCentroEspirita').prop("disabled", true);
-    }
+//     this.atividades = new ReactiveVar(Atividades.find());
+//     var atividadeList = this.atividades.curValue.collection._docs._map
+//     console.log(atividadeList); 
+//     var transferencia = $('#transferencia').val();
+//     if (transferencia == 'Sim') {
+//         $('#nomeCentroEspirita').prop("disabled", false);
+//         $('#cidadeCentroEspirita').prop("disabled", false);
+//         $('#tempoCentroEspirita').prop("disabled", false);
+//         $('#ufCentroEspirita').prop("disabled", false);
+//     } else {
+//         $('#nomeCentroEspirita').prop("disabled", true);
+//         $('#cidadeCentroEspirita').prop("disabled", true);
+//         $('#tempoCentroEspirita').prop("disabled", true);
+//         $('#ufCentroEspirita').prop("disabled", true);
+//     }
    
-    // this.participante = new ReactiveVar(Participantes.find({ _id: 'RAnsnTMyQWpXEiTqC' }));
+//     // this.participante = new ReactiveVar(Participantes.find({ _id: 'RAnsnTMyQWpXEiTqC' }));
 
-})
+// })
 
 Template.editarParticipante.helpers({
     'listaAtividades': function () {
-        return Template.instance().atividadeList.get();
+        var lista = this.atividades_internas;
+        var listaDeptos = [];
+        
+        for (var i = 0; i< lista.length; i++){
+            listaDeptos.push(lista[i].departamento);
+        }
+         
+         listaDeptos = _.uniq(listaDeptos);
+
+         var listaAgrupada = _.map(listaDeptos, function(item){
+            return {
+                 departamento: item, 
+                 atividades: _.filter(lista, function(o){
+                    return o.departamento == item;
+                })
+             }
+         })
+         console.log("Lista Agrupada" , listaAgrupada)
+         return listaAgrupada;
+         
     },
+    'socioInformation': function() {
+        console.log(this);
+        var socio = this.socio
+        console.log("socio" + socio.value);
+        return socio
+    },
+    'listaDepartamentos': function(){
+        var departamentos = Departamentos.find();
+        
+        return departamentos;
+    },
+    
+
 })
 
 Template.editarParticipante.events({
@@ -440,7 +478,8 @@ Template.editarParticipante.events({
     
 
     'click .checkbox-experienca-pratica'(event, instance) {
-        event.preventDefault();
+        console.log(event);
+        console.log(instance.parentNode);
         $(".experiencia-pratica").each(function (i) {
             //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
             if ($(this).find('input.checkbox-experienca-pratica:checked').length > 0) {
@@ -466,7 +505,13 @@ Template.editarParticipante.events({
 
     'click #editar'(event, instance) {
         event.preventDefault();
-        var participante = getFormData()
+        console.log(this.atividades_internas.length)
+        if(this.atividades_internas.length >= 0){
+            var participante = getFormData(this.atividades_internas)
+        } else{
+            var participante = getFormData()
+        }
+       
 
         if (this._id) {
             Meteor.call('updateParticipante', this._id, participante, function (err, res) {
@@ -488,14 +533,7 @@ Template.editarParticipante.events({
             })
         }
         window.location.href = ('/home');
-        // Meteor.call('inserirParticipante', participante, function(err, res){
-        //   if (err) {
-        //       sAlert.error(err.reason)
-        //       return false;
-        //   } else {
-        //       sAlert.success('Participante cadastrado com sucesso.')
-        //   }
-        // })     
+         
     },
 
     'click #cancelar'(event){
@@ -503,17 +541,32 @@ Template.editarParticipante.events({
         window.location.href = ('/home');
     },
 
+<<<<<<< HEAD
    
+=======
+    'click .tipo-socio'(event, instance) {
+        console.log(event);
+        console.log(instance.parentNode);
+        $("tr.tipo-socio-item").each(function (i) {
+            //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+            if ($(this).find('input.tipo-socio:checked').length > 0) {
+                 $(this).find('.input-valor-mensal').prop("disabled", false);
+            }
+        });
+        // $("tr.tipo-socio-item").each(function (i) {
+        //     //console.log($(this).find('input.checkbox-experienca-pratica:checked'));
+        //     if ($(this).find('input.tipo-socio').length > 0) {
+        //          $(this).find('.input-valor-mensal').prop("disabled", true);
+        //     }
+        // });
+    },
+>>>>>>> 92bad78cbc526b807a5da9dc137ed2da5872dd35
+
 
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
-        var participante = getFormData()
-        var atividade = getAtividadesInternas();
-        atividade.participante_id = this._id;
-        participante.atividades_internas = atividade;
-
-        setAtividadeInterna();
         
+<<<<<<< HEAD
         // Meteor.call('adicionaAtividadeInterna', this._id, atividade, function (err, res) {
         //     if (err) {
         //         sAlert.error(err.reason)
@@ -552,36 +605,28 @@ Template.preenchimentoInterno.helpers({
     
 
 })
-
-Template.preenchimentoInterno.events({
-    'click #btnAddAtividadeInterna'(event, instance){
-        event.preventDefault();
+=======
+        addAtividadeInterna();
         
-        var atividades = {
-            ano: $('#atividadeInternaAno').val(),
-            atividade: $('#atividadeInterna').val(),
-            freq_total: $('#atividadeInternaFreqTotal').val(),
-            freq_real: $('#atividadeInternaFreqReal').val(),
-            departamento: $('#atividadeInternaDepartamento option:selected').text(),
-          }
-          console.log(atividades);
 
-          $('#anoAtividadeLista').text(atividades.ano);
-          $('#AtividadeLista').text( atividades.atividade);
-          $('#freqRealAtividadeLista').text(atividades.freq_real);
-          $('#freqTotalAtividadeLista').text( atividades.freq_total);
-          $('#deptoAtividadeLista').text( atividades.departamento);
-      
-        atividades.user_id = this._id
+    },
+>>>>>>> 92bad78cbc526b807a5da9dc137ed2da5872dd35
 
-        Meteor.call('adicionaAtividadeInterna', atividades,function (err, res) {
-            if (err) {
-                sAlert.error(err.reason)
-                return false;
-            } else {
-                sAlert.success('Atividade cadastrado com sucesso.')
+    'change select.atividade-interna-depto'(event, instance){
+        
+        $('select.atividade-interna-item-atividade').prop("disabled" , false) 
+        $('select.atividade-interna-item-atividade option').remove();
+        $('select.atividade-interna-item-atividade option').last().append("<option value=\"Selecione\">Selecione</option>")
+        var departamentos = Departamentos.find();
+        departamentos = departamentos.collection._docs._map
+        var deptoSelecionado = $('tr#atividadeItemDeptoList select.atividade-interna-depto').val();
+        var atividades = []
+        _.map(departamentos, function(item){
+            if(item.sigla == deptoSelecionado){
+                atividades = item.atividades
             }
         })
+<<<<<<< HEAD
     },
     'click .checkbox-tipo-socio-2'(event, instance) {
         // event.preventDefault();
@@ -604,7 +649,11 @@ Template.preenchimentoInterno.events({
        
        
     },
+=======
+        _.map(atividades, function(item){
+            $('select.atividade-interna-item-atividade').last().append("<option value=" + item.descricao + ">"+ item.descricao + "</option>");
+        })
+    },
+    
+>>>>>>> 92bad78cbc526b807a5da9dc137ed2da5872dd35
 })
-
-
-
