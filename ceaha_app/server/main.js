@@ -7,6 +7,7 @@ Meteor.startup(() => {
   
   const Participantes = new Mongo.Collection('participantes');
   const Atividades = new Mongo.Collection('atividades');
+  const Socio = new Mongo.Collection('socio')
   
 
   Meteor.methods({
@@ -25,6 +26,9 @@ Meteor.startup(() => {
     'buscaAtividade'(){
       Atividades.find()
     },
+    'adicionaSocio'(socio){
+      Socio.insert(socio)
+    }
   });
 });
 

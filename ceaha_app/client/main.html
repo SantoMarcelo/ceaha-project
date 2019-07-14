@@ -1384,8 +1384,7 @@
               <tbody>
                 <tr class="tipo-socio-item">
                   <th scope="row">
-                    <input type="checkbox" class="checkbox-tipo-socio-2" >
-                    <!-- <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioLivre" id="socioLivre" value="Socio Livre" data-target=""  > -->
+                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioLivre" id="socioLivre" value="Socio Livre" data-target=""  >
                   </th>
                   <td>Sócio Livre</td>
                   <td>
@@ -1394,8 +1393,8 @@
                 </tr>
                 <tr class="tipo-socio-item">
                   <th scope="row">
-                      <input type="checkbox" class="checkbox-tipo-socio-2" >
-                    <!-- <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioVoluntario" id="socioVoluntario" value="Socio Voluntario" data-target="socioVoluntario"> -->
+                      <!-- <input type="checkbox" class="checkbox-tipo-socio-2" > -->
+                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioVoluntario" id="socioVoluntario" value="Socio Voluntario" data-target="socioVoluntario">
                   </th>
                   <td>Sócio Voluntário</td>
                   <td>
@@ -1404,16 +1403,38 @@
                 </tr>
                 <tr class="tipo-socio-item">
                   <th scope="row">
-                      <input type="checkbox" class="checkbox-tipo-socio-2" >
-                    <!-- <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioEfetivo" id="socioEfetivo" value="Socio Efetivo" data-target="socioEfetivo"> -->
+                      <!-- <input type="checkbox" class="checkbox-tipo-socio-2" > -->
+                    <input class="checkbox checkbox-tipo-socio" type="checkbox" name="socioEfetivo" id="socioEfetivo" value="Socio Efetivo" data-target="socioEfetivo">
                   </th>
                   <td>Sócio Efetivo</td>
                   <td>
                     <input class="input-valor-mensal " type="text" name="socioEfetivoMensalidade" id="socioEfetivoMensalidade" placeholder="" disabled>
                   </td>
                 </tr>
-
+                <tr class="table-row atividade-interna-add">
+                  <td colspan="4">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary" id="btnAddSocio">Adicionar Sócio</button>
+                    </div>
+                  </td>
+                </tr>
               </tbody>
+              <tfoot>
+                  <h3>Histórico do Sócio</h3>
+                  {{#with 1=1}}
+                  {{_id}}
+                    {{#each listaSocio}}
+                    
+                      <tr class="hist-tipo-socio-item">
+                        <td>{{tipo}}</td>
+                        <td>
+                          <input class="hist-input-valor-mensal " type="text" name="hist-socioLivreMEnsalidade" id="hist-socioLivreMEnsalidade" value= "{{valor}}" placeholder="" disabled>
+                        </td>
+                        <td>{{date_create}}</td>
+                      </tr>
+                    {{/each}}
+                  {{/with}}
+              </tfoot>
           </table>
           <fieldset id="addAtividadeInterna">
             <section id="sectionAddAtividadeInterna">
