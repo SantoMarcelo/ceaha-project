@@ -176,28 +176,6 @@ Template.novoParticipante.helpers(function () {
 
 Template.novoParticipante.onRendered(function () {
 
-    
-
-
-
-    // aposentado(){
-    //   var aposentado = $('select[name=aposentadoria]').val()
-    //   console.log(aposentado)
-    //   if(aposentado != 0){
-    //     $('#enderecoTrabalho').hide();
-    //   }
-    // },
-
-    // escola(){
-    //     var escola = $('#escolaridade').val();
-    //     if (escola == ''){
-    //         // $('#cursoEscolaridade').hide();
-    //         // $('#instituiçãoEscolaridade').hide();
-    //         return console.log('aqui dentro')
-    //     }
-
-    // }
-
 })
 
 Template.novoParticipante.events({
@@ -560,30 +538,35 @@ Template.editarParticipante.events({
         //     }
         // });
     },
->>>>>>> 92bad78cbc526b807a5da9dc137ed2da5872dd35
 
 
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
         
-<<<<<<< HEAD
-        // Meteor.call('adicionaAtividadeInterna', this._id, atividade, function (err, res) {
-        //     if (err) {
-        //         sAlert.error(err.reason)
-        //         return false;
-        //     } else {
-        //         sAlert.success('Atividade adicionada com sucesso.')
-        //     }
-        // })
-        // Meteor.call('updateParticipante', this._id, participante, function (err, res) {
-        //     if (err) {
-        //         sAlert.error(err.reason)
-        //         return false;
-        //     } else {
-        //         sAlert.success('Participante alterado com sucesso.')
-        //     }
-        // })
-    }
+        addAtividadeInterna();
+        
+
+    },
+
+    'change select.atividade-interna-depto'(event, instance){
+        
+        $('select.atividade-interna-item-atividade').prop("disabled" , false) 
+        $('select.atividade-interna-item-atividade option').remove();
+        $('select.atividade-interna-item-atividade option').last().append("<option value=\"Selecione\">Selecione</option>")
+        var departamentos = Departamentos.find();
+        departamentos = departamentos.collection._docs._map
+        var deptoSelecionado = $('tr#atividadeItemDeptoList select.atividade-interna-depto').val();
+        var atividades = []
+        _.map(departamentos, function(item){
+            if(item.sigla == deptoSelecionado){
+                atividades = item.atividades
+            }
+        })
+        _.map(atividades, function(item){
+            $('select.atividade-interna-item-atividade').last().append("<option value=" + item.descricao + ">"+ item.descricao + "</option>");
+        })
+    },
+    
 })
 
 Template.preenchimentoInterno.onCreated(function () {
@@ -605,12 +588,12 @@ Template.preenchimentoInterno.helpers({
     
 
 })
-=======
+
         addAtividadeInterna();
         
 
     },
->>>>>>> 92bad78cbc526b807a5da9dc137ed2da5872dd35
+
 
     'change select.atividade-interna-depto'(event, instance){
         
@@ -626,7 +609,6 @@ Template.preenchimentoInterno.helpers({
                 atividades = item.atividades
             }
         })
-<<<<<<< HEAD
     },
     'click .checkbox-tipo-socio-2'(event, instance) {
         // event.preventDefault();
@@ -649,11 +631,4 @@ Template.preenchimentoInterno.helpers({
        
        
     },
-=======
-        _.map(atividades, function(item){
-            $('select.atividade-interna-item-atividade').last().append("<option value=" + item.descricao + ">"+ item.descricao + "</option>");
-        })
-    },
-    
->>>>>>> 92bad78cbc526b807a5da9dc137ed2da5872dd35
 })
