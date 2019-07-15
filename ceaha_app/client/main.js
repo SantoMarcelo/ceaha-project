@@ -539,53 +539,68 @@ Template.preenchimentoInterno.onCreated(function () {
     this.atividade = new ReactiveVar(Atividades.find());
     this.participante = new ReactiveVar(Participantes.find());
     this.socio = new ReactiveVar(Socio.find());
-    console.log(this.atividade);
+    
 })
  
 Template.preenchimentoInterno.helpers({
     'listaAtividadesInternas': function () {
         
-        return Template.instance().atividade.get({_id:this._id});
+        return Template.instance().atividade.get();
     },
     'usuario': function () {
        
         return Template.instance().participante.get();
     },
     'listaSocio': function(){
-        console.log('log',Template.instance());
-        return Template.instance().socio.get({_id:this._id});
+        return Template.instance().socio.get();
     }
 })
 
 Template.preenchimentoInterno.events({
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
+        var participante = getFormData()
         
-        var atividades = {
+        
+        participante.atividades_internas.push(
+        {
             ano: $('#atividadeInternaAno').val(),
             atividade: $('#atividadeInterna').val(),
             freq_total: $('#atividadeInternaFreqTotal').val(),
             freq_real: $('#atividadeInternaFreqReal').val(),
             departamento: $('#atividadeInternaDepartamento option:selected').text(),
-        }
-          console.log(atividades);
-
-          $('#anoAtividadeLista').text(atividades.ano);
-          $('#AtividadeLista').text( atividades.atividade);
-          $('#freqRealAtividadeLista').text(atividades.freq_real);
-          $('#freqTotalAtividadeLista').text( atividades.freq_total);
-          $('#deptoAtividadeLista').text( atividades.departamento);
-      
-        atividades.user_id = this._id
-        console.log(atividades);
-        Meteor.call('adicionaAtividadeInterna', atividades,function (err, res) {
-            if (err) {
-                sAlert.error(err.reason)
-                return false;
-            } else {
-                sAlert.success('Atividade cadastrado com sucesso.')
-            }
         })
+
+          $('#anoAtividadeLista').text(atividades_internas.ano);
+          $('#AtividadeLista').text( atividades_internas.atividade);
+          $('#freqRealAtividadeLista').text(atividades_internas.freq_real);
+          $('#freqTotalAtividadeLista').text( atividades_internas.freq_total);
+          $('#deptoAtividadeLista').text( atividades_internas.departamento);
+      
+          //atividades_internas.user_id = this._id
+        
+           
+
+            if (this._id) {
+                Meteor.call('updateParticipante', this._id, participante, function (err, res) {
+                    if (err) {
+                        sAlert.error(err.reason)
+                        return false;
+                    } else {
+                        sAlert.success('Atividade Alterada com sucesso.')
+                    }
+                })
+            } else {
+                Meteor.call('inserirParticipante', participante, function (err, res) {
+                    if (err) {
+                        sAlert.error(err.reason)
+                        return false;
+                    } else {
+                        sAlert.success('Atividade Cadastrada com sucesso.')
+                    }
+                })
+            }
+           
     },
     'click .checkbox-tipo-socio'(event, instance) {
         $(document).on("click", ".checkbox-tipo-socio", function () {
@@ -602,24 +617,35 @@ Template.preenchimentoInterno.events({
     'click #btnAddSocio'(event){
         event.preventDefault();
         data_criação = new Date(Date.now()).toLocaleString();
+        var socio= []
+            socio.push({tipo: $('th').find('.checkbox-tipo-socio:checked').val(), 
+            valor: $('th').find('.checkbox-tipo-socio:checked').parent().parent().find('.input-valor-mensal').val(), 
+            user_id: this._id ,
+            date_create: data_criação}) 
         
-            var socio ={ 
-                tipo: $('th').find('.checkbox-tipo-socio:checked').val(), 
-                valor: $('th').find('.checkbox-tipo-socio:checked').parent().parent().find('.input-valor-mensal').val(), 
-                user_id: this._id ,
-                date_create: data_criação
-            }
-        
-        console.log(socio);
+            var participante = getFormData()
+            participante.socio = socio
 
-        Meteor.call('adicionaSocio', socio,function (err, res) {
-            if (err) {
-                sAlert.error(err.reason)
-                return false;
+            if (this._id) {
+                Meteor.call('updateParticipante', this._id, participante, function (err, res) {
+                    if (err) {
+                        sAlert.error(err.reason)
+                        return false;
+                    } else {
+                        sAlert.success('Participante alterado com sucesso.')
+                    }
+                })
             } else {
-                sAlert.success('Socio cadastrado com sucesso.')
+                Meteor.call('inserirParticipante', participante, function (err, res) {
+                    if (err) {
+                        sAlert.error(err.reason)
+                        return false;
+                    } else {
+                        sAlert.success('Participante cadastrado com sucesso.')
+                    }
+                })
             }
-        })
+            
     }
 })
 

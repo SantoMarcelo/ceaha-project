@@ -1421,9 +1421,8 @@
               </tbody>
               <tfoot>
                   <h3>Histórico do Sócio</h3>
-                  {{#with 1=1}}
-                  {{_id}}
-                    {{#each listaSocio}}
+                  
+                    {{#each socio}}
                     
                       <tr class="hist-tipo-socio-item">
                         <td>{{tipo}}</td>
@@ -1433,7 +1432,6 @@
                         <td>{{date_create}}</td>
                       </tr>
                     {{/each}}
-                  {{/with}}
               </tfoot>
           </table>
           <fieldset id="addAtividadeInterna">
@@ -1513,41 +1511,7 @@
             <form id="formAtividadeInterna" action="">
                 <section>
                   <h3>Atividades Internas Realizadas</h3>
-                  <!-- <div class="col-sm-6">
-                    <div class="row">
-                      <div class="col-xs-6 text-right oppt-label">Ano:</div>
-                      <div class="col-xs-6 text-right oppt-label" id="anoAtividadeLista"></div>
-                      <div class="col-xs-6 text-right oppt-label">Atividade:</div>
-                      <div class="col-xs-6 text-right oppt-label" id="AtividadeLista"></div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="row">
-                      <div class="col-xs-6 text-right oppt-label">Frequencia Real:
-                      </div>
-                      <div class="col-xs-6 text-right oppt-label" id="freqRealAtividadeLista">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="row">
-                      <div class="col-xs-6 text-right oppt-label">Frequencia Total:
-                      </div>
-                      <div class="col-xs-6 text-right oppt-label" id="freqTotalAtividadeLista">
-                      </div>
-                    </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="row">
-                        <div class="col-xs-6 text-right oppt-label">Departamento:
-                        </div>
-                        <div class="col-xs-6 text-right oppt-label" id="deptoAtividadeLista">
-                        </div>
-                      </div>
-                    </div>   -->
+                 
                     <table class="table table-bordered atividade-interna-list">
                         <thead class="table-head">
                           <th>Ano</th>
@@ -1556,9 +1520,8 @@
                         </thead>
                         
                         <tbody id="atividadeTableBody">
-                          {{#with 1=1}}
-                          {{_id}}
-                          {{#each listaAtividadesInternas}}
+                          
+                          {{#each atividades}}
                            
                           <tr class="table-row atividade-interna-list-departamento" id="atividadeItem" style="text-align: center !important">
                             <td colspan="4">
@@ -1592,7 +1555,6 @@
                            
                           {{/each}}
                           
-                          {{/with}}
                         </tbody>
                         
                       </table>
