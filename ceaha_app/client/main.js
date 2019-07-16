@@ -305,6 +305,10 @@ Template.listaParticipante.onCreated(function () {
     console.log(this.participante);
 })
 
+Template.listaParticipante.rendered = function () {
+    this.$("#busca").on("submit", function (e) { e.preventDefault() });
+}
+
 Template.listaParticipante.helpers({
     'listaParticipantes': function () {
         return Template.instance().participante.get();
@@ -313,25 +317,7 @@ Template.listaParticipante.helpers({
 })
 
 Template.listaParticipante.events({
-    'click #botaoBuscar'(event, instance) {
-        event.preventDefault();
-        var nome = $('#buscaNome').val();
-        var query = {
-            'nome': nome
-        }
-
-        if (nome != '') {
-            var query = {
-                'nome': nome
-            }
-        }
-
-        var resultado = Participantes.find(query);
-        console.log("aqui no resultado")
-        console.log(resultado)
-
-        instance.participante.set(resultado);
-    },
+    
     'click #editarContato'(event, instance) {
         event.preventDefault();
         //console.log(this._id);
@@ -344,6 +330,18 @@ Template.listaParticipante.events({
         //console.log(this._id);
         window.location.href = ('/adicionarAtividade/' + this._id);
 
+    },
+    'click #botaoBuscar'(event, instance) {
+        event.preventDefault();
+        var nome = $('#buscaNome').val();
+        var resultado = Participantes.find({"nome": { $regex: nome}});
+        instance.participante.set(resultado);
+    },
+
+    'click #limparPesquisa' (event, instance){
+        event.preventDefault();
+        var resultado = Participantes.find();
+        instance.participante.set(resultado);
     }
 
 })
@@ -365,8 +363,6 @@ Template.editarParticipante.onCreated(function () {
         $('#tempoCentroEspirita').prop("disabled", true);
         $('#ufCentroEspirita').prop("disabled", true);
     }
-   
-    // this.participante = new ReactiveVar(Participantes.find({ _id: 'RAnsnTMyQWpXEiTqC' }));
 
 })
 

@@ -102,22 +102,7 @@
             <div class="form-row">
               <div class="col col-md-4 form-group first ">
                 <label for="nacionality">Nacionalidade</label>
-                <select class="form-control" name="nacionality" id="nacionality">
-                  <option value="">Selecione</option>
-                  <option value="Brasil">Brasil</option>
-                  <option value="África do Sul">África do Sul</option>
-                  <option value="Argentina">Argentina</option>
-                  <option value="EUA">EUA</option>
-                  <option value="Equador">Equador</option>
-                  <option value="Espanha">Espanha</option>
-                  <option value="França">França</option>
-                  <option value="Grécia">Grécia</option>
-                  <option value="Inglaterra">Inglaterra</option>
-                  <option value="Itália">Itália</option>
-                  <option value="Jamaica">Jamaica</option>
-                  <option value="Japão">Japão</option>
-                  <option value="Portugal">Portugal</option>
-                </select>
+                <input type="text" class="form-control" id="nacionality" placeholder="pais de origem">
               </div>
               <div class="col col-md-4 second">
                 <label for="city">Cidade</label>
@@ -191,6 +176,14 @@
                   <option value="Viúvo">Viúvo</option>
                   <option value="Amasiado">Amasiado</option>
                 </select>
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="rg">Telefone</label>
+                  <input type="text" class="form-control" id="telefone" placeholder="(DDD)-99999-9999)">
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="rg">Email</label>
+                  <input type="text" class="form-control" id="email" placeholder="email">
               </div>
             </div>
           </form>
@@ -398,7 +391,7 @@
               </div>
               <div class="form-group col-sm-4">
                 <label for="cursoEscolaridade">Curso</label>
-                <input class="form-control" type="text" id="inputCursoEscolaridade" placeholder="curso" disabled>
+                <input class="form-control" type="text" id="cursoEscolaridade" placeholder="curso" disabled>
               </div>
               <div class="form-group col-sm-4">
                 <label for="instituicaoEscolaridade">Instituição</label>
@@ -673,27 +666,6 @@
             </table>
 
           </div>
-
-
-
-          <!-- <div class="form-row">
-              <div class="form-group col-sm-6">
-                <label for="atividadeVoluntaria">Atividade</label>
-                <input type="text" class="form-control" id="atividadeVoluntaria">
-              </div>
-              <div class="form-group col-sm-4">
-                <label for="tempoAtividadeVoluntaria">Quanto Tempo</label>
-                <input type="text" class="form-control " id="tempoAtividadeVoluntaria">
-              </div>
-              <div class="form-group">
-                  <i class="fa fa-trash form-control-sm" id="delteAtividadeVoluntaria"></i>
-              </div>
-            </div> -->
-
-
-
-
-
         </form>
       </div>
     </fieldset>
@@ -736,6 +708,10 @@
             <input type="text" id="buscaNome" name="buscaNome" class="form-control" placeholder="nome">
           </div>
           <button type="button" id="botaoBuscar" class="btn btn-success"><i class="fa fa-search"></i></button>
+          <div class="form-group ml-3 mx-sm-3">
+              <button type="button" id="limparPesquisa" class="btn btn-secondary">Limpar Pesquisa</button>
+          </div>
+          
         </form>
       </div>
 
@@ -743,9 +719,8 @@
       <table class="table">
         <thead>
           <th>Nome</th>
-          <th>Cidade</th>
-          <th>UF</th>
-          <th>Data Nascimento</th>
+          <th>Telefone</th>
+          <th>Email</th>
           <th>Editar</th>
           <th>Adiconar Atividade</th>
           <th>Apagar</th>
@@ -754,9 +729,8 @@
           {{#each listaParticipantes}}
           <tr>
             <td>{{nome}}</td>
-            <td>{{cidade}}</td>
-            <td>{{uf}}</td>
-            <td>{{nascimento}}</td>
+            <td>{{telefone}}</td>
+            <td>{{email}}</td>
             <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></button></td>
             <td class="td-acoes"><button id="addAtividade" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button></td>
             <td class="td-acoes"><button id="deletarContato" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></button></td>
@@ -807,22 +781,7 @@
             <div class="form-row">
               <div class="col col-md-4 form-group first ">
                 <label for="nacionality">Nacionalidade</label>
-                <select class="form-control" name="nacionality" id="nacionality" value="{{nacionalidade}}">
-                  <option value={{nacionalidade}}>{{nacionalidade}}</option>
-                  <option value="Brasil">Brasil</option>
-                  <option value="África do Sul">África do Sul</option>
-                  <option value="Argentina">Argentina</option>
-                  <option value="EUA">EUA</option>
-                  <option value="Equador">Equador</option>
-                  <option value="Espanha">Espanha</option>
-                  <option value="França">França</option>
-                  <option value="Grécia">Grécia</option>
-                  <option value="Inglaterra">Inglaterra</option>
-                  <option value="Itália">Itália</option>
-                  <option value="Jamaica">Jamaica</option>
-                  <option value="Japão">Japão</option>
-                  <option value="Portugal">Portugal</option>
-                </select>
+                <input type="text" class="form-control" id="nacionality" placeholder="pais de origem" value="{{nacionalidade}}">
               </div>
               <div class="col col-md-4 second">
                 <label for="city">Cidade</label>
@@ -896,6 +855,14 @@
                   <option value="Viúvo">Viúvo</option>
                   <option value="Amasiado">Amasiado</option>
                 </select>
+              </div>
+              <div class="form-group col-md-4">
+                  <label for="rg">Telefone</label>
+                  <input type="text" class="form-control" id="telefone" value="{{telefone}}">
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="rg">Email</label>
+                  <input type="text" class="form-control" id="email" value="{{email}}">
               </div>
             </div>
           </form>
@@ -986,9 +953,7 @@
                   <option value={{profissao.controlador}} selected>{{profissao.aposentado}}</option>
                   <option value=false>Não</option>
                   <option value=true>Sim</option>
-
                 </select>
-                
               </div>
             </div>
             <div class="container endereco" id="enderecoTrabalho">
@@ -1332,23 +1297,6 @@
         </form>
       </div>
     </fieldset>
-   <section>
-      <div class="container atividades">
-          <form class="form-control">
-            <div class="row">
-                <div class="form-group col-sm-4">
-                  </div>
-                  <div class="form-group col-sm-4">
-                      <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target=".internos" aria-expanded="false" aria-controls="multiCollapseExample2" id="btn_preenchimento-interno">Preenchimento Interno CEAHA</button>
-                  </div>
-                  <div class="form-group col-sm-4">
-                  </div>
-            </div>
-            
-          </form>
-        </div>
-   </section>
-   
     <section>
       <div class="container button">
         <form class="form-control">

@@ -15,6 +15,8 @@ export function getFormData() {
     orgao_emissor: $('#orgao-emissor').val(),
     cpf: $('#cpf').val(),
     estado_civil: $('#inputEstadoCivil').val(),
+    email: $('#email').val(),
+    telefone: $('#telefone').val(),
     endereco: {
       cep: $('#cep').val(),
       logradouro: $('#rua').val(),
@@ -33,7 +35,7 @@ export function getFormData() {
     },
     endereco_comercial: {
       cep: $('#cepComercial').val(),
-      logradourol: $('#logradouroComercial').val(),
+      logradouro: $('#logradouroComercial').val(),
       numero: $('#numeroComercial').val(),
       bairro: $('#bairroComercial').val(),
       complemento: $('#complementoComercial').val(),
