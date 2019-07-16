@@ -20,6 +20,18 @@ Meteor.startup(() => {
     'updateParticipante'(id, participante){
       Participantes.update({_id:id},{$set:participante});
     },
+    'updateAtividadeInterna'(id, atividade){
+      Participantes.update(
+        {_id:id},
+        { $addToSet: { atividades_internas: atividade } }
+      );
+    },
+    'updateSocioTipo'(id, socio){
+      Participantes.update(
+        {_id:id},
+        { $addToSet: { socio: socio } }
+      );
+    },
     'adicionaAtividadeInterna'(atividade){
       Atividades.insert(atividade);
     },

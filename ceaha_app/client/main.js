@@ -559,30 +559,16 @@ Template.preenchimentoInterno.helpers({
 Template.preenchimentoInterno.events({
     'click #btnAddAtividadeInterna'(event, instance){
         event.preventDefault();
-        var participante = getFormData()
-        
-        
-        participante.atividades_internas.push(
-        {
+        var atividades_internas = {
             ano: $('#atividadeInternaAno').val(),
             atividade: $('#atividadeInterna').val(),
             freq_total: $('#atividadeInternaFreqTotal').val(),
             freq_real: $('#atividadeInternaFreqReal').val(),
             departamento: $('#atividadeInternaDepartamento option:selected').text(),
-        })
-
-          $('#anoAtividadeLista').text(atividades_internas.ano);
-          $('#AtividadeLista').text( atividades_internas.atividade);
-          $('#freqRealAtividadeLista').text(atividades_internas.freq_real);
-          $('#freqTotalAtividadeLista').text( atividades_internas.freq_total);
-          $('#deptoAtividadeLista').text( atividades_internas.departamento);
-      
-          //atividades_internas.user_id = this._id
-        
-           
+        }
 
             if (this._id) {
-                Meteor.call('updateParticipante', this._id, participante, function (err, res) {
+                Meteor.call('updateAtividadeInterna', this._id, atividades_internas, function (err, res) {
                     if (err) {
                         sAlert.error(err.reason)
                         return false;
@@ -591,7 +577,7 @@ Template.preenchimentoInterno.events({
                     }
                 })
             } else {
-                Meteor.call('inserirParticipante', participante, function (err, res) {
+                Meteor.call('updateAtividadeInterna', atividades_internas, function (err, res) {
                     if (err) {
                         sAlert.error(err.reason)
                         return false;
@@ -617,31 +603,28 @@ Template.preenchimentoInterno.events({
     'click #btnAddSocio'(event){
         event.preventDefault();
         data_criação = new Date(Date.now()).toLocaleString();
-        var socio= []
-            socio.push({tipo: $('th').find('.checkbox-tipo-socio:checked').val(), 
+
+        var socio = {tipo: $('th').find('.checkbox-tipo-socio:checked').val(), 
             valor: $('th').find('.checkbox-tipo-socio:checked').parent().parent().find('.input-valor-mensal').val(), 
             user_id: this._id ,
-            date_create: data_criação}) 
+            date_create: data_criação}
         
-            var participante = getFormData()
-            participante.socio = socio
-
             if (this._id) {
-                Meteor.call('updateParticipante', this._id, participante, function (err, res) {
+                Meteor.call('updateSocioTipo', this._id, socio, function (err, res) {
                     if (err) {
                         sAlert.error(err.reason)
                         return false;
                     } else {
-                        sAlert.success('Participante alterado com sucesso.')
+                        sAlert.success('Sócio alterado com sucesso.')
                     }
                 })
             } else {
-                Meteor.call('inserirParticipante', participante, function (err, res) {
+                Meteor.call('updateSocioTipo', socio, function (err, res) {
                     if (err) {
                         sAlert.error(err.reason)
                         return false;
                     } else {
-                        sAlert.success('Participante cadastrado com sucesso.')
+                        sAlert.success('Sócio cadastrado com sucesso.')
                     }
                 })
             }

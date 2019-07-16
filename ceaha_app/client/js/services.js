@@ -2,7 +2,7 @@
 export function getFormData() {
   var atividades = getDataTable();
   var atividadeMedium = getMediumData();
-  var atividades_internas = []
+  var atividades_internas 
   var participante = {
     nome: $('#full-name').val(),
     nascimento: $('#date-birth').val(),
@@ -63,6 +63,19 @@ export function getFormData() {
   }
   return participante
 };
+
+export function getAtividadesInternasData(){
+  var atividades_internas = []
+        atividades_internas.push(
+        {
+            ano: $('#atividadeInternaAno').val(),
+            atividade: $('#atividadeInterna').val(),
+            freq_total: $('#atividadeInternaFreqTotal').val(),
+            freq_real: $('#atividadeInternaFreqReal').val(),
+            departamento: $('#atividadeInternaDepartamento option:selected').text(),
+        })
+        return atividades_internas
+}
 
 export function getDataTable() {
 
