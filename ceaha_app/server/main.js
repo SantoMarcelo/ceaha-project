@@ -32,6 +32,11 @@ Meteor.startup(() => {
         { $addToSet: { socio: socio } }
       );
     },
+    'deleteParticipante'(id){
+      Participantes.remove(
+        {_id:id}
+      );
+    },
     'adicionaAtividadeInterna'(atividade){
       Atividades.insert(atividade);
     },

@@ -170,29 +170,13 @@ Template.novoParticipante.helpers(function () {
 })
 
 Template.novoParticipante.onRendered(function () {
-
+    // $(document).ready(function(){
+    //     $('.date').mask('11/11/1111');
+    //     $('.cep').mask('00000-000');
+    //     $('.phone_with_ddd').mask('(00) 0000-0000');
+    //     $('.cpf').mask('000.000.000-00', {reverse: true});
+    //   });
     
-
-
-
-    // aposentado(){
-    //   var aposentado = $('select[name=aposentadoria]').val()
-    //   console.log(aposentado)
-    //   if(aposentado != 0){
-    //     $('#enderecoTrabalho').hide();
-    //   }
-    // },
-
-    // escola(){
-    //     var escola = $('#escolaridade').val();
-    //     if (escola == ''){
-    //         // $('#cursoEscolaridade').hide();
-    //         // $('#instituiçãoEscolaridade').hide();
-    //         return console.log('aqui dentro')
-    //     }
-
-    // }
-
 })
 
 Template.novoParticipante.events({
@@ -342,6 +326,25 @@ Template.listaParticipante.events({
         event.preventDefault();
         var resultado = Participantes.find();
         instance.participante.set(resultado);
+        $('#buscaNome').val();
+    },
+
+    'click #deletarContato'(event, instance){
+        var dialog = $('#window');
+        $('#deletarContato').click(function() {
+         dialog.show();
+        });
+        var r=confirm("Você tem certeza que deseja apagar este participante?");
+        if (r==true) {
+            Meteor.call('deleteParticipante', this._id, function (err, res) {
+                if (err) {
+                    sAlert.error(err.reason)
+                    return false;
+                } else {
+                    sAlert.success('Participante removido com sucesso com sucesso.')
+                }
+            })
+        }
     }
 
 })
