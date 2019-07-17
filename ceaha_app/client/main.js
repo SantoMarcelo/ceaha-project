@@ -145,37 +145,19 @@ Template.acesso.events({
 })
 
 Template.novoParticipante.helpers(function () {
-   
-
-    
-
-    // aposentado(){
-    //   var aposentado = $('select[name=aposentadoria]').val()
-    //   console.log(aposentado)
-    //   if(aposentado != 0){
-    //     $('#enderecoTrabalho').hide();
-    //   }
-    // },
-
-    // escola(){
-    //     var escola = $('#escolaridade').val();
-    //     if (escola == ''){
-    //         // $('#cursoEscolaridade').hide();
-    //         // $('#instituiçãoEscolaridade').hide();
-    //         return console.log('aqui dentro')
-    //     }
-
-    // }
 
 })
 
 Template.novoParticipante.onRendered(function () {
-    // $(document).ready(function(){
-    //     $('.date').mask('11/11/1111');
-    //     $('.cep').mask('00000-000');
-    //     $('.phone_with_ddd').mask('(00) 0000-0000');
-    //     $('.cpf').mask('000.000.000-00', {reverse: true});
-    //   });
+    $(document).ready(function(){
+        $('#date-birth').inputmask("99-99-9999");
+        $('.cep').inputmask('99999-999');
+        $('#telefoneRes').inputmask('(99) 9999-9999');
+        $('#telefoneCel').inputmask('(99) 99999-9999');
+        $('.cpf').inputmask('999.999.999-99', {reverse: true});
+        $('#telComercial').inputmask('(99) 99999-9999');
+      });
+        
     
 })
 
@@ -204,7 +186,7 @@ Template.novoParticipante.events({
 
     },
 
-    'click #transferencia'(event, instance) {
+    'change #transferencia'(event, instance) {
         var transferencia = $('#transferencia').val();
         if (transferencia == 'Sim') {
             $('#nomeCentroEspirita').prop("disabled", false);
@@ -219,7 +201,7 @@ Template.novoParticipante.events({
         }
     },
 
-    'click #aposentadoria'(event, instance) {
+    'change #aposentadoria'(event, instance) {
         var aposentado = $('#aposentadoria').val();
         
         if (aposentado == "false") {
@@ -245,13 +227,13 @@ Template.novoParticipante.events({
         }
     },
 
-    'click #escolaridade'(event, instance) {
+    'change #escolaridade'(event, instance) {
         var escolaridade = $('#escolaridade').val();
-        if (escolaridade < 4) {
-            $('#inputCursoEscolaridade').prop("disabled", true);
+        if (escolaridade <= 4) {
+            $('#cursoEscolaridade').prop("disabled", true);
             $('#instituicaoEscolaridade').prop("disabled", true);
         } else {
-            $('#inputCursoEscolaridade').prop("disabled", false);
+            $('#cursoEscolaridade').prop("disabled", false);
             $('#instituicaoEscolaridade').prop("disabled", false);
         }
     },
@@ -270,6 +252,14 @@ Template.novoParticipante.events({
 
     'click #cadastrar'(event, instance) {
         event.preventDefault();
+       
+        $('#full-name').on('input', function() {
+            var input=$(this);
+            var is_name=input.val();
+            if(is_name){input.removeClass("invalid").addClass("valid");}
+            else{input.removeClass("valid").addClass("invalid");}
+        });
+
         var participante = getFormData();
 
         Meteor.call('inserirParticipante', participante, function (err, res) {
@@ -286,7 +276,6 @@ Template.novoParticipante.events({
 
 Template.listaParticipante.onCreated(function () {
     this.participante = new ReactiveVar(Participantes.find());
-    console.log(this.participante);
 })
 
 Template.listaParticipante.rendered = function () {
@@ -534,11 +523,9 @@ Template.editarParticipante.events({
 })
 
 Template.preenchimentoInterno.onCreated(function () {
-    console.log(this._id)
     this.atividade = new ReactiveVar(Atividades.find());
     this.participante = new ReactiveVar(Participantes.find());
     this.socio = new ReactiveVar(Socio.find());
-    
 })
  
 Template.preenchimentoInterno.helpers({

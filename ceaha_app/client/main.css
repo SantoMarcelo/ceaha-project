@@ -7,6 +7,17 @@ body {
   size: 50px;
   
 }
+
+.error{
+	display: none;
+	margin-left: 10px;
+}		
+
+.error_show{
+	color: red;
+	margin-left: 10px;
+}
+
 .badge{
   border: 10px;
   font: 200;

@@ -93,10 +93,11 @@
               <div class="form-group col-md-6 ">
                 <label for="full-name">Nome Completo</label>
                 <input type="text" class="form-control" id="full-name" placeholder="nome completo" autocomplete="on" required>
+                <span class="error">This field is required</span>
               </div>
               <div class="form-group col-md-6">
                 <label for="date-birth">Data de Nascimento</label>
-                <input type="text" class="form-control date" id="date-birth" placeholder="dd/mm/aaaa" data-inputmask="'mask': '9999 9999 9999 9999'" required>
+                <input type="text" class="form-control" id="date-birth" placeholder="dd/mm/aaaa" data-inputmask="'mask': '99/99/9999'" required>
               </div>
             </div>
             <div class="form-row">
@@ -163,7 +164,7 @@
               </div>
               <div class="col-md-4 form-group ">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" placeholder="999.999.999-99">
+                <input type="text" class="form-control cpf" id="cpf" placeholder="999.999.999-99" data-inputmask="'mask': '999.999.999-99'">
               </div>
               <div class="col-md-4 form-group ">
                 <label for="inputEstadoCivil">Estado Civil</label>
@@ -178,12 +179,16 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                  <label for="rg">Telefone</label>
-                  <input type="text" class="form-control" id="telefone" placeholder="(DDD)-99999-9999)">
+                  <label for="rg">Telefone Res</label>
+                  <input type="text" class="form-control fone" id="telefoneRes" placeholder="(99) 9999-9999" data-inputmask="'mask': '(99) 9999-9999'">
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-4">
+                  <label for="rg">Telefone Cel</label>
+                  <input type="text" class="form-control fone" id="telefoneCel" placeholder="(99) 99999-9999" data-inputmask="'mask': '(99) [9]9999-9999'">
+              </div>
+              <div class="form-group col-md-4">
                   <label for="rg">Email</label>
-                  <input type="text" class="form-control" id="email" placeholder="email">
+                  <input type="text" class="form-control" id="email" placeholder="email@dominio.com">
               </div>
             </div>
           </form>
@@ -287,14 +292,13 @@
                   </div>
                   <div class="form-group col-sm-4">
                     <label for="telComercial">Telefone Comercial</label>
-                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999"
-                      disabled>
+                    <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" data-inputmask="'mask': '(99)9999-9999'" disabled>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="cepComercial">CEP</label>
-                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md"
+                    <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md cep"
                       disabled>
                   </div>
                   <div class="col-md-6 form-group">
@@ -718,7 +722,7 @@
       <table class="table">
         <thead>
           <th>Nome</th>
-          <th>Telefone</th>
+          <th>Telefone Celular</th>
           <th>Email</th>
           <th>Editar</th>
           <th>Adiconar Atividade</th>
@@ -728,7 +732,7 @@
           {{#each listaParticipantes}}
           <tr>
             <td>{{nome}}</td>
-            <td>{{telefone}}</td>
+            <td>{{telefone_celular}}</td>
             <td>{{email}}</td>
             <td class="td-acoes"><button id="editarContato" class="btn btn-sm btn-outline-primary"><i class="fa fa-edit"></i></button></td>
             <td class="td-acoes"><button id="addAtividade" class="btn btn-sm btn-outline-secondary"><i class="fa fa-edit"></i></button></td>
@@ -856,10 +860,14 @@
                 </select>
               </div>
               <div class="form-group col-md-4">
-                  <label for="rg">Telefone</label>
-                  <input type="text" class="form-control" id="telefone" value="{{telefone}}">
+                  <label for="rg">Telefone Res</label>
+                  <input type="text" class="form-control fone" id="telefoneRes" placeholder="(99) 9999-9999" data-inputmask="'mask': '(99) 9999-9999'" value="{{telefone_residencial}}">
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-4">
+                  <label for="rg">Telefone Cel</label>
+                  <input type="text" class="form-control fone" id="telefoneCel" placeholder="(99) 99999-9999" data-inputmask="'mask': '(99) [9]9999-9999'" value="{{telefone_celular}}">
+              </div>
+              <div class="form-group col-md-4">
                   <label for="rg">Email</label>
                   <input type="text" class="form-control" id="email" value="{{email}}">
               </div>
@@ -965,13 +973,13 @@
                     </div>
                     <div class="form-group col-sm-4">
                       <label for="telComercial">Telefone Comercial</label>
-                      <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" value="{{profissao.tel}}">
+                      <input class="form-control input-md" type="text" name="telComercial" id="telComercial" placeholder="(99)9999-9999" value="{{profissao.tel}}" data-inputmask="'mask': '(99)9999-9999'">
                     </div>
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-4">
                       <label for="cepComercial">CEP</label>
-                      <input id="cepComercial" name="cep" type="text" placeholder="99999-999" class="form-control input-md"
+                      <input id="cepComercial cep" name="cep" type="text" placeholder="99999-999" class="form-control input-md"
                         value="{{endereco_comercial.cep}}">
                     </div>
                     <div class="col-md-6 form-group">

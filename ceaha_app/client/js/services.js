@@ -1,5 +1,6 @@
 
 export function getFormData() {
+  
   var atividades = getDataTable();
   var atividadeMedium = getMediumData();
   var atividades_internas 
@@ -16,7 +17,8 @@ export function getFormData() {
     cpf: $('#cpf').val(),
     estado_civil: $('#inputEstadoCivil').val(),
     email: $('#email').val(),
-    telefone: $('#telefone').val(),
+    telefone_residencial: $('#telefoneRes').val(),
+    telefone_celular: $('#telefoneCel').val(),
     endereco: {
       cep: $('#cep').val(),
       logradouro: $('#rua').val(),
@@ -145,57 +147,8 @@ export function removeAtividade(){
   table.deleteRow(current.parentNode.parentNode.rowIndex)
 }
 
-export function getAposentadoValue(){
-  
-}
 
-export function getAtividadesInternas(){
-  console.log("Aqui");
-  var atividades_internas = new Array();
-  var atividade_interna = {
-    ano: $('#atividadeInternaAno').val(),
-    atividade: $('#atividadeInterna').val(),
-    frequencia_total: $('#atividadeInternaFreqTotal').val(),
-    frequencia_real: $('#atividadeInternaFreqReal').val(),
-    departamento: $('#atividadeInternaDepartamento option:selected').text(),
-  }
-  atividades_internas.push(atividade_interna);
-  return atividades_internas;
-}
 
-export function setAtividadeInterna(){
-  var atividades_list = getAtividadesInternas()
-  //console.log(atividades_list[0]);
-  //var element = $( '<p/>' )
-  var atividades = {
-    ano: $('#atividadeInternaAno').val(),
-    atividade: $('#atividadeInterna').val(),
-    freq_total: $('#atividadeInternaFreqTotal').val(),
-    freq_real: $('#atividadeInternaFreqReal').val(),
-    departamento: $('#atividadeInternaDepartamento').val(),
-  }
-  console.log(atividades);
-
-  $('#anoAtividadeLista').prop("value", atividades.ano);
-  $('#AtividadeLista').prop("value", atividades.atividade);
-  $('#freqRealAtividadeLista').prop("value", atividades.freq_real);
-  $('#freqTotalAtividadeLista').prop("value", atividades.freq_total);
-  $('#deptoAtividadeLista').prop("value", atividades.departamento);
-
-  
-  // element.text( atividades.ano ).addClass( 'text' ).appendTo( '#anoAtividadeLista' );
-  // element.text( atividades.atividade ).addClass( 'text' ).appendTo( '#AtividadeLista' );
-  // element.text( atividades.freq_total ).addClass( 'text' ).appendTo( '#freqtotalAtividadeLista' );
-  // element.text( atividades.freq_real ).addClass( 'text' ).appendTo( '#freqRealAtividadeLista' );
-  // element.text( atividades.departamento ).addClass( 'text' ).appendTo( '#departamentoAtividadeLista' );
-
- 
-}
-
-export function setMasks(){
-
-  $('date-birth').Inputmask('99/99/9999');
-}
 
 
 export { getDormData };
